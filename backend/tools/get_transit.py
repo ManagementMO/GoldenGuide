@@ -12,7 +12,8 @@ def _load_csv(filename):
     filepath = os.path.join(GTFS_DIR, filename)
     if not os.path.exists(filepath):
         return []
-    with open(filepath, "r") as f:
+    # `utf-8-sig` tolerates a UTF-8 BOM (common in CSV exports).
+    with open(filepath, "r", newline="", encoding="utf-8-sig") as f:
         return list(csv.DictReader(f))
 
 
@@ -24,6 +25,49 @@ try:
     TRIPS = _load_csv("trips.txt")
 except Exception:
     ROUTES, STOPS, STOP_TIMES, TRIPS = [], [], [], []
+
+
+def get_stops(query: str, limit: int = 10) -> list[dict]:
+    """
+    Return GTFS stops whose `stop_name` contains `query` (case-insensitive).
+
+    Example: `get_stops("Princess")` returns stops on Princess Street.
+    """
+    if not STOPS:
+        return []
+
+    q = (query or "").strip().lower()
+    if not q:
+        return []
+
+    matches = [
+        s for s in STOPS if q in (s.get("stop_name") or "").strip().lower()
+    ]
+    return matches[: max(0, limit)]
+
+
+def get_routes_for_stop_ids(stop_ids: set[str], limit: int = 10) -> list[dict]:
+    """
+    Given a set of GTFS stop_ids, return simplified route objects that serve them.
+    """
+    if not stop_ids or not STOP_TIMES or not TRIPS or not ROUTES:
+        return []
+
+    serving_trips = {st.get("trip_id") for st in STOP_TIMES if st.get("stop_id") in stop_ids}
+    serving_trips.discard(None)
+
+    route_ids = {t.get("route_id") for t in TRIPS if t.get("trip_id") in serving_trips}
+    route_ids.discard(None)
+
+    route_info = [
+        {
+            "route_id": r.get("route_id", ""),
+            "name": r.get("route_long_name") or r.get("route_short_name", ""),
+        }
+        for r in ROUTES
+        if r.get("route_id") in route_ids
+    ]
+    return route_info[: max(0, limit)]
 
 
 def get_transit_info_impl(
@@ -44,9 +88,8 @@ def get_transit_info_impl(
             },
         }
 
-    # Find matching stops
-    dest_lower = destination.lower()
-    matching_stops = [s for s in STOPS if dest_lower in s.get("stop_name", "").lower()]
+    # Find matching stops (limit to top 5 to match previous behavior)
+    matching_stops = get_stops(destination, limit=5)
 
     if not matching_stops:
         return {
@@ -56,22 +99,15 @@ def get_transit_info_impl(
         }
 
     # Get routes serving those stops
-    stop_ids = {s["stop_id"] for s in matching_stops[:5]}
+    stop_ids = {s["stop_id"] for s in matching_stops}
 
     # Find trips that serve these stops
-    serving_trips = set()
     relevant_stop_times = []
     for st in STOP_TIMES:
         if st.get("stop_id") in stop_ids:
-            serving_trips.add(st.get("trip_id"))
             relevant_stop_times.append(st)
 
-    # Find route info for those trips
-    trip_route_map = {
-        t["trip_id"]: t["route_id"] for t in TRIPS if t["trip_id"] in serving_trips
-    }
-    route_ids = set(trip_route_map.values())
-    route_info = [r for r in ROUTES if r["route_id"] in route_ids]
+    serving_routes = get_routes_for_stop_ids(stop_ids, limit=5)
 
     return {
         "destination": destination,
@@ -84,13 +120,7 @@ def get_transit_info_impl(
             }
             for s in matching_stops[:3]
         ],
-        "serving_routes": [
-            {
-                "route_id": r["route_id"],
-                "name": r.get("route_long_name", r.get("route_short_name", "")),
-            }
-            for r in route_info[:5]
-        ],
+        "serving_routes": serving_routes,
         "sample_times": [
             {
                 "stop": st["stop_id"],

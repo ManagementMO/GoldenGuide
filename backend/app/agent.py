@@ -5,6 +5,8 @@ Gemini function calling with 10 tools.
 
 import os
 import json
+import inspect
+from typing import Optional
 from google import genai
 from google.genai import types
 
@@ -282,7 +284,7 @@ tool_declarations = [
 
 
 async def agent_chat(
-    user_message: str, history: list, image_data: str = None, image_mime: str = None
+    user_message: str, history: list, image_data: Optional[str] = None, image_mime: Optional[str] = None
 ) -> dict:
     """
     The core agentic loop.
@@ -292,16 +294,27 @@ async def agent_chat(
     4. Repeat until Gemini gives a final text response
     5. Return text + structured data for frontend rendering
     """
-    client = genai.Client(api_key=GEMINI_API_KEY)
+    gemini_api_key = os.getenv("GEMINI_API_KEY", GEMINI_API_KEY)
+    if not gemini_api_key or gemini_api_key.startswith("your_"):
+        return {
+            "text": "Gemini is not configured yet. Set a real GEMINI_API_KEY in backend/.env and restart the backend server.",
+            "history": history or [],
+            "structured_data": {},
+            "tool_calls_made": [],
+        }
+
+    client = genai.Client(api_key=gemini_api_key)
 
     system_prompt = build_system_prompt()
 
-    tools = types.Tool(function_declarations=tool_declarations)
+    tools = types.Tool(function_declarations=[types.FunctionDeclaration(**decl) for decl in tool_declarations])
     config = types.GenerateContentConfig(
-        tools=[tools],
         system_instruction=system_prompt,
         temperature=1.0,
+        tools=[tools],
     )
+
+    history = list(history or [])
 
     # Build user message parts
     user_parts = []
@@ -322,27 +335,61 @@ async def agent_chat(
     structured_data = {}
     tool_calls_made = []
     max_iterations = 8  # Safety limit
+    text_response = ""
 
     for _ in range(max_iterations):
-        response = client.models.generate_content(
-            model="gemini-2.0-flash",
-            config=config,
-            contents=history,
-        )
+        try:
+            response = await client.aio.models.generate_content(
+                model="gemini-2.0-flash",
+                config=config,
+                contents=history,
+            )
+        except Exception as e:
+            return {
+                "text": f"I could not reach Gemini right now: {str(e)}",
+                "history": history,
+                "structured_data": structured_data,
+                "tool_calls_made": tool_calls_made,
+            }
+
+        if not response.candidates:
+            text_response = response.text or "I could not generate a response right now."
+            history.append({"role": "model", "parts": [{"text": text_response}]})
+            return {
+                "text": text_response,
+                "history": history,
+                "structured_data": structured_data,
+                "tool_calls_made": tool_calls_made,
+            }
+
+        content = response.candidates[0].content
+        response_parts = (content.parts if content else []) or []
 
         # Parse response parts
         tool_calls = []
-        text_response = ""
+        text_chunks = []
 
-        for part in response.candidates[0].content.parts:
+        for part in response_parts:
             if hasattr(part, "function_call") and part.function_call:
                 tool_calls.append(part.function_call)
             if hasattr(part, "text") and part.text:
-                text_response += part.text
+                text_chunks.append(part.text)
+
+        text_response = "".join(text_chunks).strip()
+
+        # Persist raw model output in conversation history
+        history.append(
+            {
+                "role": "model",
+                "parts": [part.model_dump(exclude_none=True) for part in response_parts],
+            }
+        )
 
         # If no tool calls, we have the final response
         if not tool_calls:
-            history.append({"role": "model", "parts": [{"text": text_response}]})
+            if not text_response:
+                text_response = response.text or "I could not generate a response right now."
+                history[-1]["parts"].append({"text": text_response})
             return {
                 "text": text_response,
                 "history": history,
@@ -358,13 +405,27 @@ async def agent_chat(
 
             tool_calls_made.append(func_name)
 
-            try:
-                result = TOOL_FUNCTIONS[func_name](**func_args)
-            except Exception as e:
-                result = {"error": str(e)}
+            tool_fn = TOOL_FUNCTIONS.get(func_name)
+            if not tool_fn:
+                result = {"error": f"Unknown tool: {func_name}"}
+            else:
+                try:
+                    maybe_result = tool_fn(**func_args)
+                    if inspect.isawaitable(maybe_result):
+                        maybe_result = await maybe_result
+                    result = maybe_result
+                except Exception as e:
+                    result = {"error": str(e)}
 
             tool_results.append(
-                {"function_response": {"name": func_name, "response": result}}
+                {
+                    "function_response": {
+                        "name": func_name,
+                        # Gemini expects `function_response.response` to be a JSON object.
+                        # Some of our tools (e.g. search_services) return a list, so wrap.
+                        "response": result if isinstance(result, dict) else {"result": result},
+                    }
+                }
             )
 
             # Track structured outputs for frontend rendering
@@ -381,21 +442,7 @@ async def agent_chat(
             elif func_name in ("place_call", "send_email", "send_sms"):
                 structured_data.setdefault("pending_actions", []).append(result)
 
-        # Add tool calls + results to history, then loop
-        history.append(
-            {
-                "role": "model",
-                "parts": [
-                    {
-                        "function_call": {
-                            "name": tc.name,
-                            "args": dict(tc.args) if tc.args else {},
-                        }
-                    }
-                    for tc in tool_calls
-                ],
-            }
-        )
+        # Add tool results to history, then loop
         history.append({"role": "user", "parts": tool_results})
 
     # If we hit max iterations, return whatever we have
