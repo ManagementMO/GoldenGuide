@@ -5,6 +5,7 @@ import EmailPreview from './EmailPreview';
 import CallPreview from './CallPreview';
 import SmsCard from './SmsCard';
 import ServiceCard from './ServiceCard';
+import DocumentExplainerCard from './DocumentExplainerCard';
 
 export default function MessageBubble({ message, onExecuteEmail, onExecuteSms, onExecuteCall, apiUrl }) {
   const isUser = message.role === 'user';
@@ -69,10 +70,20 @@ export default function MessageBubble({ message, onExecuteEmail, onExecuteSms, o
     
     if (data.call_preview || (data.recipient_name && data.phone_number)) {
       return (
-        <CallPreview 
-          key={index} 
-          preview={data.call_preview || data} 
-          onConfirm={onExecuteCall} 
+        <CallPreview
+          key={index}
+          preview={data.call_preview || data}
+          onConfirm={onExecuteCall}
+        />
+      );
+    }
+
+    // Document explainer check
+    if (data.document_explanation || data.plain_english) {
+      return (
+        <DocumentExplainerCard
+          key={index}
+          explanation={data.document_explanation || data}
         />
       );
     }

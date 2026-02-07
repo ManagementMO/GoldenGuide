@@ -1,0 +1,21 @@
+stop_id,stop_name,stop_lat,stop_lon
+S001,Kingston Centre Terminal,44.2312,-76.4860
+S002,Kingston General Hospital (KGH),44.2253,-76.4930
+S003,Hotel Dieu Hospital,44.2331,-76.4852
+S004,Queen's University (Union St),44.2253,-76.4951
+S005,362 Montreal St (MFAP Office),44.2387,-76.4788
+S006,Cataraqui Centre,44.2603,-76.5470
+S007,Comfort Keepers (Princess St),44.2312,-76.4990
+S008,City Hall,44.2301,-76.4810
+S009,Kingston Centre Mall,44.2310,-76.4860
+S010,Providence Care Hospital,44.2159,-76.5445
+S011,Invista Centre,44.2506,-76.5370
+S012,Artillery Park,44.2353,-76.4755
+S013,Memorial Centre,44.2276,-76.4856
+S014,K-Rock Centre,44.2310,-76.4812
+S015,Train Station (VIA Rail),44.2485,-76.5201
+S016,St. Lawrence College,44.2377,-76.5235
+S017,CFB Kingston,44.2277,-76.4690
+S018,Seniors Centre (Victoria St),44.2330,-76.4880
+S019,YMCA (Wright Cres),44.2450,-76.5320
+S020,Kingston Public Library (Central),44.2316,-76.4830

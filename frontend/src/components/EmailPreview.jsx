@@ -8,6 +8,7 @@ export default function EmailPreview({ draft, onSend, onCancel }) {
     body_html: draft.body_html || draft.body || ''
   });
   const [status, setStatus] = useState('idle'); // idle, sending, success, error
+  const [copied, setCopied] = useState(false);
 
   const handleSend = async () => {
     setStatus('sending');
@@ -18,6 +19,23 @@ export default function EmailPreview({ draft, onSend, onCancel }) {
       console.error(error);
       setStatus('error');
     }
+  };
+
+  const handleCopy = async () => {
+    const plainText = formData.body_html.replace(/<[^>]*>/g, '');
+    const fullText = `To: ${formData.to_email}\nSubject: ${formData.subject}\n\n${plainText}`;
+    try {
+      await navigator.clipboard.writeText(fullText);
+    } catch {
+      const ta = document.createElement('textarea');
+      ta.value = fullText;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   const handleChange = (e) => {
@@ -112,7 +130,14 @@ export default function EmailPreview({ draft, onSend, onCancel }) {
         >
           {status === 'sending' ? 'Sending...' : '📨 Send Now'}
         </button>
-        
+
+        <button
+          onClick={handleCopy}
+          className="flex-grow min-h-[56px] bg-white border-2 border-golden text-golden font-bold rounded-xl text-xl hover:bg-cornsilk transition-colors shadow-sm"
+        >
+          {copied ? '✅ Copied!' : '📋 Copy'}
+        </button>
+
         <button
           onClick={onCancel}
           disabled={status === 'sending'}

@@ -22,7 +22,7 @@ export default function ActionPlanCard({ plan, onExecuteCall, onExecuteEmail, on
   };
 
   return (
-    <div className="bg-white border-2 border-golden rounded-xl p-6 shadow-md my-4 w-full">
+    <div id="printable-action-plan" className="bg-white border-2 border-golden rounded-xl p-6 shadow-md my-4 w-full">
       <h3 className="text-2xl font-bold mb-6 text-textbrown font-heading flex items-center gap-2">
         <span>🎯</span> Your Personalized Action Plan
       </h3>
@@ -109,6 +109,13 @@ export default function ActionPlanCard({ plan, onExecuteCall, onExecuteEmail, on
              className="flex-1 min-h-[48px] bg-white border-2 border-accent text-accent font-bold rounded-lg px-6 py-3 hover:bg-gray-50 transition-colors shadow-sm"
            >
              ⬇️ Download Plan
+           </button>
+
+           <button
+             onClick={() => window.print()}
+             className="flex-1 min-h-[48px] bg-white border-2 border-golden text-golden font-bold rounded-lg px-6 py-3 hover:bg-cornsilk transition-colors shadow-sm"
+           >
+             🖨️ Print Plan
            </button>
         </div>
 

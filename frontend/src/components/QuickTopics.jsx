@@ -2,12 +2,12 @@ import React from 'react';
 
 export default function QuickTopics({ onSelect }) {
   const topics = [
-    { emoji: '🦷', label: 'Dental Help', query: 'I need help with dental care' },
-    { emoji: '🚌', label: 'Bus Times', query: 'When does the bus come?' },
-    { emoji: '💰', label: 'Fee Assistance', query: 'I need help with fees and costs' },
-    { emoji: '🏠', label: 'Homemaking', query: 'I need help with housekeeping and homemaking' },
-    { emoji: '🎨', label: 'Activities', query: 'What activities are available for seniors?' },
-    { emoji: '❓', label: 'What Can You Do?', query: 'What can you help me with?' },
+    { emoji: '🚌', label: 'Transit', query: 'How do I take the bus in Kingston? What are senior transit options?' },
+    { emoji: '🏠', label: 'Housing', query: 'What housing assistance programs are available for seniors in Kingston?' },
+    { emoji: '🏥', label: 'Health', query: 'What health services and dental programs are available for seniors in Kingston?' },
+    { emoji: '🎨', label: 'Activities', query: 'What activities and recreation programs are available for seniors in Kingston?' },
+    { emoji: '💰', label: 'Financial Help', query: 'What financial assistance programs are available for seniors in Kingston?' },
+    { emoji: '♿', label: 'Accessibility', query: 'What accessibility services and disability support are available in Kingston?' },
   ];
 
   return (

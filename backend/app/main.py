@@ -16,9 +16,12 @@ load_dotenv()
 
 app = FastAPI(title="GoldenGuide API")
 
+_frontend_url = os.getenv("FRONTEND_URL", "http://localhost:3000")
+_allowed_origins = ["*"] if "localhost" in _frontend_url else [_frontend_url]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[os.getenv("FRONTEND_URL", "http://localhost:3000"), "*"],
+    allow_origins=_allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

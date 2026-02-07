@@ -1,0 +1,15 @@
+trip_id,route_id,service_id,direction_id
+T001,1,weekday,0
+T002,2,weekday,0
+T003,3,weekday,0
+T004,4,weekday,0
+T005,6,weekday,0
+T006,7,weekday,0
+T007,9,weekday,0
+T008,12,weekday,0
+T009,16,weekday,0
+T010,501,weekday,0
+T011,502,weekday,0
+T012,1,weekday,1
+T013,3,weekday,1
+T014,6,weekday,1

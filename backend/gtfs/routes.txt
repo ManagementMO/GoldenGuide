@@ -1,0 +1,17 @@
+route_id,route_short_name,route_long_name
+1,1,Kingston Centre - Division St
+2,2,Kingston Centre - Princess St
+3,3,Kingston Centre - Montreal St
+4,4,Kingston Centre - Bath Rd
+6,6,Kingston Centre - Cataraqui Centre
+7,7,Kingston Centre - Gardiners Rd
+9,9,Kingston Centre - LaSalle
+10,10,Kingston Centre - Dalton Ave
+12,12,Kingston Centre - Highway 15
+14,14,Kingston Centre - Crossfield
+15,15,Kingston Centre - Reddendale
+16,16,Kingston Centre - KGH Express
+17,17,Kingston Centre - Innovation Dr
+18,18,Kingston Centre - Airport
+501,501,Express - Queen's / Downtown
+502,502,Express - Cataraqui Centre

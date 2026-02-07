@@ -376,6 +376,8 @@ async def agent_chat(
                 structured_data["reminder"] = result
             elif func_name == "check_eligibility":
                 structured_data["eligibility"] = result
+            elif func_name == "explain_document":
+                structured_data["document_explanation"] = result
             elif func_name in ("place_call", "send_email", "send_sms"):
                 structured_data.setdefault("pending_actions", []).append(result)
 

@@ -2,7 +2,17 @@ import './globals.css';
 
 export const metadata = {
   title: 'GoldenGuide — Your Kingston Services Assistant',
-  description: 'AI-powered assistant helping Kingston seniors access municipal services',
+  description: 'AI-powered assistant helping Kingston seniors access municipal services with dignity and ease.',
+  icons: {
+    icon: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
+  openGraph: {
+    title: 'GoldenGuide — Your Kingston Services Assistant',
+    description: 'AI-powered assistant helping Kingston seniors access municipal services with dignity and ease.',
+    locale: 'en_CA',
+    siteName: 'GoldenGuide',
+  },
 };
 
 export default function RootLayout({ children }) {

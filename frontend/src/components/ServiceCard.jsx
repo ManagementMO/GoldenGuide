@@ -1,7 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function ServiceCard({ service, onCallForMe, onEmailForMe }) {
+  const [saved, setSaved] = useState(false);
+
   if (!service) return null;
+
+  const handleSaveToPlan = async () => {
+    const details = [
+      service.name,
+      service.phone ? `Phone: ${service.phone}` : '',
+      service.address ? `Address: ${service.address}` : '',
+      service.how_to_apply ? `How to apply: ${service.how_to_apply}` : '',
+    ].filter(Boolean).join('\n');
+    try {
+      await navigator.clipboard.writeText(details);
+    } catch {
+      const ta = document.createElement('textarea');
+      ta.value = details;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
+    setSaved(true);
+    setTimeout(() => setSaved(false), 2500);
+  };
 
   return (
     <div className="bg-cornsilk border border-[#F5DEB3] rounded-xl p-6 shadow-sm my-4 text-textbrown">
@@ -52,13 +75,22 @@ export default function ServiceCard({ service, onCallForMe, onEmailForMe }) {
         )}
         
         {onEmailForMe && (
-          <button 
+          <button
             onClick={() => onEmailForMe(service)}
             className="flex-1 min-h-[48px] bg-white border-2 border-golden text-golden font-bold rounded-lg px-4 py-2 hover:bg-cornsilk transition-colors shadow-sm"
           >
             Email for Me
           </button>
         )}
+
+        <button
+          onClick={handleSaveToPlan}
+          className={`flex-1 min-h-[48px] font-bold rounded-lg px-4 py-2 transition-colors shadow-sm ${
+            saved ? 'bg-green-100 text-success border-2 border-success' : 'bg-white border-2 border-accent text-accent hover:bg-gray-50'
+          }`}
+        >
+          {saved ? '✅ Saved!' : '📌 Save to Plan'}
+        </button>
       </div>
     </div>
   );
