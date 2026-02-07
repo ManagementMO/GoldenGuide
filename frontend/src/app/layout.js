@@ -8,8 +8,8 @@ export const metadata = {
     apple: '/favicon.svg',
   },
   openGraph: {
-    title: 'GoldenGuide — Your Kingston Services Assistant',
-    description: 'AI-powered assistant helping Kingston seniors access municipal services with dignity and ease.',
+    title: 'GoldenGuide',
+    description: 'AI assistant helping Kingston seniors navigate municipal services',
     locale: 'en_CA',
     siteName: 'GoldenGuide',
   },
