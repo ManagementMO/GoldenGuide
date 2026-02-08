@@ -5,6 +5,7 @@ Gemini function calling with 10 tools.
 
 import os
 import json
+from typing import Any
 from google import genai
 from google.genai import types
 
@@ -281,6 +282,72 @@ tool_declarations = [
 ]
 
 
+def _normalize_function_response_payload(result: Any) -> dict:
+    """
+    Gemini function_response.response must be a JSON object.
+    Wrap scalar/list outputs in {"output": ...} to keep schema valid.
+    """
+    if isinstance(result, dict):
+        return result
+    return {"output": result}
+
+
+def _sanitize_history_for_genai(history: list) -> list:
+    """
+    Normalize incoming history to the structure expected by google-genai.
+    This prevents crashes when prior turns stored non-dict function responses.
+    """
+    if not isinstance(history, list):
+        return []
+
+    normalized_history = []
+    for message in history:
+        if not isinstance(message, dict):
+            continue
+
+        role = message.get("role")
+        if role not in ("user", "model"):
+            role = "user"
+
+        raw_parts = message.get("parts", [])
+        if not isinstance(raw_parts, list):
+            raw_parts = [{"text": str(raw_parts)}]
+
+        parts = []
+        for part in raw_parts:
+            if isinstance(part, str):
+                parts.append({"text": part})
+                continue
+            if not isinstance(part, dict):
+                parts.append({"text": str(part)})
+                continue
+
+            normalized_part = dict(part)
+
+            if "function_call" in normalized_part and isinstance(
+                normalized_part["function_call"], dict
+            ):
+                function_call = dict(normalized_part["function_call"])
+                if "args" in function_call and not isinstance(function_call["args"], dict):
+                    function_call["args"] = {"value": function_call["args"]}
+                normalized_part["function_call"] = function_call
+
+            if "function_response" in normalized_part and isinstance(
+                normalized_part["function_response"], dict
+            ):
+                function_response = dict(normalized_part["function_response"])
+                function_response["response"] = _normalize_function_response_payload(
+                    function_response.get("response")
+                )
+                normalized_part["function_response"] = function_response
+
+            parts.append(normalized_part)
+
+        normalized_history.append({"role": role, "parts": parts})
+
+    return normalized_history
+
+
 async def agent_chat(
     user_message: str, history: list, image_data: str = None, image_mime: str = None
 ) -> dict:
@@ -304,6 +371,8 @@ async def agent_chat(
     )
 
     # Build user message parts
+    history = _sanitize_history_for_genai(history)
+
     user_parts = []
     if image_data:
         user_parts.append(
@@ -364,7 +433,12 @@ async def agent_chat(
                 result = {"error": str(e)}
 
             tool_results.append(
-                {"function_response": {"name": func_name, "response": result}}
+                {
+                    "function_response": {
+                        "name": func_name,
+                        "response": _normalize_function_response_payload(result),
+                    }
+                }
             )
 
             # Track structured outputs for frontend rendering
