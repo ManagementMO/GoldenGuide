@@ -29,13 +29,6 @@ def execute_place_call(
                 "agent_id": agent_id,
                 "agent_phone_number_id": phone_id,
                 "to_number": to_number,
-                "conversation_config_override": {
-                    "agent": {
-                        "prompt": {
-                            "prompt": f"You are GoldenGuide, an AI assistant calling on behalf of Margaret Chen, a 74-year-old Kingston resident. You are calling about: {purpose} for service: {service_name}. Here is what to say: {message_script}"
-                        }
-                    }
-                },
             },
             timeout=15,
         )
