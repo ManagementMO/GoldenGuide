@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { Loader2, Square, Volume2 } from 'lucide-react';
 
 export default function VoicePlayback({ text, apiUrl }) {
   const [status, setStatus] = useState('idle'); // idle, loading, playing
@@ -64,19 +65,13 @@ export default function VoicePlayback({ text, apiUrl }) {
   return (
     <button
       onClick={handlePlay}
-      className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-golden/20 hover:bg-golden/30 text-textbrown transition-colors ml-2"
+      className="ml-2 inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-300 bg-white text-[#334155] transition-colors hover:bg-[#F8FAFC]"
       aria-label={status === 'playing' ? 'Stop reading' : 'Read aloud'}
       disabled={status === 'loading'}
     >
-      {status === 'loading' && (
-        <span className="animate-spin">⏳</span>
-      )}
-      {status === 'playing' && (
-        <span>⏹️</span>
-      )}
-      {status === 'idle' && (
-        <span>🔊</span>
-      )}
+      {status === 'loading' && <Loader2 className="h-4 w-4 animate-spin" strokeWidth={2} aria-hidden="true" />}
+      {status === 'playing' && <Square className="h-4 w-4" strokeWidth={2} aria-hidden="true" />}
+      {status === 'idle' && <Volume2 className="h-4 w-4" strokeWidth={2} aria-hidden="true" />}
     </button>
   );
 }

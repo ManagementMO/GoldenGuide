@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { FileUp, Image as ImageIcon } from 'lucide-react';
 
 export default function DocumentUpload({ onUpload }) {
   const fileInputRef = useRef(null);
@@ -18,7 +19,7 @@ export default function DocumentUpload({ onUpload }) {
         reader.readAsDataURL(file);
       } else {
         // For PDFs/docs, just show a generic icon or name
-        setPreview('📄'); 
+        setPreview('DOC');
         setTimeout(() => setPreview(null), 3000);
       }
       
@@ -46,17 +47,20 @@ export default function DocumentUpload({ onUpload }) {
       />
       <button
         onClick={handleClick}
-        className="min-w-[48px] h-[48px] rounded-xl bg-gray-100 border-2 border-[#F5DEB3] text-gray-600 hover:bg-[#F5DEB3] transition-colors flex items-center justify-center relative overflow-hidden"
+        className="relative flex min-h-[52px] min-w-[52px] items-center justify-center overflow-hidden rounded-2xl border border-[#CBD5E1] bg-white text-[#334155] transition-colors hover:bg-[#F8FAFC]"
         aria-label="Upload document or image"
       >
         {preview ? (
           typeof preview === 'string' && preview.startsWith('data:') ? (
             <img src={preview} alt="Upload preview" className="w-full h-full object-cover" />
           ) : (
-            <span className="text-xl">{preview}</span>
+            <span className="text-base font-semibold">{preview}</span>
           )
         ) : (
-          <span className="text-2xl">📷</span>
+          <span className="flex items-center gap-1">
+            <FileUp className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
+            <ImageIcon className="h-3.5 w-3.5" strokeWidth={2} aria-hidden="true" />
+          </span>
         )}
       </button>
     </div>

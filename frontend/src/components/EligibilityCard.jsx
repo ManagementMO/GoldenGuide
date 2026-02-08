@@ -1,4 +1,5 @@
 import React from 'react';
+import { BadgeCheck, CircleX, HelpCircle } from 'lucide-react';
 
 export default function EligibilityCard({ eligibility }) {
   if (!eligibility) return null;
@@ -10,23 +11,23 @@ export default function EligibilityCard({ eligibility }) {
   }
 
   return (
-    <div className="bg-cornsilk border-2 border-golden rounded-xl p-6 shadow-md my-4 text-textbrown">
-      <h3 className="text-2xl font-bold mb-4 font-heading flex items-center gap-2">
-        <span role="img" aria-label="Clipboard">📋</span>
+    <div className="my-2 rounded-2xl border border-slate-200 bg-white p-4 text-[#334155] shadow-sm">
+      <h3 className="mb-3 flex items-center gap-2 text-xl font-bold">
+        <BadgeCheck className="h-6 w-6 text-[#475569]" strokeWidth={2} aria-hidden="true" />
         Your Eligibility Results
       </h3>
 
       {eligible.length > 0 && (
         <div className="mb-4">
-          <div className="bg-green-50 border border-green-200 rounded-xl p-4">
-            <h4 className="font-bold text-lg text-success mb-3 flex items-center gap-2">
-              <span>&#10003;</span> Eligible
+          <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-4">
+            <h4 className="mb-2 flex items-center gap-2 text-base font-semibold text-emerald-700">
+              <BadgeCheck className="h-5 w-5" strokeWidth={2} aria-hidden="true" /> Eligible
             </h4>
             <ul className="space-y-3">
               {eligible.map((item, i) => (
-                <li key={i} className="text-lg">
-                  <span className="font-bold block">{item.program}</span>
-                  <span className="text-base text-textbrown/80">{item.reason}</span>
+                <li key={i} className="text-base">
+                  <span className="block font-semibold">{item.program}</span>
+                  <span className="text-base text-[#475569]">{item.reason}</span>
                 </li>
               ))}
             </ul>
@@ -36,15 +37,15 @@ export default function EligibilityCard({ eligibility }) {
 
       {maybe_eligible.length > 0 && (
         <div className="mb-4">
-          <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
-            <h4 className="font-bold text-lg text-amber-700 mb-3 flex items-center gap-2">
-              <span>?</span> Maybe Eligible
+          <div className="rounded-xl border border-amber-200 bg-amber-50 p-4">
+            <h4 className="mb-2 flex items-center gap-2 text-base font-semibold text-amber-700">
+              <HelpCircle className="h-5 w-5" strokeWidth={2} aria-hidden="true" /> Maybe Eligible
             </h4>
             <ul className="space-y-3">
               {maybe_eligible.map((item, i) => (
-                <li key={i} className="text-lg">
-                  <span className="font-bold block">{item.program}</span>
-                  <span className="text-base text-textbrown/80">{item.reason}</span>
+                <li key={i} className="text-base">
+                  <span className="block font-semibold">{item.program}</span>
+                  <span className="text-base text-[#475569]">{item.reason}</span>
                 </li>
               ))}
             </ul>
@@ -54,15 +55,15 @@ export default function EligibilityCard({ eligibility }) {
 
       {not_eligible.length > 0 && (
         <div>
-          <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
-            <h4 className="font-bold text-lg text-gray-500 mb-3 flex items-center gap-2">
-              <span>&#10007;</span> Not Eligible
+          <div className="rounded-xl border border-gray-200 bg-gray-50 p-4">
+            <h4 className="mb-2 flex items-center gap-2 text-base font-semibold text-gray-600">
+              <CircleX className="h-5 w-5" strokeWidth={2} aria-hidden="true" /> Not Eligible
             </h4>
             <ul className="space-y-3">
               {not_eligible.map((item, i) => (
-                <li key={i} className="text-lg">
-                  <span className="font-bold block">{item.program}</span>
-                  <span className="text-base text-textbrown/80">{item.reason}</span>
+                <li key={i} className="text-base">
+                  <span className="block font-semibold">{item.program}</span>
+                  <span className="text-base text-[#475569]">{item.reason}</span>
                 </li>
               ))}
             </ul>
