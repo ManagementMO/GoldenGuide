@@ -1,6 +1,6 @@
 """
 GoldenGuide Agentic Loop.
-Gemini function calling with 10 tools.
+Gemini function calling with 11 tools.
 """
 
 import os
@@ -17,6 +17,7 @@ from tools.action_plan import generate_action_plan_impl
 from tools.draft_comms import draft_communication_impl
 from tools.create_reminder import create_reminder_impl
 from tools.explain_document import explain_document_impl
+from tools.web_search import web_search_impl
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
@@ -29,6 +30,7 @@ TOOL_FUNCTIONS = {
     "draft_communication": draft_communication_impl,
     "create_reminder": create_reminder_impl,
     "explain_document": explain_document_impl,
+    "web_search": web_search_impl,
     # NOTE: place_call, send_email, send_sms are NOT auto-executed.
     # They return preview data. The frontend shows a confirmation card.
     # Actual execution happens via separate /api/call, /api/email, /api/sms endpoints.
@@ -279,6 +281,24 @@ tool_declarations = [
             "required": ["phone_number", "message"],
         },
     },
+    {
+        "name": "web_search",
+        "description": "Search the web for current information about Kingston services, government programs, eligibility criteria, or any topic the user asks about. Use this to verify facts, find up-to-date details, or answer questions beyond the knowledge base.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "query": {
+                    "type": "string",
+                    "description": "The search query. Be specific and include relevant context like 'Kingston Ontario' for local queries.",
+                },
+                "max_results": {
+                    "type": "integer",
+                    "description": "Number of results to return (default 5, max 10)",
+                },
+            },
+            "required": ["query"],
+        },
+    },
 ]
 
 
@@ -354,7 +374,7 @@ async def agent_chat(
     """
     The core agentic loop.
     1. Inject system prompt + Kingston knowledge
-    2. Send to Gemini with 10 tool declarations
+    2. Send to Gemini with 11 tool declarations
     3. If Gemini returns tool calls -> execute them -> feed results back
     4. Repeat until Gemini gives a final text response
     5. Return text + structured data for frontend rendering
