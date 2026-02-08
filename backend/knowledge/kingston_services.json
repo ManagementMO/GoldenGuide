@@ -11,7 +11,19 @@
     "hours": "Monday-Friday, 8:30 AM - 4:30 PM",
     "cost": "Free to apply. Unlocks discounted services.",
     "notes": "MFAP card is valid for one year and must be renewed annually. The card unlocks: discounted recreation programs, reduced transit passes, free garbage tags, dental coverage, vision care, and $10 off at Lionhearts Fresh Food Market.",
-    "keywords": ["fee assistance", "low income", "discount", "recreation", "transit pass", "dental", "vision", "food", "garbage tags", "financial help"]
+    "keywords": [
+      "fee assistance",
+      "low income",
+      "discount",
+      "recreation",
+      "transit pass",
+      "dental",
+      "vision",
+      "food",
+      "garbage tags",
+      "financial help"
+    ],
+    "scraped_details": "The Municipal Fee Assistance Program (MFAP) is an income-based program. It provides access to our services and programs for free or at a lower cost. We use the Statistics Canada after-tax Low-Income Measure (LIM) plus 15 percent to determine eligibility. LIM thresholds for 2026 Thresholds include additional 15%. 1-person household - $34,793 2-person household - $49,205 3-person household - $60,263 4-person household - $69,587 5-person household - $77,800 6-person household - $85,225 7-person household - $92,054 8-person household - $98,410 9-person household - $104,380 10-person household - $110,020"
   },
   {
     "name": "Canadian Dental Care Program (CDCP)",
@@ -24,7 +36,18 @@
     "website": "https://www.canada.ca/en/services/benefits/dental/dental-care-plan.html",
     "cost": "Free for eligible seniors",
     "notes": "Covers: routine cleanings, fillings, dentures, X-rays, emergency dental work, oral surgery. Processing takes 4-8 weeks. Many Kingston dentists participate.",
-    "keywords": ["dental", "teeth", "dentist", "dentures", "cleaning", "oral health", "CDCP", "free dental", "senior dental"]
+    "keywords": [
+      "dental",
+      "teeth",
+      "dentist",
+      "dentures",
+      "cleaning",
+      "oral health",
+      "CDCP",
+      "free dental",
+      "senior dental"
+    ],
+    "scraped_details": "Due to the labour disruption at Canada Post, mail correspondence from some programs and services may be impacted. Consult the measures in place during thedisruption of Canada Post services. During this period, some Canadian Dental Care Plan (CDCP) members may receive emails and automated calls from Service Canada with important information regarding their CDCP coverage. Service Canada will never ask you to provide your personal information by text and email. To review your eligibility, visit yourMy Service Canada Account(MSCA) orcontact us."
   },
   {
     "name": "Subsidized Homemaking Services",
@@ -34,10 +57,21 @@
     "phone": "613-634-2273",
     "address": "Comfort Keepers Kingston, 12-1786 Bath Road, Kingston, ON",
     "how_to_apply": "Contact Comfort Keepers directly at 613-634-2273 or call the City's Housing & Social Services at 613-546-2695. A financial review determines your subsidy level.",
-    "website": "https://www.cityofkingston.ca/residents/community-services/homemaking-services",
+    "website": "https://www.cityofkingston.ca/community-supports/homemaking-services/",
     "cost": "Subsidized — cost depends on financial review",
     "notes": "Services include: light housekeeping, laundry, meal preparation, grocery shopping, and personal care assistance. Currently has a WAITLIST due to high demand. Apply early.",
-    "keywords": ["homemaking", "cleaning", "housekeeping", "laundry", "meals", "home help", "home care", "disability", "aging in place"]
+    "keywords": [
+      "homemaking",
+      "cleaning",
+      "housekeeping",
+      "laundry",
+      "meals",
+      "home help",
+      "home care",
+      "disability",
+      "aging in place"
+    ],
+    "scraped_details": "This program currently has a waitlist. Homemaking services help people who are older, ill or have a disability with tasks so they can remain in their own home. These subsidized services are provided according to rules set by the Province and the City. Homemaking services are managed throughComfort Keepers Kingston. Only residents of the City of Kingston are eligible for this service. Housing and Social Services will review your finances to determine if you're eligible for homemaking assistance."
   },
   {
     "name": "Kingston Transit",
@@ -50,7 +84,16 @@
     "website": "https://www.kingstontransit.ca",
     "cost": "Regular fare: $3.25. Senior fare: $2.25. Monthly pass (senior): $62.00. MFAP monthly pass: reduced rate.",
     "notes": "Real-time GTFS data available. Routes run Monday-Saturday approximately 6:00 AM to midnight, with reduced Sunday service. Kingston Access Services provides accessible transportation for those who cannot use regular transit.",
-    "keywords": ["bus", "transit", "transportation", "route", "schedule", "bus pass", "getting around", "ride"]
+    "keywords": [
+      "bus",
+      "transit",
+      "transportation",
+      "route",
+      "schedule",
+      "bus pass",
+      "getting around",
+      "ride"
+    ]
   },
   {
     "name": "SPARK Recreation Subsidy",
@@ -62,19 +105,38 @@
     "how_to_apply": "First, obtain an MFAP card. Then register for city recreation programs and the SPARK subsidy will be applied automatically up to $300/year.",
     "cost": "Up to $300/year in recreation program subsidies",
     "notes": "Covers swimming, fitness classes, arts programs, and other registered city recreation activities. Must have MFAP card first.",
-    "keywords": ["recreation", "swimming", "fitness", "activities", "sports", "exercise", "programs", "SPARK", "subsidy"]
+    "keywords": [
+      "recreation",
+      "swimming",
+      "fitness",
+      "activities",
+      "sports",
+      "exercise",
+      "programs",
+      "SPARK",
+      "subsidy"
+    ]
   },
   {
     "name": "Kingston Seniors Association",
     "category": "recreation",
-    "description": "Provides social programs, activities, and support services for older adults in Kingston. Includes the Home Maintenance and Repair Program for seniors.",
+    "description": "Not-for-profit, volunteer-run organization dedicated to keeping Kingston seniors active, involved, connected, and supported. Offers fitness, arts, culture, language classes, recreational activities, and support services including the Home Maintenance and Repair Program.",
     "eligibility": "Kingston residents aged 55+",
     "phone": "613-548-7810",
-    "address": "56 Francis Street, Kingston, ON",
-    "how_to_apply": "Contact the Seniors Association directly or visit their office. Annual membership fee applies but is affordable.",
-    "website": "https://www.kingstonseniors.ca",
-    "notes": "Programs include: computer training, social events, exercise classes, art workshops, day trips, and the Home Maintenance and Repair Program (minor home repairs for seniors at low cost).",
-    "keywords": ["seniors", "social", "activities", "home repair", "maintenance", "community", "friends", "loneliness"]
+    "address": "Main: 56 Francis St, Kingston. Also: Seniors Centre St. George's (129 Wellington St), Seniors Centre West (1300 Bath Rd, Unit A-2), Seniors Centre Loyalist (67 Main St, Loyalist)",
+    "how_to_apply": "Contact the Seniors Association at 613-548-7810, visit any of their centres, or go to seniorskingston.ca.",
+    "website": "https://www.seniorskingston.ca",
+    "notes": "Celebrating 50th anniversary in 2026. Programs include: computer training, social events, exercise classes, art/craft/culture workshops, fitness and sports, day trips, information and referral services, and the Home Maintenance and Repair Program (minor home repairs for seniors at low cost). Multiple locations across Kingston.",
+    "keywords": [
+      "seniors",
+      "social",
+      "activities",
+      "home repair",
+      "maintenance",
+      "community",
+      "friends",
+      "loneliness"
+    ]
   },
   {
     "name": "Affordable Housing Programs",
@@ -84,9 +146,20 @@
     "phone": "613-546-2695",
     "address": "362 Montreal Street, Kingston, ON",
     "how_to_apply": "Apply through Housing & Social Services. Social housing has a centralized waitlist. Ontario Renovates has periodic intake windows.",
-    "website": "https://www.cityofkingston.ca/residents/community-services/housing",
+    "website": "https://www.cityofkingston.ca/community-supports/housing-and-homelessness/affordable-housing-programs/",
     "notes": "Social housing waitlist can be lengthy (months to years). Ontario Renovates provides grants/loans for home accessibility modifications (ramps, grab bars, stairlifts). Priority given to seniors and those with disabilities.",
-    "keywords": ["housing", "rent", "affordable", "social housing", "apartment", "renovations", "accessibility", "ramp", "grab bars"]
+    "keywords": [
+      "housing",
+      "rent",
+      "affordable",
+      "social housing",
+      "apartment",
+      "renovations",
+      "accessibility",
+      "ramp",
+      "grab bars"
+    ],
+    "scraped_details": "We offer a variety of housing programs to help residents, such as: Down payment assistance to make home ownership more affordable Grants and forgivable loans available to low-income homeowners to complete urgent repairs or accessibility enhancements Capital funding contributions to building new affordable housing units Forgivable loans to construct an additional residential unit (I.e. secondary suite) on your property"
   },
   {
     "name": "Community Centres & Recreation",
@@ -98,7 +171,18 @@
     "how_to_apply": "Register online at cityofkingston.ca/recreation or in person at any community centre.",
     "website": "https://www.cityofkingston.ca/residents/recreation",
     "notes": "Popular senior programs: aquafit, gentle yoga, pickleball, painting, line dancing, bridge clubs. Many centres also offer free drop-in social hours for seniors.",
-    "keywords": ["recreation", "community centre", "fitness", "yoga", "swimming", "arts", "social", "programs", "drop-in"]
+    "keywords": [
+      "recreation",
+      "community centre",
+      "fitness",
+      "yoga",
+      "swimming",
+      "arts",
+      "social",
+      "programs",
+      "drop-in"
+    ],
+    "scraped_details": "We offer a variety of programs and activities for everyone. Whether you are interested in special programs, affordable fun, sports, arts, fitness, health, wellness, or community improvement, we have something to offer you. Join us and enjoy the many activities and programs available in our community! OurAccess Without Fear policymeans everyone has access to City services, no matter their immigration status. We will not report a person's immigration status to Canada Border Services or Police. We offer programs specifically tailored for individuals with special needs. Affordable Recreation Program"
   },
   {
     "name": "211 Ontario",
@@ -108,7 +192,15 @@
     "phone": "211 (dial 2-1-1) or 1-877-330-3213",
     "website": "https://211ontario.ca",
     "notes": "If you're unsure where to start, 211 is a great first step. Trained specialists can help identify all services you may qualify for.",
-    "keywords": ["211", "help", "social services", "food bank", "mental health", "don't know where to start", "general help"]
+    "keywords": [
+      "211",
+      "help",
+      "social services",
+      "food bank",
+      "mental health",
+      "don't know where to start",
+      "general help"
+    ]
   },
   {
     "name": "Low-Income Health Benefits",
@@ -118,7 +210,16 @@
     "phone": "613-546-2695 ext 4906",
     "how_to_apply": "Obtain an MFAP card first, then access health benefits through approved partner providers.",
     "notes": "Covers: basic dental (cleanings, fillings, extractions), eye exams, prescription eyeglasses, and some prescription medications.",
-    "keywords": ["health", "dental", "vision", "glasses", "prescription", "medication", "doctor", "medical"]
+    "keywords": [
+      "health",
+      "dental",
+      "vision",
+      "glasses",
+      "prescription",
+      "medication",
+      "doctor",
+      "medical"
+    ]
   },
   {
     "name": "Lionhearts Fresh Food Market",
@@ -130,7 +231,17 @@
     "website": "https://www.lionheartsinc.com",
     "cost": "$10 discount with MFAP card",
     "notes": "Markets operate on specific days at different locations. Fresh, high-quality food at affordable prices. Accepting MFAP is automatic — just show your card.",
-    "keywords": ["food", "groceries", "fresh food", "produce", "discount food", "affordable food", "market", "hungry", "eat"]
+    "keywords": [
+      "food",
+      "groceries",
+      "fresh food",
+      "produce",
+      "discount food",
+      "affordable food",
+      "market",
+      "hungry",
+      "eat"
+    ]
   },
   {
     "name": "Kingston Access Services",
@@ -142,6 +253,152 @@
     "website": "https://www.kingstontransit.ca/accessibility",
     "cost": "Same fare as regular Kingston Transit",
     "notes": "Door-to-door service. Must book rides in advance (at least 24 hours). Available during regular transit hours.",
-    "keywords": ["accessible transit", "wheelchair", "disability", "door to door", "accessible transportation", "mobility"]
+    "keywords": [
+      "accessible transit",
+      "wheelchair",
+      "disability",
+      "door to door",
+      "accessible transportation",
+      "mobility"
+    ]
+  },
+  {
+    "name": "Older Adult Services (City of Kingston)",
+    "category": "health",
+    "description": "City of Kingston hub for older adult programs and support. Covers: tax assistance (Senior Property Tax Credit of $100 for GIS recipients, tax deferral of up to $1,000), home help and maintenance, subsidized homemaking, recreation programs (AquaFit, pickleball, fitness, skating), transit support via Kingston Transit and Access Services, volunteering opportunities, and accessibility resources.",
+    "eligibility": "Kingston residents aged 65+ (some programs open to 55+). About 21% of Kingston's population is 65 or older.",
+    "phone": "613-546-0000",
+    "address": "City Hall, 216 Ontario Street, Kingston, ON K7L 2Z3",
+    "how_to_apply": "Visit cityofkingston.ca/community-supports/older-adult-services or call 613-546-0000. For home help, call Seniors Association at 613-548-7810. Dial 211 for free 24/7 help finding community resources.",
+    "website": "https://www.cityofkingston.ca/community-supports/older-adult-services/",
+    "notes": "Key programs: Senior Property Tax Credit ($100 credit for GIS recipients), Tax Deferral (defer up to $1,000 in property taxes), subsidized homemaking services, recreation programs (AquaFit, open gym, pickleball, fitness/wellness, skating), Kingston Access Services for accessible transit. The city follows an age-friendly initiative aligned with the World Health Organization.",
+    "keywords": [
+      "older adults",
+      "seniors",
+      "aging",
+      "elderly",
+      "community services",
+      "older adult",
+      "tax credit",
+      "tax deferral",
+      "age-friendly",
+      "home help"
+    ]
+  },
+  {
+    "name": "Meals on Wheels Kingston",
+    "category": "food",
+    "description": "Delivers hot, nutritious meals to the homes of seniors and individuals with disabilities in Kingston who have difficulty preparing their own meals.",
+    "eligibility": "Kingston residents who are homebound or have difficulty preparing meals due to age, illness, or disability.",
+    "phone": "613-542-7293",
+    "address": "Kingston, ON",
+    "how_to_apply": "Call Victorian Order of Nurses (VON) Kingston at 613-542-7293 to arrange meal delivery.",
+    "website": "https://www.von.ca/en/kingston",
+    "cost": "Subsidized — approximately $7 per meal",
+    "keywords": [
+      "meals",
+      "food delivery",
+      "meals on wheels",
+      "homebound",
+      "nutrition",
+      "hot meals",
+      "VON"
+    ]
+  },
+  {
+    "name": "Kingston Caregiver Support",
+    "category": "health",
+    "description": "Support services for family caregivers of older adults in Kingston, including respite care, support groups, and information. Provided through SE Health and community partners.",
+    "eligibility": "Family caregivers of older adults or persons with disabilities in Kingston.",
+    "phone": "613-544-7090",
+    "address": "Kingston, ON",
+    "how_to_apply": "Call SE Health at 613-544-7090 or contact the Alzheimer Society of KFL&A at 613-544-3078.",
+    "website": "https://www.sehc.com",
+    "keywords": [
+      "caregiver",
+      "respite",
+      "support",
+      "family caregiver",
+      "burnout",
+      "help for caregivers"
+    ]
+  },
+  {
+    "name": "Ontario Senior Homeowners Property Tax Grant",
+    "category": "financial",
+    "description": "Ontario provides a property tax grant of up to $500/year for senior homeowners with low-to-moderate income. Claimed when filing your income tax return.",
+    "eligibility": "Ontario residents aged 64+ who own their home and have income under $50,000 (single) or $60,000 (couple).",
+    "phone": "1-877-627-6645",
+    "address": "Claimed through CRA when filing taxes",
+    "how_to_apply": "File your annual income tax return and claim the Ontario Senior Homeowners' Property Tax Grant on the ON-BEN form.",
+    "website": "https://www.ontario.ca/page/ontario-senior-homeowners-property-tax-grant",
+    "cost": "Up to $500/year",
+    "keywords": [
+      "property tax",
+      "tax grant",
+      "homeowner",
+      "senior homeowner",
+      "tax relief",
+      "property tax grant"
+    ]
+  },
+  {
+    "name": "Ontario Drug Benefit (ODB)",
+    "category": "health",
+    "description": "Covers most prescription drug costs for Ontario residents aged 65+. Covers over 5,000 drug products. Annual deductible of $100, then co-pay of $6.11 per prescription.",
+    "eligibility": "Ontario residents aged 65+, or residents of long-term care homes, or recipients of social assistance.",
+    "phone": "1-866-532-3161",
+    "how_to_apply": "Automatic enrollment when you turn 65 and have a valid Ontario health card. Present your health card at any pharmacy.",
+    "website": "https://www.ontario.ca/page/get-coverage-prescription-drugs",
+    "cost": "Annual deductible of $100, then $6.11 co-pay per prescription",
+    "keywords": [
+      "prescription",
+      "drugs",
+      "medication",
+      "pharmacy",
+      "ODB",
+      "drug benefit",
+      "prescriptions",
+      "medicine"
+    ]
+  },
+  {
+    "name": "Home and Community Care Support Services (SE Ontario)",
+    "category": "health",
+    "description": "Coordinates publicly funded home care services in the Kingston region including nursing, personal support, physiotherapy, occupational therapy, and social work. Free for eligible Ontario residents.",
+    "eligibility": "Ontario residents with a valid health card who need home care services.",
+    "phone": "613-544-7090",
+    "address": "Kingston, ON",
+    "how_to_apply": "Call 613-544-7090 or ask your doctor for a referral. A care coordinator will assess your needs.",
+    "website": "https://www.ontariohealthathome.ca",
+    "cost": "Free — covered by OHIP",
+    "keywords": [
+      "home care",
+      "nursing",
+      "personal support",
+      "physiotherapy",
+      "CCAC",
+      "home health",
+      "PSW"
+    ]
+  },
+  {
+    "name": "Guaranteed Income Supplement (GIS)",
+    "category": "financial",
+    "description": "Monthly non-taxable federal benefit for low-income Old Age Security (OAS) pensioners. Provides up to $1,065/month for single seniors. Automatically assessed when filing taxes.",
+    "eligibility": "Canadian residents aged 65+ receiving OAS with annual income below $21,624 (single) or combined income below $28,560 (couple).",
+    "phone": "1-800-277-9914",
+    "how_to_apply": "Usually automatic if you file your income tax return. If not receiving it, call Service Canada at 1-800-277-9914.",
+    "website": "https://www.canada.ca/en/services/benefits/publicpensions/cpp/old-age-security/guaranteed-income-supplement.html",
+    "cost": "Up to $1,065.47/month (2024 rates)",
+    "keywords": [
+      "GIS",
+      "guaranteed income",
+      "pension",
+      "low income senior",
+      "supplement",
+      "OAS",
+      "federal benefit"
+    ]
   }
 ]

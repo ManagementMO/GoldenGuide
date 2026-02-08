@@ -1,21 +1,810 @@
-stop_id,stop_name,stop_lat,stop_lon
-S001,Kingston Centre Terminal,44.2312,-76.4860
-S002,Kingston General Hospital (KGH),44.2253,-76.4930
-S003,Hotel Dieu Hospital,44.2331,-76.4852
-S004,Queen's University (Union St),44.2253,-76.4951
-S005,362 Montreal St (MFAP Office),44.2387,-76.4788
-S006,Cataraqui Centre,44.2603,-76.5470
-S007,Comfort Keepers (Princess St),44.2312,-76.4990
-S008,City Hall,44.2301,-76.4810
-S009,Kingston Centre Mall,44.2310,-76.4860
-S010,Providence Care Hospital,44.2159,-76.5445
-S011,Invista Centre,44.2506,-76.5370
-S012,Artillery Park,44.2353,-76.4755
-S013,Memorial Centre,44.2276,-76.4856
-S014,K-Rock Centre,44.2310,-76.4812
-S015,Train Station (VIA Rail),44.2485,-76.5201
-S016,St. Lawrence College,44.2377,-76.5235
-S017,CFB Kingston,44.2277,-76.4690
-S018,Seniors Centre (Victoria St),44.2330,-76.4880
-S019,YMCA (Wright Cres),44.2450,-76.5320
-S020,Kingston Public Library (Central),44.2316,-76.4830
+﻿stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding
+S02077,Cataraqui Centre,44.25508,-76.57215,0
+00799,Midland / Norwest,44.25722,-76.57395,0
+09075,Andersen / Crossfield,44.26475,-76.54892,0
+00858,Chadwick Parkette,44.26208,-76.54846,0
+00006,Andersen / Sheridan,44.2604,-76.54911,0
+S00399,Kingston Gospel Temple,44.25801,-76.54824,0
+00407,Waterloo / Vanguard,44.25257,-76.54781,0
+00406,Waterloo / Friarhill,44.25398,-76.55169,0
+00403,Waterloo / Uxbridge,44.2544,-76.55546,0
+00098,Taylor-Kidd / Bexley,44.25125,-76.5613,0
+00815,Taylor-Kidd / Rockwell,44.25096,-76.56476,0
+00097,Midland / Norwest,44.25709,-76.57422,0
+S02078,Cataraqui Centre,44.25499,-76.57238,0
+S00503,Kingston Centre,44.24181,-76.51679,0
+00111,257 Bath Rd.,44.24018,-76.52331,0
+01017,277 Bath Rd.,44.23993,-76.52598,0
+00509,Bath / Grenville,44.23913,-76.53313,0
+02063,258 Queen Mary Rd.,44.23777,-76.53599,0
+02065,204 Queen Mary Rd.,44.23573,-76.53486,0
+00507,Robert Wallace / Queen Mary,44.23442,-76.53287,0
+00504,160 Robert Wallace Dr.,44.23475,-76.52955,0
+00467,Portsmouth / Curtis,44.227,-76.52586,0
+S02070,St. Lawrence College,44.22372,-76.52642,0
+00751,Portsmouth / Baiden,44.2213,-76.52529,0
+02069,Beechgrove,44.22047,-76.52292,0
+02068,King / Mowat,44.22062,-76.52071,0
+00455,Union / Yonge,44.22221,-76.51728,0
+S02009,Queen's West Campus,44.22303,-76.51447,0
+S00413,King / Sir John A. Macdonald,44.22112,-76.51203,0
+00415,King / Livingston,44.22134,-76.50893,0
+S00417,The Isabel/Tett Centres,44.2215,-76.5067,0
+00423,King / Albert,44.22245,-76.49956,0
+00424,King / Lower University,44.22288,-76.49517,0
+00324,King / George,44.22262,-76.49132,0
+00322,King / Maitland,44.22391,-76.48795,0
+00316,West / Ontario,44.22447,-76.48609,0
+00314,Ontario / Lower Union,44.22516,-76.48431,0
+00311,Ontario / Earl,44.22669,-76.4829,0
+00309,Ontario / Johnson,44.22851,-76.4812,0
+S02037,Downtown,44.23107,-76.48491,0
+00310,Ontario / William,44.22723,-76.48264,0
+00312,Ontario / Gore,44.22594,-76.48382,0
+00313,Ontario / Lower Union,44.2251,-76.48459,0
+00315,West / King,44.22471,-76.48608,0
+00321,King / Maitland,44.22384,-76.48835,0
+00323,King / George,44.22275,-76.49131,0
+00425,King / Lower University,44.223,-76.4953,0
+00422,King / Albert,44.22255,-76.49975,0
+00421,King / Beverley,44.22225,-76.50203,0
+S00411,The Isabel/Tett Centres,44.2216,-76.50694,0
+00414,King / Alwington,44.22139,-76.51031,0
+S00444,Queen's West Campus,44.22335,-76.51396,0
+00456,Union / Yonge,44.22203,-76.51803,0
+00055,Union / Mowat,44.22109,-76.51978,0
+00458,King / McDonald,44.22065,-76.52246,0
+00459,King / Portsmouth,44.22055,-76.52471,0
+00460,Portsmouth / Baiden,44.22158,-76.52514,0
+00464,Portsmouth / Calderwood,44.2244,-76.52542,0
+00465,Southeast Public Health,44.227,-76.52569,0
+00505,Polson Park,44.23486,-76.52955,0
+02067,Robert Wallace / Queen Mary,44.23449,-76.53305,0
+02066,211 Queen Mary Rd.,44.23595,-76.53485,0
+02064,Queen Mary / Notch Hill,44.23726,-76.53553,0
+02062,Bath / Grenville,44.23887,-76.53349,0
+02061,Bath / Portsmouth,44.23918,-76.53035,0
+02060,290 Bath Rd.,44.23969,-76.52594,0
+02008,Lafleur Park,44.23998,-76.52333,0
+00521,King / Country Club,44.22032,-76.52983,0
+S00524,INVISTA,44.21899,-76.55979,0
+00535,Front / Sunny Acres,44.21875,-76.56467,0
+00536,Front / Bishop,44.2186,-76.56712,0
+09043,Reddendale Plaza,44.21842,-76.57048,0
+00555,McEwen / Acron,44.23163,-76.57391,0
+00557,McEwen / Castell,44.23541,-76.57427,0
+S02074,Gardiners Centre,44.23613,-76.56781,0
+00612,Gardiners / Development,44.24164,-76.56761,0
+00614,660 Progress Av.,44.24668,-76.56929,0
+00607,740 Progress Av.,44.24719,-76.57412,0
+00039,Progress / Taylor-Kidd,44.24791,-76.57802,0
+00692,Taylor-Kidd / Milford,44.24808,-76.58078,0
+00632,Taylor-Kidd / Pembridge,44.24921,-76.58535,0
+S02003,Bayridge / Taylor-Kidd,44.25076,-76.58933,0
+09057,Princess / Bayridge,44.25925,-76.58129,0
+00740,2697 Princess St.,44.2586,-76.57696,0
+00741,2698 Princess St.,44.25882,-76.57651,0
+00739,Princess / Bayridge,44.25943,-76.581,0
+S00090,Bayridge / Old Colony,44.25535,-76.58682,0
+09054,Taylor-Kidd / Bayridge,44.25009,-76.58895,0
+02002,Taylor-Kidd / Pembridge,44.249,-76.5854,0
+00100,Taylor-Kidd / Milford,44.24787,-76.58076,0
+00040,775 Progress Av.,44.24758,-76.57783,0
+00606,745 Progress Av.,44.24712,-76.57452,0
+00615,Progress / Gardiners,44.24654,-76.5684,0
+09208,Gardiners / RioCan Centre,44.24433,-76.56808,0
+09228,Gardiners / Development,44.242,-76.56793,0
+S02075,Gardiners Centre,44.23581,-76.568,0
+00558,McEwen / Bath,44.23699,-76.5746,0
+00556,McEwen / Castell,44.2356,-76.57446,0
+00554,McEwen / Acron,44.23137,-76.57403,0
+S09037,Centre 70 Park and Ride,44.21891,-76.56943,0
+00537,Front / Bishop,44.21842,-76.56733,0
+00534,Front / Sunny Acres,44.21853,-76.56521,0
+S00033,INVISTA,44.21885,-76.55931,0
+02072,1000 King St. W.,44.21986,-76.53522,0
+00520,Lake Ontario Park,44.22008,-76.53028,0
+09053,Bayridge Centre,44.25074,-76.59046,0
+09004,Taylor-Kidd / Mona,44.25177,-76.6013,0
+09005,Collins Bay / Aylmer,44.24975,-76.61079,0
+09006,Collins Bay / Edwin,44.24684,-76.61052,0
+09049,Collins Bay / Bath,44.24171,-76.6101,0
+00008,Bath / Station,44.23999,-76.61316,0
+00019,Bath / Sycamore,44.23601,-76.62092,0
+00021,Bath / Homeward,44.2318,-76.62519,0
+00023,Bath / Maple Ridge,44.22805,-76.62752,0
+00025,Bath / Coronation,44.22507,-76.62917,0
+00793,The Moorings,44.22141,-76.63458,0
+S00794,Fairfield / Loyalist,44.22142,-76.63692,0
+00795,Loyalist / Addington,44.22314,-76.63584,0
+00796,Loyalist / Henry,44.22565,-76.63587,0
+00765,Amherst / Fairfield,44.22628,-76.63909,0
+00766,Amherst / Upper Park,44.22618,-76.64256,0
+00767,Amherst / Pittsfield,44.227,-76.6461,0
+00768,Manitou / Amherst,44.22723,-76.65121,0
+00774,Manitou / Briscoe,44.22108,-76.64969,0
+00775,Loyalist Plaza,44.21945,-76.64555,0
+00776,Manitou / Sherwood,44.22001,-76.64342,0
+00873,Sherwood / Briscoe,44.22275,-76.64465,0
+09060,117 Sherwood Av.,44.22559,-76.64694,0
+09061,Manitou / Amherst,44.22723,-76.6511,0
+02019,Helen Henderson Centre,44.22607,-76.65957,0
+00866,Pratt / Amherst,44.22183,-76.66738,0
+00871,Pratt / Kildare,44.21987,-76.66585,0
+00872,Pratt / Amherst,44.22194,-76.66725,0
+00787,Amherst / Pittsfield,44.22698,-76.64666,0
+00788,Amherst / Upper Park,44.22599,-76.64246,0
+00789,Amherst / Fairfield,44.22606,-76.63933,0
+00790,Loyalist / Henry,44.22595,-76.63616,0
+00791,Loyalist / Addington,44.22314,-76.63604,0
+S00792,Fairfield / Loyalist,44.22136,-76.63707,0
+00777,The Moorings,44.22146,-76.63355,0
+00024,Bath / Coronation,44.22495,-76.62897,0
+00069,Bath / Maple Ridge,44.22813,-76.62722,0
+00022,Bath / Homeward,44.2315,-76.62515,0
+00020,Bath / Lower,44.23559,-76.62122,0
+09048,Collins Bay / Bath,44.24184,-76.60993,0
+09001,Collins Bay / Prince Charles,44.24681,-76.61035,0
+09002,Collins Bay / Taylor-Kidd,44.24974,-76.61053,0
+09003,Taylor-Kidd / Mona,44.25155,-76.60124,0
+00671,Taylor-Kidd / Sexton,44.25097,-76.59255,0
+00539,Crystal Springs,44.2183,-76.57232,0
+00685,Chelsea / Cranbrook,44.21927,-76.57406,0
+00809,172 Glen Castle Rd.,44.2207,-76.57741,0
+00810,Glen Castle / Camberley,44.22245,-76.57758,0
+00542,234 Glen Castle Rd.,44.22346,-76.5783,0
+00687,Glen Castle / Chelsea,44.22591,-76.57922,0
+00569,Glen Castle / Henderson,44.22796,-76.57942,0
+00565,420 Glen Castle Rd.,44.23165,-76.57918,0
+00563,Knightsbridge / Roosevelt,44.23345,-76.57859,0
+00564,Roosevelt / Vista,44.23441,-76.58371,0
+00571,672 Roosevelt Dr.,44.23182,-76.58867,0
+00570,Roosevelt / Springfield,44.22979,-76.58866,0
+00576,Acadia / Evangeline,44.23241,-76.59437,0
+00578,Acadia / Sackville,44.23311,-76.59808,0
+00579,Acadia / Citation,44.23512,-76.5985,0
+00580,Walden / Acadia,44.23697,-76.59747,0
+00581,Walden / Coverdale,44.23788,-76.59776,0
+00575,Coverdale / Stoneridge,44.23726,-76.59225,0
+00562,Bath / Vista,44.23715,-76.58266,0
+00560,Frontenac Secondary,44.23759,-76.57724,0
+00610,Development / Gardiners,44.24183,-76.56843,0
+00609,Development / Justus,44.24171,-76.5726,0
+00598,Development / McKay,44.24126,-76.57713,0
+00553,Development / Truedell,44.24084,-76.57968,0
+00628,Development / Hudson,44.24113,-76.58474,0
+00737,Hudson Park,44.24373,-76.58556,0
+00004,Hudson / Holgate,44.24503,-76.59236,0
+00003,Bayridge Park,44.24722,-76.59402,0
+00002,Hudson / Downing,44.24872,-76.59734,0
+00001,1116 Hudson Dr.,44.24859,-76.59968,0
+00681,Hudson / Mona,44.24849,-76.60266,0
+00600,Hillside / High Gate Park,44.24739,-76.60452,0
+00599,Prince Charles / Brookside,44.2471,-76.60852,0
+00015,Waverley / Edwin,44.24653,-76.61123,0
+00016,1346 Waverley Cr.,44.24561,-76.61348,0
+S00028,1386 Waverley Cr.,44.24418,-76.61685,0
+00017,Aylmer / Clark,44.24675,-76.61517,0
+00105,768 Aylmer Cr.,44.24814,-76.61437,0
+00014,808 Aylmer Cr.,44.24946,-76.61193,0
+00013,Aylmer / Collins Bay,44.24953,-76.61085,0
+00012,Mona / Woodside,44.25275,-76.60212,0
+00679,Mona / Dunham,44.25336,-76.60434,0
+00625,988 Mona Dr.,44.25479,-76.60654,0
+00624,1036 Mona Dr.,44.25607,-76.60423,0
+00623,Mona / Woodbine,44.25782,-76.60357,0
+00622,Woodbine / Katharine,44.25812,-76.60031,0
+00621,Holy Cross Secondary,44.25835,-76.59703,0
+00604,Lancaster / Chancery,44.25623,-76.59444,0
+00603,917 Lancaster Dr.,44.25642,-76.59142,0
+00602,854 Lancaster Dr.,44.25457,-76.58996,0
+00675,Lancaster / Bridle Path,44.25307,-76.59239,0
+00601,Liston / Taylor-Kidd,44.25175,-76.59451,0
+00077,Loblaws,44.26051,-76.57397,0
+00649,Walmart,44.26488,-76.57402,0
+00078,Midland / Cataraqui Woods,44.26865,-76.5741,0
+00646,Tivoli / Sierra,44.27282,-76.57649,0
+00645,Sierra / Birchwood,44.27206,-76.57829,0
+00742,Birchwood / Peachwood,44.27042,-76.57856,0
+S00694,Cedarwood / Cataraqui Woods,44.26656,-76.57826,0
+00644,706 Cedarwood Dr.,44.26494,-76.57747,0
+00653,Cedarwood / Redwood,44.26219,-76.57811,0
+00655,Cedarwood / Pinewood,44.26207,-76.58057,0
+00659,Cedarwood / Basswood,44.26252,-76.58306,0
+00657,Bayridge / Princess,44.26064,-76.58338,0
+00656,Bayridge / Princess,44.26026,-76.58338,0
+00658,Cedarwood / Pinewood,44.26245,-76.58239,0
+00654,Cedarwood / Sprucewood,44.26186,-76.58024,0
+00652,Cedarwood / Redwood,44.26221,-76.57788,0
+00643,Cedarwood / Hickorywood,44.26493,-76.57731,0
+S00693,Cedarwood / Cataraqui Woods,44.26696,-76.5783,0
+00743,Birchwood / Peachwood,44.27016,-76.57842,0
+00457,Birchwood / Sierra,44.27191,-76.57833,0
+00075,Tivoli / Sierra,44.2727,-76.57689,0
+00647,1245 Midland Ave.,44.26877,-76.57427,0
+00854,Midland / Cataraqui Woods,44.26659,-76.57426,0
+00648,Midland Gate Plaza,44.26333,-76.57423,0
+00651,1043 Midland Av.,44.26038,-76.57417,0
+00673,Liston / Lancaster,44.25275,-76.594,0
+00663,Lancaster / Strand,44.25301,-76.59202,0
+00664,Lancaster / Rowantree,44.25524,-76.58958,0
+00665,Lancaster / Newhall,44.25653,-76.59175,0
+00666,Limestone / Lancaster,44.25674,-76.59495,0
+00758,Limestone / Woodbine,44.25839,-76.59508,0
+00667,Holy Cross Secondary,44.25847,-76.59739,0
+00668,Woodbine / Katharine,44.25826,-76.60034,0
+00669,Woodbine / Mona,44.25804,-76.60308,0
+00670,Mona / Palmerston,44.25602,-76.60478,0
+00678,Mona / Humberside,44.255,-76.60663,0
+00676,Mona / Lynwood,44.25323,-76.60467,0
+00540,Mona / Woodside,44.25281,-76.60232,0
+00531,761 Aylmer Cr.,44.24804,-76.61457,0
+00530,723 Aylmer Cr.,44.24639,-76.61557,0
+S00018,1385 Waverley Cr.,44.24398,-76.61657,0
+00532,1347 Waverley Cr.,44.24546,-76.61384,0
+00470,Waverley / Edwin,44.24663,-76.6111,0
+00469,Prince Charles / Glen Cove,44.24697,-76.60934,0
+00468,Prince Charles / High Gate Park,44.24727,-76.60481,0
+00680,Hudson / Mona,44.24838,-76.6029,0
+00682,1121 Hudson Dr.,44.24847,-76.59985,0
+00091,Hudson / Downing,44.24863,-76.59703,0
+00689,1055 Hudson Dr.,44.24717,-76.59415,0
+00005,Hudson / Holgate,44.24493,-76.5926,0
+00629,Hudson Park,44.24363,-76.58563,0
+00627,917 Development Dr.,44.24102,-76.58479,0
+00068,Development / Truedell,44.24072,-76.57976,0
+00597,Development / McKay,44.24125,-76.5765,0
+00608,Development / Justus,44.24159,-76.57217,0
+00611,Development / Gardiners,44.24173,-76.56815,0
+00035,Bath / McEwen,44.23767,-76.57433,0
+00804,Frontenac Secondary,44.23783,-76.57728,0
+00698,Bath / Vista,44.23735,-76.58415,0
+00031,Coverdale / Stoneridge,44.23743,-76.59217,0
+00030,Walden / Coverdale,44.2379,-76.59791,0
+00027,1189 Acadia Dr.,44.23532,-76.59868,0
+00026,Acadia / Sackville,44.23292,-76.59806,0
+00011,1071 Acadia Dr.,44.23231,-76.59435,0
+00405,717 Roosevelt Dr.,44.22964,-76.58854,0
+00408,Roosevelt / Tanglewood,44.23188,-76.58851,0
+00588,543 Roosevelt Dr.,44.23441,-76.58447,0
+00590,425 Knightsbridge Rd.,44.23319,-76.57881,0
+00592,419 Glen Castle Rd.,44.23176,-76.57901,0
+00594,Glen Castle / Henderson,44.22827,-76.57957,0
+00744,2485 Princess St.,44.2582,-76.56627,0
+S02076,Princess / Centennial,44.25807,-76.55771,0
+00041,Princess / Futures,44.25805,-76.55368,0
+00397,Princess / Taylor-Kidd,44.25652,-76.54166,0
+S00044,Princess / Parkway,44.25131,-76.53342,0
+00378,Princess / Portsmouth,44.24995,-76.53069,0
+S00501,Kingston Centre,44.24215,-76.51677,0
+02052,Bath / Westdale,44.24075,-76.51358,0
+S00363,800 Princess St.,44.23954,-76.50803,0
+00361,Princess / Macdonnell,44.2384,-76.50535,0
+00359,Princess / Victoria,44.23757,-76.5033,0
+S00356,Princess / Albert,44.23652,-76.50081,0
+09070,Princess / Alfred,44.23524,-76.49773,0
+00277,Princess / University,44.23426,-76.4953,0
+S00272,Princess / Barrie,44.2329,-76.49151,0
+S00292,Brock / Barrie,44.23207,-76.49143,0
+00278,Princess / University,44.23446,-76.49536,0
+00275,Princess / Alfred,44.23553,-76.49797,0
+S00357,Princess / Albert,44.23658,-76.50051,0
+00360,Legion Villa,44.23826,-76.50447,0
+S00364,Princess / Tower,44.23975,-76.50815,0
+00366,Bath / Westdale,44.24099,-76.51358,0
+S00504,Kingston Centre,44.24223,-76.51695,0
+00383,Princess / Sir John A. Macdonald,44.2449,-76.51948,0
+S00043,Princess / Parkway,44.25137,-76.53297,0
+00398,Princess / John Counter,44.2574,-76.54225,0
+S00400,Princess / Andersen,44.25822,-76.54973,0
+00402,Princess / Augusta,44.25832,-76.55502,0
+S00584,Princess / Centennial,44.25835,-76.55972,0
+00816,940 Gardiners Rd.,44.2573,-76.56888,0
+09231,Gardiners / Taylor-Kidd,44.25095,-76.56854,0
+09046,Petsmart,44.24822,-76.56686,0
+S00103,RioCan Centre,44.24499,-76.56555,0
+00527,1600 Bath Rd.,44.23691,-76.56364,0
+09029,Tanner / Bath,44.2377,-76.55932,0
+09026,Arbour Heights,44.23938,-76.55941,0
+09018,Tanner / Arbour,44.24111,-76.5595,0
+09019,668 Tanner Dr.,44.24308,-76.55621,0
+09020,Malabar / Dolshire,44.24229,-76.55319,0
+09021,Malabar / Teal,44.2414,-76.55138,0
+00518,Kingsdale / Owens,44.24154,-76.54758,0
+00732,284 Kingsdale Av.,44.24162,-76.54514,0
+00517,Kingsdale / Armstrong,44.2419,-76.54357,0
+00513,Armstrong / Bath,44.23894,-76.54228,0
+00511,Bath / Queen Mary,44.23866,-76.53544,0
+S00506,Kingston Centre,44.24191,-76.5169,0
+00510,Bath / Queen Mary,44.23877,-76.53689,0
+00512,Armstrong / Bath,44.23884,-76.54208,0
+00516,Armstrong / Kingsdale,44.24192,-76.54297,0
+00731,Kingsdale / Owens,44.24172,-76.54454,0
+00519,259 Kingsdale Av.,44.24162,-76.54769,0
+09022,Malabar / Fernmoor,44.24151,-76.55133,0
+09023,Malabar / Dolshire,44.24251,-76.55369,0
+09024,Melrose / Tanner,44.24375,-76.55501,0
+09025,Tanner / Farnham,44.24102,-76.55967,0
+09027,Arbour Heights,44.23931,-76.55956,0
+00528,1600 Bath Rd.,44.2372,-76.56387,0
+S00101,RioCan Centre,44.24492,-76.5653,0
+09045,Best Buy,44.24832,-76.56658,0
+09232,Gardiners / Taylor-Kidd,44.25126,-76.56821,0
+S09227,King's Crossing North,44.26492,-76.50275,0
+00745,Division / First Canada,44.26419,-76.49859,0
+02001,Division / Kirkpatrick,44.25317,-76.49678,0
+S02028,Division / Guy,44.2435,-76.49529,0
+00283,Division / York,44.23791,-76.49422,0
+00353,Brock / Alfred,44.23296,-76.49763,0
+00349,Brock / Victoria,44.23282,-76.5032,0
+00345,Brock / Regent,44.23262,-76.50858,0
+09217,325 Palace Rd.,44.23353,-76.5137,0
+S09217,Bath / Kingston Centre,44.24066,-76.5175,0
+09030,Frontenac Mall,44.23793,-76.54582,0
+00734,Bath / Tanner,44.2371,-76.55985,0
+00617,Gardiners / Arlington Park,44.24792,-76.56795,0
+00616,Gardiners / Arlington Park,44.24883,-76.56839,0
+S09209,Bath / Gardiners,44.237,-76.56652,0
+00733,Bath / Tanner,44.23686,-76.5595,0
+00806,Bath / Centennial,44.23754,-76.54741,0
+S09210,Bath / Kingston Centre,44.2405,-76.51644,0
+09211,324 Palace Rd.,44.23395,-76.5139,0
+00346,Johnson / Willingdon,44.23124,-76.50772,0
+00350,Johnson / Victoria,44.23142,-76.50222,0
+00352,Johnson / Alfred,44.23158,-76.49723,0
+09212,Johnson / Barrie,44.23097,-76.49133,0
+S02036,Downtown,44.23114,-76.48536,0
+00284,Division / York,44.23795,-76.49406,0
+S00231,Division / Russell,44.24371,-76.49515,0
+09229,Division / Kirkpatrick,44.25379,-76.49664,0
+00832,First Canada / Weller,44.26305,-76.49703,0
+09215,King's Crossing South,44.26371,-76.50026,0
+S02080,Innovation / Highway 15,44.2722,-76.44609,0
+00700,Rose Abbey / St. Martha,44.26638,-76.44734,0
+00065,Rose Abbey / McCallum,44.26388,-76.44688,0
+02012,Rose Abbey / Dalgleish,44.26155,-76.44962,0
+S00139,Rideau Town Centre,44.25958,-76.45627,0
+00134,Highway 15 / Medley,44.25291,-76.46075,0
+00132,Highway 15 / Barrett,44.24933,-76.46111,0
+02010,Highway 15 / Wellington,44.24126,-76.45923,0
+S00127,Royal Military College,44.23647,-76.46707,0
+00266,Slush Puppie Place,44.23333,-76.47889,0
+S02039,Downtown,44.23138,-76.48441,0
+S00426,Queen's / Kingston General Hospital,44.22427,-76.49475,0
+S00126,Royal Military College,44.2369,-76.46556,0
+00079,Highway 15 / Wellington,44.24026,-76.45848,0
+09225,Highway 15 / Barrett,44.25047,-76.46063,0
+09226,Highway 15 / Grenadier,44.25377,-76.46044,0
+S09205,Rideau Town Centre,44.25949,-76.45612,0
+09206,Rose Abbey / Dalgleish,44.26129,-76.4494,0
+09221,Rose Abbey / McCallum,44.26374,-76.44681,0
+09207,Rose Abbey / St. Martha,44.26597,-76.44637,0
+Smspr1,Montreal Street Park & Ride,44.27897,-76.47257,0
+00150,Guthrie / Joyce,44.27481,-76.47791,0
+00145,242 Guthrie Dr.,44.27413,-76.4796,0
+02013,118 Virginia St.,44.27135,-76.48445,0
+00157,80 Virginia St.,44.2704,-76.48624,0
+00154,Virginia / Sutherland,44.26844,-76.48764,0
+00161,Sutherland / Guthrie,44.2685,-76.48488,0
+00168,Sutherland / Conacher,44.26854,-76.48175,0
+00181,Conacher / Wilson,44.26603,-76.48762,0
+00207,235 Conacher Dr.,44.26577,-76.49119,0
+02017,Conacher / Nicholas,44.26633,-76.49475,0
+00210,Benson / Division,44.26649,-76.49734,0
+00217,John Counter / Rigney,44.25953,-76.5036,0
+S09074,Bus Terminal,44.25851,-76.50624,0
+09076,Elliott / Douglas,44.25596,-76.50403,0
+00073,Elliott / Rockford,44.25609,-76.50114,0
+02021,Elliott / Division,44.25626,-76.49763,0
+00235,Division / Barbara,44.25027,-76.49635,0
+02026,Division / Railway,44.24759,-76.49589,0
+00070,Division / Fraser,44.24533,-76.49554,0
+00288,Division / Adelaide,44.24093,-76.49485,0
+00286,Division / Pine,44.23903,-76.49444,0
+00280,Division / Colborne,44.23475,-76.49348,0
+00297,Bagot / Johnson,44.22983,-76.4855,0
+00299,Bagot / Earl,44.2287,-76.48647,0
+00301,Bagot / West,44.22711,-76.48787,0
+00317,Stuart / Arch,44.2248,-76.49198,0
+S00427,Queen's / Kingston General Hospital,44.22443,-76.49479,0
+S02042,Union / Alfred,44.22786,-76.49714,0
+00107,Union / Albert,44.2273,-76.50008,0
+00437,Union / Victoria,44.22687,-76.50233,0
+00440,Union / Willingdon,44.22547,-76.50693,0
+00441,Union / Pembroke,44.22445,-76.51013,0
+00461,Churchill / Cartwright,44.22245,-76.52377,0
+S00451,Churchill / Francis,44.22257,-76.52163,0
+00450,Mowat / Herbert,44.22517,-76.52042,0
+00447,Mowat / Forsythe,44.22659,-76.52056,0
+02056,Yonge / Johnson,44.23046,-76.5184,0
+00488,Johnson / Mowat,44.23053,-76.52089,0
+00486,Roden / Johnson,44.23062,-76.52245,0
+00484,Roden / Silver,44.23195,-76.52259,0
+00481,219 Norman Rogers Dr.,44.23373,-76.52276,0
+00471,Norman Rogers / Mulcaster,44.23532,-76.52292,0
+00479,Norman Rogers / Byron,44.2363,-76.52301,0
+00477,Norman Rogers / Casterton,44.23771,-76.52314,0
+00498,L.C.V.I.,44.23764,-76.52029,0
+00474,Van Order / MacPherson,44.23563,-76.51799,0
+00473,Van Order / Norman Rogers,44.23381,-76.51625,0
+S00502,Kingston Centre,44.242,-76.5168,0
+00472,Norman Rogers / Van Order,44.23381,-76.51593,0
+00475,Van Order / MacPherson,44.2357,-76.51785,0
+02059,L.C.V.I.,44.23772,-76.52017,0
+00476,Norman Rogers / Casterton,44.23775,-76.52331,0
+00478,306 Norman Rogers Dr.,44.23655,-76.52319,0
+00480,Norman Rogers / Mulcaster,44.23529,-76.52308,0
+00482,215 Norman Rogers Dr.,44.23347,-76.5229,0
+00483,Roden / Silver,44.23198,-76.52275,0
+00485,Roden / Johnson,44.23076,-76.52263,0
+00487,Johnson / Mowat,44.2304,-76.52114,0
+00489,394 Yonge St.,44.23026,-76.51854,0
+00445,310 Yonge St.,44.22738,-76.51827,0
+00448,Forsythe / Mowat,44.22693,-76.52053,0
+00449,Mowat / Francis,44.22504,-76.52055,0
+S00800,Churchill / Francis,44.22267,-76.52197,0
+00452,Churchill / Cartwright,44.22252,-76.5243,0
+00696,Union / Pembroke,44.22438,-76.50996,0
+02043,Union / Hillcroft,44.22551,-76.50624,0
+00436,Union / Beverley,44.22663,-76.50261,0
+00433,Union / Albert,44.2272,-76.49989,0
+00318,Stuart / George,44.22464,-76.49221,0
+00302,Bagot / West,44.22683,-76.48793,0
+00300,Bagot / Earl,44.22844,-76.48647,0
+00279,Division / Colborne,44.23478,-76.49327,0
+00285,Division / Pine,44.23916,-76.49428,0
+00287,Division / Adelaide,44.24078,-76.49462,0
+00232,Division / Fraser,44.24554,-76.49539,0
+00233,Division / Railway,44.24784,-76.49575,0
+00234,Division / Barbara,44.25018,-76.4961,0
+00216,Elliott / Derby Gate,44.25637,-76.4986,0
+00051,Elliott / Rockford,44.25622,-76.50141,0
+00690,Elliott / Douglas,44.25612,-76.5038,0
+S00052,Bus Terminal,44.25875,-76.50603,0
+00218,John Counter / Rigney,44.25931,-76.50267,0
+00746,Division / First Canada,44.26366,-76.49817,0
+00209,Benson / Division,44.26636,-76.49699,0
+00208,Conacher / Nicholas,44.2662,-76.49472,0
+00206,230 Conacher Dr.,44.26564,-76.49133,0
+00182,Conacher / Wilson,44.2659,-76.48787,0
+00163,Conacher / Abbey Dale,44.26655,-76.48435,0
+00169,Conacher / Sutherland,44.26828,-76.48156,0
+00155,Virginia / Sutherland,44.26859,-76.48751,0
+00156,Mgr. Remi-Gaulin School,44.27002,-76.48671,0
+00159,Virginia / Guthrie,44.2712,-76.48351,0
+00855,Seniors Centre,44.22465,-76.52181,0
+00454,Seniors Centre,44.22447,-76.52193,0
+00172,Montreal / Sutherland,44.26807,-76.47914,0
+00179,1130 Montreal St.,44.26391,-76.47869,0
+00188,Weller / Daly,44.26263,-76.48195,0
+02016,Wilson / MacCauley,44.26388,-76.48668,0
+00183,Compton / Wilson,44.26472,-76.48796,0
+00205,71 Compton St.,44.26452,-76.49061,0
+00201,Compton / Weller,44.26269,-76.49087,0
+00203,Weller / Trillium,44.26177,-76.4931,0
+S09056,First Canada / Weller,44.26258,-76.49711,0
+02018,Weller / Worthington,44.26165,-76.49313,0
+00202,Weller / Wiley,44.26186,-76.49003,0
+02015,Montreal / Briceland,44.25944,-76.48201,0
+02022,Montreal / John Counter,44.25616,-76.48317,0
+02023,Montreal / Village,44.25465,-76.48349,0
+00224,Montreal / Hickson,44.25268,-76.48522,0
+S00225,Royal Canadian Legion,44.25127,-76.48568,0
+02025,Montreal / Railway,44.24802,-76.48706,0
+00054,Montreal / Joseph,44.24582,-76.48747,0
+00250,Montreal / Stephen,44.24304,-76.48794,0
+02029,362 Montreal St.,44.24126,-76.4877,0
+00254,Montreal / Charles,44.2401,-76.48653,0
+02030,Rideau / Raglan,44.23778,-76.48287,0
+00262,Bagot / Bay,44.23593,-76.48394,0
+00265,Artillery Park,44.23398,-76.4839,0
+02031,Montreal / Ordnance,44.2346,-76.48495,0
+00261,North / Rideau,44.23693,-76.48282,0
+00259,Rideaucrest,44.23808,-76.48276,0
+00257,Raglan / Montreal,44.23793,-76.48509,0
+00253,Montreal / Charles,44.24033,-76.4865,0
+00252,362 Montreal St.,44.24155,-76.48756,0
+00251,Montreal / Stephen,44.24274,-76.48775,0
+00230,Montreal / Joseph,44.24565,-76.48733,0
+00229,Montreal / Rideau,44.24874,-76.48638,0
+S00226,Belle Park,44.25124,-76.48543,0
+00223,Montreal / Hickson,44.25276,-76.48494,0
+00222,Montreal / Village,44.25479,-76.48322,0
+00213,Montreal / John Counter,44.25713,-76.48281,0
+00212,Montreal / Briceland,44.25959,-76.48168,0
+00200,Compton / Weller,44.26286,-76.49073,0
+00204,70 Compton St.,44.26443,-76.49029,0
+00184,Compton / Wilson,44.26484,-76.48722,0
+00189,Weller / Daly,44.26252,-76.48185,0
+00057,1135 Montreal St.,44.26395,-76.47845,0
+00148,Montreal / Sheppard,44.273,-76.47739,0
+00837,John Counter / Indian,44.25878,-76.5262,0
+00835,John Counter / Aberfoyle,44.25883,-76.52193,0
+00833,1355 John Counter Bv.,44.25889,-76.51422,0
+09044,John Counter / Lappan's,44.25914,-76.50893,0
+S02007,Bus Terminal,44.26018,-76.50624,0
+00843,Portsmouth / Johnson,44.22994,-76.52596,0
+00845,Portsmouth / Miles,44.2347,-76.52722,0
+00846,Portsmouth / Van Order,44.23783,-76.52823,0
+00506,Portsmouth / Elmwood,44.24097,-76.529,0
+00374,Portsmouth / Phillips,44.24291,-76.52913,0
+00375,Portsmouth / Fairview,44.24435,-76.52922,0
+00376,Portsmouth / Valleyview,44.24654,-76.52936,0
+00377,Portsmouth / Howard,44.24849,-76.52949,0
+00396,John Counter / Princess,44.25737,-76.54133,0
+00755,Craftsman / Apprentice,44.24311,-76.45447,0
+00080,Craftsman / Givenchy,44.24334,-76.4513,0
+00058,Craftsman / Lance,44.24367,-76.44706,0
+00059,Craftsman / Moro,44.24403,-76.44272,0
+00089,Craftsman / Mercury,44.2423,-76.43909,0
+S00029,Cambrai / Princess Mary,44.24059,-76.43969,0
+00086,Lundy's / Canal du Nord,44.23851,-76.44088,0
+00117,19 Lundy's Ln.,44.23822,-76.44516,0
+00084,Lundy's / Batoche,44.23798,-76.44851,0
+00083,49 Lundy's Ln.,44.23769,-76.45115,0
+00082,Niagara Park / Lundy's,44.23598,-76.45418,0
+00123,Canex,44.23801,-76.45517,0
+00325,Palace / Park,44.2384,-76.51418,0
+00327,Palace / Park,44.23834,-76.51434,0
+S00818,Dalton / Grant Timmins,44.26924,-76.52215,0
+00726,Dalton / Binnington,44.27026,-76.52853,0
+00725,Binnington / Grant Timmins,44.26715,-76.52879,0
+00727,93 Grant Timmins Dr.,44.26741,-76.52511,0
+00728,Grant Timmins / Dalton,44.2693,-76.5231,0
+00826,Dalton / Sir John A. Macdonald,44.2688,-76.52061,0
+00827,442 Dalton Av.,44.26881,-76.51267,0
+00830,Dalton / St. Remy,44.26785,-76.51036,0
+09069,212 Dalton Av.,44.26784,-76.5079,0
+S00730,Dalton / Warne,44.26569,-76.50219,0
+09050,John Counter / Lappan's,44.2594,-76.50997,0
+02050,1355 John Counter Bv.,44.2591,-76.51521,0
+00834,John Counter / Aberfoyle,44.25907,-76.52175,0
+00836,John Counter / Indian,44.25907,-76.52633,0
+00838,John Counter / Old Mill,44.25885,-76.53853,0
+00822,Midland / Cataraqui Woods,44.26702,-76.57402,0
+00824,Cataraqui Woods / Gardiners,44.26708,-76.56984,0
+00819,Gardiners / Fortune,44.27203,-76.56892,0
+S00712,INVISTA Centre,44.27602,-76.56837,0
+00048,1287 Gardiners Rd.,44.27202,-76.56933,0
+00515,Gardiners / Cataraqui Woods,44.26749,-76.56913,0
+S02014,Bus Terminal,44.25919,-76.50553,0
+00847,Wilson / Conacher,44.26587,-76.48762,0
+00831,King's Crossing,44.26586,-76.50343,0
+00829,259 Dalton Av.,44.26797,-76.50764,0
+00828,295 Dalton Av.,44.26885,-76.51206,0
+00394,Aberfoyle / Old Quarry,44.25736,-76.52221,0
+00390,Portsmouth / Mohawk,44.25325,-76.52997,0
+00387,Glengarry / Seaforth,44.25271,-76.52341,0
+00386,Glengarry / Avenue,44.25286,-76.51996,0
+00385,Avenue / McMahon,44.25018,-76.51917,0
+00384,Avenue / Jane,44.2467,-76.51897,0
+00761,Sir John A. Macdonald / Elmwood,44.24265,-76.51953,0
+00367,Concession / Leroy Grant,44.24116,-76.50696,0
+00369,Concession / Victoria,44.24124,-76.50313,0
+00372,Kingscourt / Concession,44.24164,-76.5011,0
+00243,Kingscourt / Third,44.2445,-76.50135,0
+00242,Kingscourt / Seventh,44.24743,-76.50155,0
+00241,Kingscourt / Oak,44.25008,-76.50174,0
+00240,Kingston Secondary,44.25324,-76.50138,0
+00238,Kirkpatrick / Theresa,44.25333,-76.49789,0
+00237,Kirkpatrick / Theresa,44.25346,-76.49797,0
+00239,Kingston Secondary,44.25335,-76.50146,0
+00860,Kingscourt / Oak,44.24998,-76.50189,0
+00861,Kingscourt / Seventh,44.24762,-76.50172,0
+00863,Kingscourt / Third,44.2447,-76.50152,0
+00762,Concession / Macdonnell,44.24132,-76.50563,0
+00368,Concession / Leroy Grant,44.24203,-76.5083,0
+S00505,Kingston Centre,44.24207,-76.51693,0
+S09042,Princess / Kingston Centre,44.24314,-76.51625,0
+S09040,King / Sir John A. Macdonald,44.22116,-76.51289,0
+S09038,King / Portsmouth,44.22049,-76.52598,0
+S09036,Centre 70 Park and Ride,44.21883,-76.56915,0
+S09032,Bayridge / Conservatory,44.23265,-76.59299,0
+S09030,Bayridge / Hudson,44.24529,-76.59034,0
+S09015,Bayridge / Taylor-Kidd,44.25013,-76.58999,0
+S09031,Bayridge / Hudson,44.24429,-76.59057,0
+S09033,Bayridge / Acadia,44.2322,-76.59322,0
+S09039,King / Portsmouth,44.22031,-76.52521,0
+S09041,1055 Princess St.,44.24375,-76.51695,0
+09079,1281 Midland Av.,44.27124,-76.57416,0
+09078,1281 Midland Ave.,44.27126,-76.57434,0
+09082,270 Princess St.,44.23237,-76.48795,0
+09083,321 Yonge St.,44.22748,-76.51811,0
+09081,369 Dalton Av.,44.26897,-76.51811,0
+09077,Princess / Portsmouth,44.24955,-76.52934,0
+09085,Bath / Station,44.23987,-76.61303,0
+S02079,Cataraqui Centre,44.25508,-76.57248,0
+S02081,Cataraqui Centre,44.25499,-76.57261,0
+S02082,Cataraqui Centre,44.25508,-76.57271,0
+S02083,Cataraqui Centre,44.25498,-76.57283,0
+S02084,Cataraqui Centre,44.25507,-76.57294,0
+S02085,Cataraqui Centre,44.25497,-76.57308,0
+S09088,Kildare / Speers,44.22058,-76.66115,0
+00683,Innovation / Highway 15,44.27169,-76.44541,0
+00814,695 Innovation Dr.,44.27206,-76.43939,0
+S02040,Downtown,44.23118,-76.48426,0
+S02035,Downtown,44.23117,-76.4856,0
+S02038,Downtown,44.2316,-76.48413,0
+09238,Montreal / Sutherland,44.26885,-76.47905,0
+09091,Hudson / Bayridge,44.24499,-76.5907,0
+09090,Hudson / Bayridge,44.24512,-76.59018,0
+09239,John Marks / DIscovery,44.27467,-76.44144,0
+09092,Conacher / Morenz,44.26682,-76.48414,0
+09234,Highway 15 / Waterside,44.26972,-76.45062,0
+09241,Highway 15 / Rose Abbey,44.26878,-76.45127,0
+09237,Montreal / Sheppard,44.27302,-76.47762,0
+09093,Bagot / Ordnance,44.23461,-76.48371,0
+09094,326 Sutherland Dr.,44.26673,-76.48887,0
+09095,Markers Acres Park,44.26678,-76.48906,0
+09240,Montreal / Ordnance,44.23495,-76.48518,0
+09096,Highway 2 / Highway 15,44.23973,-76.45767,0
+09097,Montreal / Markland,44.23848,-76.48564,0
+09007,Bath / McEwen,44.23738,-76.57337,0
+09101,Grant Hall,44.22614,-76.49548,0
+09099,Union / Alfred,44.22769,-76.49717,0
+09100,Ellis Hall,44.22624,-76.49571,0
+09103,Amherst / Speers,44.22497,-76.66302,0
+09102,Amherst / Speers,44.22496,-76.66337,0
+00752,933 John Marks Av.,44.27489,-76.43906,0
+09104,Kildare / McDonough,44.21979,-76.66402,0
+09119,845 Gardiners Rd.,44.25365,-76.56864,0
+S09120,John Counter / Old Mill,44.25857,-76.53841,0
+03027,Barrack / King,44.23307,-76.48065,0
+09120,Henderson / McEwen,44.22821,-76.5733,0
+09121,Weller / Compton,44.26198,-76.49049,0
+09127,VIA Rail Station,44.25773,-76.53782,0
+09109,Cataraqui Woods / Holden,44.26722,-76.58913,0
+09112,Holden / Horizon,44.26471,-76.58996,0
+09122,Princess / Holden,44.26083,-76.59037,0
+09124,Princess / Rosanna,44.26219,-76.59906,0
+09125,Rosanna / Evergreen,44.26508,-76.59989,0
+09114,Cataraqui Woods / Woodhaven,44.2673,-76.5955,0
+09115,Cataraqui Woods / Holden,44.26726,-76.59041,0
+09117,Cataraqui Woods / Larchwood,44.2665,-76.58353,0
+09118,Cataraqui Woods Park,44.26657,-76.57993,0
+09126,Cataraqui Woods / Bittersweet,44.26723,-76.57657,0
+09105,Cataraqui Woods / Midland,44.26737,-76.57577,0
+09106,Cataraqui Woods / Birchwood,44.26693,-76.579,0
+09107,Cataraqui Woods / Juniper,44.26662,-76.58315,0
+09304,Taylor-Kidd / Liston,44.25162,-76.59427,0
+09128,Henderson / Lakeview,44.22839,-76.57231,0
+09130,Jim Beattie Park,44.22794,-76.58182,0
+09129,Jim Beattie Park,44.22779,-76.58159,0
+09123,Princess / Woodhaven,44.26175,-76.59624,0
+03038,Division / Elliott,44.25625,-76.49704,0
+09242,Division / Elliott,44.25653,-76.49734,0
+03034,Gore / Point St. Mark,44.25891,-76.46205,0
+03036,Gore / Highway 15,44.25911,-76.46126,0
+03044,Taylor-Kidd / Centennial,44.24984,-76.55395,0
+03045,Taylor-Kidd / Rockwell,44.25061,-76.56614,0
+03046,Taylor-Kidd / Demers,44.25092,-76.56014,0
+03047,Taylor-Kidd / Centennial,44.24959,-76.55364,0
+S09046,Sir John A. Macdonald / Norman Rogers,44.23336,-76.51496,0
+S09047,Sir John A. Macdonald / Norman Rogers,44.23392,-76.51464,0
+03049,Sir John A. Macdonald / Elmwood,44.24187,-76.51913,0
+09141,369 Dalton Ave.,44.26892,-76.51771,0
+09132,Centennial / Venture,44.27211,-76.5591,0
+09133,Venture / Resource,44.27214,-76.56254,0
+09135,719 Fortune Cr.,44.27513,-76.56553,0
+09137,Venture / Centennial,44.27242,-76.56023,0
+09147,Ontario / Princess,44.23121,-76.47953,0
+09148,Ontario / Clarence,44.22927,-76.48076,0
+03051,Bayridge / Milford,44.25264,-76.5885,0
+03050,Bayridge / Milford,44.25254,-76.58877,0
+09159,Bath / Days,44.2372,-76.57033,0
+09157,Gardiners / Bath,44.2378,-76.56737,0
+09156,Gardiners / Golden Mile,44.23832,-76.56776,0
+09158,Bath / Days,44.23751,-76.57076,0
+09155,Concession / Nelson,44.24142,-76.50199,0
+09161,Portsmouth / Hampstead,44.25031,-76.52959,0
+09142,Portsmouth / Glengarry,44.25261,-76.52976,0
+09143,Portsmouth / Old Quarry,44.25607,-76.52994,0
+03042,John Counter / Montreal,44.2572,-76.48252,0
+S09149,Providence Care Hospital,44.21788,-76.52715,0
+09160,Ontario / Princess,44.23127,-76.47932,0
+09151,The Tragically Hip / King,44.23316,-76.48029,0
+09152,Stephen / Patrick,44.24263,-76.48995,0
+09153,Stephen / Division,44.24195,-76.49478,0
+09154,Concession / Grey,44.24157,-76.49858,0
+09144,Concession / Alfred,44.24147,-76.49823,0
+09145,Stephen / Division,44.24182,-76.49461,0
+09163,Estates / King,44.21995,-76.52506,0
+09310,Westbrook / Roshan,44.27157,-76.62478,0
+09311,Westbrook / Berkshire,44.26835,-76.62472,0
+09314,Princess / Collins Bay,44.26317,-76.60634,0
+09318,Princess / Cataraqui Woods,44.26341,-76.60655,0
+09307,Remington / Woodfield,44.26917,-76.61777,0
+09308,Remington / Ottawa,44.27268,-76.61775,0
+09312,Princess / Westbrook,44.26557,-76.6241,0
+00802,Taylor-Kidd / Old Colony,44.24976,-76.57514,0
+00778,Manitou / Frink,44.2202,-76.64357,0
+00805,Manitou / Murray,44.21961,-76.64558,0
+00779,Manitou / Briscoe,44.22114,-76.64945,0
+00773,Manitou / Kildare,44.22317,-76.65068,0
+09162,W.J. Henderson Rec Centre,44.22544,-76.65815,0
+00771,Kildare / Clifford,44.22072,-76.66001,0
+00825,Taylor-Kidd / Old Colony,44.2498,-76.57448,0
+00099,Taylor-Kidd / Midpark,44.25046,-76.57112,0
+09164,1255 Princess St.,44.2473,-76.52452,0
+09165,1254 Princess St.,44.2469,-76.52432,0
+09168,Sherwood / Deerfield,44.22569,-76.64891,0
+09169,Sherwood / Briscoe,44.22319,-76.64506,0
+09167,Kildare / Kidd,44.22281,-76.65414,0
+09166,Kildare / Kidd,44.22252,-76.65465,0
+09146,Stephen / Patrick,44.2425,-76.4898,0
+09170,Manitou / Kildare,44.22284,-76.65079,0
+09174,Craftsman / D'Artisan,44.24303,-76.45727,0
+09171,Craftsman / D'Artisan,44.24292,-76.45698,0
+09172,D'Artisan / Highway 2,44.24018,-76.45558,0
+09173,Rose Abbey / Greenwood Park,44.26729,-76.44941,0
+00699,Rose Abbey / Greenwood Park,44.26721,-76.44955,0
+09175,Princess / Sir John A. Macdonald,44.2446,-76.51936,0
+LT001,East side Potter Drive and Saul Street,44.27454,-76.72585,0
+LT003,South side Main Street Odessa at Bridge Street,44.27691,-76.72269,0
+LT005,South side Main Street Odessa at William Street,44.27691,-76.71597,0
+LT010,William Henderson,44.22807,-76.67778,0
+LT016,Direct Coil,44.21359,-76.7196,0
+LT011,Millhaven Ferry Terminal,44.19289,-76.74053,0
+LT008,North side Main Street Bath at Somerset Drive,44.18484,-76.76931,0
+LT006,North side Main Street Bath at First Street,44.18079,-76.78006,0
+LT015,West side Country Club Drive at Abbey Dawn Drive,44.18344,-76.78815,0
+LT014,West side Country Club Drive at Hawley Court,44.17952,-76.7847,0
+LT007,South side Main Street Bath at Davy Street,44.18222,-76.77688,0
+LT009,South side Main Street Bath at Heritage Drive,44.18448,-76.76835,0
+LT004,North side Main Street Odessa at Factory Street,44.27703,-76.71789,0
+LT002,North side Main Street Odessa at Old Wilton Road,44.27708,-76.72328,0
+09182,Bayridge / Old Colony,44.2555,-76.58622,0
+09176,Portsmouth / Old Quarry,44.25631,-76.53015,0
+09177,Portsmouth / Howard,44.2488,-76.52971,0
+09178,Portsmouth / Phillips,44.24283,-76.52931,0
+09179,Portsmouth / Eldon Hall,44.23858,-76.5287,0
+09181,Portsmouth / Johnson,44.23027,-76.5262,0
+LT017,Latham Pools,44.21521,-76.70849,0
+09337,Portsmouth / Miles,44.23445,-76.52735,0
+09333,Guthrie / Karlee,44.2717,-76.48239,0
+09335,Guthrie / Esdon,44.2721,-76.48161,0
+09198,Weller / Wilson,44.26225,-76.48693,0
+09334,Esdon / Ainsley,44.27165,-76.47982,0
+09199,Weller / Wilson,44.26215,-76.48663,0
+00763,Bath / Armstrong,44.23825,-76.54284,0
+00526,1432 Bath Rd.,44.23736,-76.55285,0
+00807,Bath / Armstrong,44.23802,-76.54238,0
+09190,McMichael / McMahon,44.24976,-76.52532,0
+09191,McMichael / Glengarry,44.25257,-76.52545,0
+09192,22 Inverness Cres.,44.25541,-76.5234,0
+09193,Aberfoyle / Rosemund,44.25794,-76.52216,0
+09331,Aberfoyle / Inverness,44.25561,-76.52211,0
+09332,Taylor-Kidd / Gardiners,44.25076,-76.56922,0
+09321,Centennial / Davis,44.25661,-76.55894,0
+09322,Andersen / Princess,44.25903,-76.54899,0
+09323,Andersen / Ellesmeer,44.26207,-76.54827,0
+09324,Andersen / Crossfield,44.26476,-76.54878,0
+09325,Andersen / Max,44.26798,-76.54904,0
+09326,Cataraqui Woods / Andersen,44.27008,-76.54948,0
+09327,Cataraqui Woods / Augusta,44.27012,-76.55301,0
+09328,Cataraqui Woods / Centennial,44.26945,-76.55875,0
+09330,720 Fortune Cr.,44.27509,-76.56536,0
+09329,Cataraqui Woods / Centennial,44.26927,-76.55789,0
+09183,Cataraqui Woods / Augusta,44.26993,-76.5523,0
+09184,Andersen / Delmar,44.26965,-76.54904,0
+09185,Andersen / Atkinson,44.26747,-76.54928,0
+09186,Centennial / Davis,44.25639,-76.55911,0
+09187,Waterloo / Warburton,44.25442,-76.55468,0
+09188,Waterloo / Tollgate,44.25385,-76.55153,0
+09189,Waterloo / Taylor-Kidd,44.25198,-76.5474,0
+09200,Rideau Heights Community Centre,44.26479,-76.48299,0
+09319,MacCauley / Daly,44.26498,-76.48141,0
+09320,MacCauley / Wilson,44.26407,-76.4866,0
+09340,L.C.V.I.,44.23854,-76.51849,0
+09339,Calvin Park Library,44.23875,-76.51833,0
+03068,King / Yonge,44.22081,-76.51711,0
+03067,King / Yonge,44.22092,-76.51738,0
+445,First Canada Avenue (West side of Division),44.2641910258681,-76.4985940698535,0
+518,Rigney Street (north side of John Counter),44.2595329508186,-76.5035993233324,0
+779,442 Dalton Avenue (south side),44.268805095926,-76.5126690454782,0
+780,St. Remy Place (south side of Dalton),44.2678462900222,-76.5103579033167,0
+781,212 Dalton Avenue (south side),44.2678381595761,-76.507895635441,0
+782,Warne Crescent (south side of Dalton),44.2656871117652,-76.5021851286293,0
+783,Lappan's Lane (north side of John Counter),44.259401941672,-76.5099725872279,0
+784,MTO Office (north side of John Counter),44.2591011989862,-76.5152112767101,0
+1154,KT Garage - 1181 (Sktgar1),44.2608699481935,-76.5073289349676,0

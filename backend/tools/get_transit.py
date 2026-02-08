@@ -12,7 +12,7 @@ def _load_csv(filename):
     filepath = os.path.join(GTFS_DIR, filename)
     if not os.path.exists(filepath):
         return []
-    with open(filepath, "r") as f:
+    with open(filepath, "r", encoding="utf-8-sig") as f:
         return list(csv.DictReader(f))
 
 
