@@ -7,8 +7,6 @@
 > _"I'm 78, I live alone, and I just got a letter from the city I don't understand."_
 > One sentence. GoldenGuide searches services, checks eligibility, explains the document, drafts an email to the right office, and offers to call them — all in a single conversation turn.
 
-**QHacks 2026** | AI for Social Good
-
 ---
 
 ## The Problem
