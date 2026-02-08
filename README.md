@@ -273,18 +273,6 @@ GoldenGuide/
 
 ---
 
-## Team
-
-<!-- Add team members here -->
-
-| Name | Role |
-|------|------|
-| | |
-| | |
-| | |
-
----
-
 ## Built With
 
 `Google Gemini 3` `FastAPI` `Next.js` `React` `Tailwind CSS` `Twilio` `SendGrid` `ElevenLabs` `Tavily` `Docker` `Kingston Transit GTFS`
