@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { CheckCircle2, Copy, Mail, PencilLine, Send, X } from 'lucide-react';
 
 export default function EmailPreview({ draft, onSend, onCancel }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -45,71 +46,75 @@ export default function EmailPreview({ draft, onSend, onCancel }) {
 
   if (status === 'success') {
     return (
-      <div className="bg-white border-2 border-success rounded-xl p-8 shadow-md my-4 flex flex-col items-center justify-center animate-fade-in">
-        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
-          <span className="text-4xl">✅</span>
+      <div className="my-2 flex animate-fade-in flex-col items-center justify-center rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm">
+        <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
+          <CheckCircle2 className="h-8 w-8" strokeWidth={2} aria-hidden="true" />
         </div>
-        <h3 className="text-2xl font-bold text-success mb-2">Email Sent!</h3>
-        <p className="text-lg text-center text-textbrown">Your email has been successfully sent to {formData.to_email}.</p>
+        <h3 className="mb-2 text-xl font-bold text-emerald-700">Email Sent!</h3>
+        <p className="text-center text-base text-[#334155]">Your email has been successfully sent to {formData.to_email}.</p>
       </div>
     );
   }
 
   return (
-    <div className="bg-white border-2 border-golden rounded-xl p-6 shadow-md my-4 relative">
-      <div className="flex justify-between items-center mb-4 border-b border-[#F5DEB3] pb-2">
-        <h3 className="text-xl font-bold text-textbrown font-heading">Draft Email Preview</h3>
-        <button 
+    <div className="relative my-2 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+      <div className="mb-4 flex items-center justify-between border-b border-slate-200 pb-2">
+        <h3 className="flex items-center gap-2 text-lg font-semibold text-[#1e293b]">
+          <Mail className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
+          Draft Email Preview
+        </h3>
+        <button
           onClick={() => setIsEditing(!isEditing)}
-          className="text-golden font-bold hover:underline"
+          className="inline-flex min-h-[44px] items-center gap-1 rounded-lg px-3 text-base font-semibold text-[#334155] hover:bg-[#F8FAFC]"
         >
+          <PencilLine className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
           {isEditing ? 'Done Editing' : 'Edit'}
         </button>
       </div>
 
-      <div className="space-y-4 mb-6">
+      <div className="mb-6 space-y-4">
         <div>
-          <label className="block text-sm font-bold text-gray-500 uppercase mb-1">To:</label>
+          <label className="mb-1 block text-sm font-semibold uppercase tracking-[0.08em] text-[#64748B]">To</label>
           {isEditing ? (
             <input
               type="email"
               name="to_email"
               value={formData.to_email}
               onChange={handleChange}
-              className="w-full p-3 rounded-lg border border-golden/50 text-lg"
+              className="w-full rounded-xl border border-slate-300 p-2.5 text-base text-[#334155] focus:outline-none focus:ring-2 focus:ring-[#475569]"
             />
           ) : (
-            <div className="text-lg font-medium">{formData.to_email}</div>
+            <div className="text-base font-medium text-[#334155]">{formData.to_email}</div>
           )}
         </div>
 
         <div>
-          <label className="block text-sm font-bold text-gray-500 uppercase mb-1">Subject:</label>
+          <label className="mb-1 block text-sm font-semibold uppercase tracking-[0.08em] text-[#64748B]">Subject</label>
           {isEditing ? (
             <input
               type="text"
               name="subject"
               value={formData.subject}
               onChange={handleChange}
-              className="w-full p-3 rounded-lg border border-golden/50 text-lg font-bold"
+              className="w-full rounded-xl border border-slate-300 p-2.5 text-base font-semibold text-[#334155] focus:outline-none focus:ring-2 focus:ring-[#475569]"
             />
           ) : (
-            <div className="text-lg font-bold">{formData.subject}</div>
+            <div className="text-base font-semibold text-[#1e293b]">{formData.subject}</div>
           )}
         </div>
 
         <div>
-          <label className="block text-sm font-bold text-gray-500 uppercase mb-1">Message:</label>
+          <label className="mb-1 block text-sm font-semibold uppercase tracking-[0.08em] text-[#64748B]">Message</label>
           {isEditing ? (
             <textarea
               name="body_html"
               value={formData.body_html}
               onChange={handleChange}
-              className="w-full h-48 p-3 rounded-lg border border-golden/50 text-lg font-body"
+              className="h-40 w-full rounded-xl border border-slate-300 p-2.5 text-base text-[#334155] focus:outline-none focus:ring-2 focus:ring-[#475569]"
             />
           ) : (
-            <div 
-              className="bg-gray-50 p-4 rounded-lg text-lg border border-gray-100 whitespace-pre-wrap font-body"
+            <div
+              className="whitespace-pre-wrap rounded-xl border border-slate-200 bg-[#F8FAFC] p-3 text-base text-[#334155]"
               dangerouslySetInnerHTML={{ __html: formData.body_html.replace(/\n/g, '<br/>') }}
             />
           )}
@@ -117,32 +122,35 @@ export default function EmailPreview({ draft, onSend, onCancel }) {
       </div>
 
       {status === 'error' && (
-        <div className="mb-4 p-3 bg-red-100 text-danger rounded-lg font-bold text-center">
+        <div className="mb-4 rounded-lg bg-red-100 p-3 text-center text-base font-semibold text-red-700">
           Failed to send email. Please try again.
         </div>
       )}
 
-      <div className="flex flex-col sm:flex-row gap-4">
+      <div className="flex flex-col gap-3 sm:flex-row">
         <button
           onClick={handleSend}
           disabled={status === 'sending'}
-          className="flex-grow min-h-[56px] bg-success text-white font-bold rounded-xl text-xl hover:bg-green-700 transition-colors shadow-sm disabled:opacity-50"
+          className="flex min-h-[52px] flex-grow items-center justify-center gap-2 rounded-xl bg-[#334155] text-base font-semibold text-white transition-colors hover:bg-[#1e293b] disabled:opacity-50"
         >
-          {status === 'sending' ? 'Sending...' : '📨 Send Now'}
+          <Send className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
+          {status === 'sending' ? 'Sending...' : 'Send Now'}
         </button>
 
         <button
           onClick={handleCopy}
-          className="flex-grow min-h-[56px] bg-white border-2 border-golden text-golden font-bold rounded-xl text-xl hover:bg-cornsilk transition-colors shadow-sm"
+          className="flex min-h-[52px] flex-grow items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white text-base font-semibold text-[#334155] transition-colors hover:bg-[#F8FAFC]"
         >
-          {copied ? '✅ Copied!' : '📋 Copy'}
+          <Copy className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
+          {copied ? 'Copied!' : 'Copy'}
         </button>
 
         <button
           onClick={onCancel}
           disabled={status === 'sending'}
-          className="flex-grow min-h-[56px] bg-white border-2 border-danger text-danger font-bold rounded-xl text-xl hover:bg-red-50 transition-colors shadow-sm"
+          className="flex min-h-[52px] flex-grow items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white text-base font-semibold text-[#334155] transition-colors hover:bg-red-50"
         >
+          <X className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
           Cancel
         </button>
       </div>

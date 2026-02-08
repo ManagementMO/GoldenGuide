@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SendHorizontal } from 'lucide-react';
 import VoiceInput from './VoiceInput';
 import DocumentUpload from './DocumentUpload';
 
@@ -34,35 +35,40 @@ export default function ChatInput({ onSend, onSendImage, disabled, language }) {
   };
 
   return (
-    <div className="sticky bottom-0 z-20 w-full bg-white border-t-2 border-[#F5DEB3] p-4 flex flex-row gap-3 items-center shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
-      <div className="flex-shrink-0">
-        <DocumentUpload onUpload={handleFileUpload} />
-      </div>
+    <div className="sticky bottom-0 z-20 w-full border-t border-slate-200 bg-white/95 px-4 py-3 backdrop-blur">
+      <div className="flex flex-row items-center gap-3">
+        <div className="flex-shrink-0">
+          <DocumentUpload onUpload={handleFileUpload} />
+        </div>
 
-      <div className="flex-grow relative">
-        <textarea
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          onKeyDown={handleKeyPress}
-          disabled={disabled}
-          placeholder="Ask me anything..."
-          className="w-full min-h-[60px] max-h-[120px] rounded-xl border border-[#F5DEB3] p-4 text-lg md:text-xl font-body focus:outline-none focus:ring-2 focus:ring-golden resize-none"
-          rows={1}
-          style={{ lineHeight: '1.6' }}
-        />
-      </div>
+        <div className="relative flex-grow">
+          <textarea
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            onKeyDown={handleKeyPress}
+            disabled={disabled}
+            placeholder={language === 'fr' ? 'Posez votre question municipale...' : 'Ask your municipal question...'}
+            className="w-full min-h-[52px] max-h-[120px] resize-none rounded-2xl border border-slate-300 bg-white px-3 py-2.5 text-base text-[#334155] focus:outline-none focus:ring-2 focus:ring-[#475569]"
+            rows={1}
+            style={{ lineHeight: '1.6' }}
+          />
+        </div>
 
-      <div className="flex-shrink-0 flex gap-2">
-         <VoiceInput onTranscript={handleTranscript} disabled={disabled} language={language} />
+        <div className="flex flex-shrink-0 gap-2">
+          <VoiceInput onTranscript={handleTranscript} disabled={disabled} language={language} />
 
-        <button
-          onClick={handleSend}
-          disabled={disabled || !text.trim()}
-          className="min-w-[48px] h-[48px] px-4 bg-golden text-white rounded-xl font-bold text-lg shadow-sm hover:bg-[#A67C00] disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center"
-          aria-label="Send message"
-        >
-          Send
-        </button>
+          <button
+            onClick={handleSend}
+            disabled={disabled || !text.trim()}
+            className="flex min-h-[52px] min-w-[64px] items-center justify-center rounded-2xl border border-[#CBD5E1] bg-[#334155] px-3 text-base font-semibold text-white transition-colors hover:bg-[#1e293b] disabled:cursor-not-allowed disabled:opacity-50"
+            aria-label="Send message"
+          >
+            <span className="flex items-center gap-2">
+              <SendHorizontal className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
+              <span>{language === 'fr' ? 'Envoyer' : 'Send'}</span>
+            </span>
+          </button>
+        </div>
       </div>
     </div>
   );

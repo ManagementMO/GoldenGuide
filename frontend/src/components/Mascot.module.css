@@ -1,0 +1,171 @@
+.wrapper {
+  --orb-highlight: #d8cfb2;
+  --orb-body: #27415e;
+  --orb-shadow: #050b17;
+  --orb-glow: 0.32;
+  --orb-size: 170px;
+
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.lantern {
+  position: relative;
+  width: var(--orb-size);
+  height: var(--orb-size);
+  border-radius: 50%;
+}
+
+.halo {
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  opacity: calc(0.12 + var(--orb-glow) * 0.16);
+  filter: blur(15px);
+  background:
+    radial-gradient(circle at 68% 66%, color-mix(in srgb, var(--orb-body) 28%, transparent), transparent 64%),
+    radial-gradient(circle at 30% 28%, color-mix(in srgb, var(--orb-highlight) 20%, transparent), transparent 62%);
+}
+
+.glass {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  background: radial-gradient(circle at 29% 28%, var(--orb-highlight) 0%, var(--orb-body) 48%, var(--orb-shadow) 100%);
+  box-shadow:
+    inset -10px -12px 22px rgba(0, 0, 0, 0.45),
+    inset 3px 3px 8px rgba(255, 255, 255, 0.12),
+    0 10px 20px rgba(0, 0, 0, 0.22);
+  animation: spinSlow 22s linear infinite;
+  animation-play-state: running;
+  will-change: transform;
+}
+
+.wrapper[data-animated='false'] .glass {
+  animation-play-state: paused;
+}
+
+.sunset,
+.softener,
+.gloss {
+  position: absolute;
+  pointer-events: none;
+}
+
+.sunset {
+  inset: auto 16% 8% 16%;
+  height: 34%;
+  border-radius: 9999px;
+  opacity: calc(0.06 + var(--orb-glow) * 0.06);
+  filter: blur(7px);
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--orb-highlight) 38%, transparent),
+    color-mix(in srgb, var(--orb-body) 50%, transparent)
+  );
+}
+
+.softener {
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 28% 24%, rgba(255, 255, 255, 0.42), transparent 50%),
+    radial-gradient(circle at 75% 80%, rgba(15, 23, 42, 0.32), transparent 58%);
+}
+
+.gloss {
+  top: 12%;
+  left: 14%;
+  width: 33%;
+  height: 24%;
+  border-radius: 50%;
+  opacity: 0.68;
+  filter: blur(1px);
+  background: radial-gradient(circle at 40% 34%, rgba(255, 255, 255, 0.72), transparent 72%);
+}
+
+.badge {
+  min-height: 30px;
+  min-width: 110px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 0 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: #334155;
+  background: color-mix(in srgb, white 74%, #e2e8f0);
+  box-shadow: 0 4px 10px color-mix(in srgb, black 12%, transparent);
+}
+
+.listening .badge {
+  background: #fef3c7;
+}
+
+.speaking .badge {
+  background: #fde68a;
+}
+
+.orbIcon {
+  width: 1em;
+  height: 1em;
+  display: inline-flex;
+}
+
+.fadeIn {
+  animation: mascotFadeIn 280ms ease-out forwards;
+}
+
+.loadingDot {
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 9999px;
+  background: currentColor;
+  opacity: 0.8;
+  animation: mascotPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes mascotFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mascotPulse {
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fadeIn,
+  .loadingDot,
+  .glass {
+    animation: none;
+  }
+}

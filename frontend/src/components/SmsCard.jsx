@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { MessageSquareText, Send } from 'lucide-react';
 
 export default function SmsCard({ onSend, message }) {
   const [phone, setPhone] = useState('');
@@ -24,23 +25,26 @@ export default function SmsCard({ onSend, message }) {
   };
 
   return (
-    <div className="bg-cornsilk rounded-xl p-4 mt-4 border border-[#F5DEB3]">
-      <h3 className="font-bold text-lg mb-4 text-textbrown">Text this to my phone</h3>
-      
+    <div className="mt-2 rounded-2xl border border-slate-200 bg-white p-3 text-[#334155]">
+      <h3 className="mb-3 flex items-center gap-2 text-lg font-semibold">
+        <MessageSquareText className="h-5 w-5 text-[#475569]" strokeWidth={2} aria-hidden="true" />
+        Text this to my phone
+      </h3>
+
       {status === 'success' ? (
-        <div className="text-success font-bold text-lg flex items-center gap-2">
-          <span>✅</span> Text sent successfully!
+        <div className="flex items-center gap-2 text-base font-semibold text-emerald-700">
+          Text sent successfully!
         </div>
       ) : (
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-bold mb-1 text-textbrown">Your Phone Number</label>
+            <label className="mb-1 block text-sm font-semibold uppercase tracking-[0.08em] text-[#64748B]">Your Phone Number</label>
             <input
               type="tel"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="555-0199"
-              className="w-full p-3 rounded-lg border border-golden/50 text-lg"
+              className="w-full rounded-xl border border-slate-300 p-2.5 text-base text-[#334155] focus:outline-none focus:ring-2 focus:ring-[#475569]"
               inputMode="tel"
             />
           </div>
@@ -51,37 +55,38 @@ export default function SmsCard({ onSend, message }) {
               id="sendToFamily"
               checked={showSecond}
               onChange={(e) => setShowSecond(e.target.checked)}
-              className="w-5 h-5 accent-golden"
+              className="h-5 w-5 accent-slate-700"
             />
-            <label htmlFor="sendToFamily" className="text-textbrown font-medium">
+            <label htmlFor="sendToFamily" className="text-base font-medium text-[#334155]">
               Also send to a family member / caregiver
             </label>
           </div>
 
           {showSecond && (
-             <div>
-               <label className="block text-sm font-bold mb-1 text-textbrown">Family Member's Number</label>
-               <input
-                 type="tel"
-                 value={secondPhone}
-                 onChange={(e) => setSecondPhone(e.target.value)}
-                 placeholder="555-0123"
-                 className="w-full p-3 rounded-lg border border-golden/50 text-lg"
-                 inputMode="tel"
-               />
-             </div>
+            <div>
+              <label className="mb-1 block text-sm font-semibold uppercase tracking-[0.08em] text-[#64748B]">Family Member Number</label>
+              <input
+                type="tel"
+                value={secondPhone}
+                onChange={(e) => setSecondPhone(e.target.value)}
+                placeholder="555-0123"
+                className="w-full rounded-xl border border-slate-300 p-2.5 text-base text-[#334155] focus:outline-none focus:ring-2 focus:ring-[#475569]"
+                inputMode="tel"
+              />
+            </div>
           )}
 
           <button
             onClick={handleSend}
             disabled={status === 'sending' || !phone}
-            className="w-full bg-golden text-white font-bold py-3 px-6 rounded-lg text-lg shadow-sm hover:bg-[#A67C00] disabled:opacity-50 transition-colors"
+            className="flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-[#334155] px-4 text-base font-semibold text-white transition-colors hover:bg-[#1e293b] disabled:opacity-50"
           >
+            <Send className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
             {status === 'sending' ? 'Sending...' : 'Send Text'}
           </button>
-          
+
           {status === 'error' && (
-            <p className="text-danger font-bold">Failed to send. Please try again.</p>
+            <p className="text-base font-semibold text-red-700">Failed to send. Please try again.</p>
           )}
         </div>
       )}

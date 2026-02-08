@@ -1,4 +1,5 @@
 import React from 'react';
+import { CalendarDays, Download } from 'lucide-react';
 import { downloadReminder } from '../lib/api';
 
 export default function ReminderCard({ reminder }) {
@@ -29,33 +30,34 @@ export default function ReminderCard({ reminder }) {
   };
 
   return (
-    <div className="bg-cornsilk border-2 border-golden rounded-xl p-6 shadow-md my-4 text-textbrown">
-      <h3 className="text-2xl font-bold mb-4 font-heading flex items-center gap-2">
-        <span role="img" aria-label="Calendar">📅</span>
+    <div className="my-2 rounded-2xl border border-slate-200 bg-white p-4 text-[#334155] shadow-sm">
+      <h3 className="mb-3 flex items-center gap-2 text-xl font-bold">
+        <CalendarDays className="h-6 w-6 text-[#475569]" strokeWidth={2} aria-hidden="true" />
         Reminder Set
       </h3>
 
-      <div className="bg-white border border-[#F5DEB3] rounded-xl p-4 mb-4 space-y-2">
-        <p className="text-xl font-bold">{reminder.title}</p>
+      <div className="mb-4 space-y-2 rounded-xl border border-slate-200 bg-[#F8FAFC] p-4">
+        <p className="text-lg font-semibold text-[#1e293b]">{reminder.title}</p>
         {reminder.date && (
-          <p className="text-lg">
-            <span className="font-bold">Date:</span> {formatDate(reminder.date)}
+          <p className="text-base">
+            <span className="font-semibold">Date:</span> {formatDate(reminder.date)}
           </p>
         )}
         {reminder.time && (
-          <p className="text-lg">
-            <span className="font-bold">Time:</span> {reminder.time}
+          <p className="text-base">
+            <span className="font-semibold">Time:</span> {reminder.time}
           </p>
         )}
         {reminder.description && (
-          <p className="text-lg text-textbrown/80">{reminder.description}</p>
+          <p className="text-base text-[#475569]">{reminder.description}</p>
         )}
       </div>
 
       <button
         onClick={handleDownload}
-        className="w-full min-h-[48px] bg-golden text-white font-bold rounded-lg px-6 py-3 hover:bg-[#A67C00] transition-colors shadow-sm text-lg"
+        className="flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-[#334155] px-4 text-base font-semibold text-white transition-colors hover:bg-[#1e293b]"
       >
+        <Download className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
         Download Calendar File (.ics)
       </button>
     </div>

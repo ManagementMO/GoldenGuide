@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { PencilLine, PhoneCall } from 'lucide-react';
 import CallStatus from './CallStatus';
 
 export default function CallPreview({ preview, onConfirm }) {
@@ -22,51 +23,53 @@ export default function CallPreview({ preview, onConfirm }) {
   };
 
   return (
-    <div className="bg-white border-2 border-golden rounded-xl p-6 shadow-md my-4">
-      <h3 className="text-xl font-bold mb-4 text-textbrown font-heading border-b border-[#F5DEB3] pb-2">
+    <div className="my-2 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+      <h3 className="mb-3 border-b border-slate-200 pb-2 text-lg font-semibold text-[#1e293b]">
         Ready to place call?
       </h3>
 
-      <div className="space-y-4 mb-6">
+      <div className="mb-6 space-y-4">
         <div>
-          <span className="block text-sm font-bold text-gray-500 uppercase">Calling</span>
-          <span className="text-xl font-bold">{preview.recipient_name}</span>
-        </div>
-        
-        <div>
-          <span className="block text-sm font-bold text-gray-500 uppercase">Number</span>
-          <span className="text-xl font-mono">{preview.phone_number}</span>
+          <span className="block text-sm font-semibold uppercase tracking-[0.08em] text-[#64748B]">Calling</span>
+          <span className="text-lg font-semibold text-[#1e293b]">{preview.recipient_name}</span>
         </div>
 
         <div>
-          <span className="block text-sm font-bold text-gray-500 uppercase mb-1">What I'll Say</span>
+          <span className="block text-sm font-semibold uppercase tracking-[0.08em] text-[#64748B]">Number</span>
+          <span className="text-lg font-mono text-[#334155]">{preview.phone_number}</span>
+        </div>
+
+        <div>
+          <span className="mb-1 block text-sm font-semibold uppercase tracking-[0.08em] text-[#64748B]">What I'll Say</span>
           {isEditing ? (
             <textarea
               value={script}
               onChange={(e) => setScript(e.target.value)}
-              className="w-full h-32 p-3 rounded-lg border-2 border-golden focus:border-accent font-body text-lg"
+              className="h-28 w-full rounded-xl border border-slate-300 p-2.5 text-base text-[#334155] focus:outline-none focus:ring-2 focus:ring-[#475569]"
             />
           ) : (
-            <div className="bg-cornsilk p-4 rounded-lg text-lg italic border-l-4 border-golden">
+            <div className="rounded-xl border border-slate-200 bg-[#F8FAFC] p-3 text-base italic text-[#334155]">
               "{script}"
             </div>
           )}
         </div>
       </div>
 
-      <div className="flex flex-col sm:flex-row gap-4">
+      <div className="flex flex-col gap-3 sm:flex-row">
         <button
           onClick={handlePlaceCall}
-          className="flex-grow min-h-[56px] bg-success text-white font-bold rounded-xl text-xl hover:bg-green-700 transition-colors shadow-sm"
+          className="flex min-h-[52px] flex-grow items-center justify-center gap-2 rounded-xl bg-[#334155] text-base font-semibold text-white transition-colors hover:bg-[#1e293b]"
         >
-          📞 Place Call
+          <PhoneCall className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
+          Place Call
         </button>
-        
+
         <button
           onClick={() => setIsEditing(!isEditing)}
-          className="flex-grow min-h-[56px] bg-white border-2 border-golden text-golden font-bold rounded-xl text-xl hover:bg-cornsilk transition-colors shadow-sm"
+          className="flex min-h-[52px] flex-grow items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white text-base font-semibold text-[#334155] transition-colors hover:bg-[#F8FAFC]"
         >
-          {isEditing ? 'Save Changes' : '✏️ Edit First'}
+          <PencilLine className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
+          {isEditing ? 'Save Changes' : 'Edit First'}
         </button>
       </div>
     </div>

@@ -85,6 +85,35 @@ All tools are pure functions (no classes), load static data at module level, and
 
 ### Frontend: State & Components
 
+## FRONTEND (Next.js + Tailwind)
+- **Design:** Mobile-first, "Soft UI" for seniors.
+- **Components:** Functional React components. Use `lucide-react`.
+- **Styling:** Tailwind ONLY. No CSS modules unless strictly necessary.
+- **Accessibility:** ARIA labels on ALL interactive elements.
+- **State:** Use `zustand` or React Context for global state.
+
+## CRITICAL: SENIOR UX
+- **Touch Targets:** Minimum 60px height.
+- **Font Size:** Minimum 18px.
+- **Contrast:** High contrast (AAA) always.
+
+## DESIGN TOKENS (STRICT)
+- **Primary Color:** Lilac `#E6E6FA` (Background), Deep Purple `#4A3B75` (Text).
+- **Secondary Color:** Mint `#F0FFF0` (Accents), Warm White `#FDFBF7` (Cards).
+- **Shadows:** Soft claymorphism: `box-shadow: 8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff;`
+- **Border Radius:** Always `rounded-2xl` (16px) or `rounded-3xl` (24px).
+- **Icons:** Use `lucide-react` with `strokeWidth={2}`.
+- **Spacing:** Use Tailwind multiples of 4 (p-4, p-8, m-6).
+
+## FORBIDDEN PATTERNS (LESSONS LEARNED)
+- `Skill/subagent request was not followed exactly`
+- `Plan-only request was not strictly respected before implementation`
+- `Tailwind-only frontend styling rule was not followed (too much in globals.css)`
+- `Icon system rule was not followed (custom SVGs used instead of lucide-react)`
+- `Strict design tokens/radius guidance in CLAUDE.md was not consistently followed`
+- Before editing any code, check it against CLAUDE.md and see if it aligns with the project goals, act as a QA tester
+- One-page constraint: keep the main dashboard fully within a single viewport with no page-level scrolling.
+
 `page.js` is the client-rendered root managing all chat state: messages, history, loading, fontSize, language, activeTools, completedTools. Components communicate upward via callback props.
 
 **SSE streaming**: `page.js` reads from `/api/chat/stream`, parsing `event: {name}\ndata: {json}\n\n` format to update tool activity UI in real time.
@@ -133,3 +162,6 @@ All tools are pure functions (no classes), load static data at module level, and
 ## No Test Suite or Linting
 
 This project has no test framework, linting configuration, or CI/CD pipeline.
+
+## 🚫 FORBIDDEN PATTERNS (LESSONS LEARNED)
+- Senior-first constraint: keep all UX, tone, and visual decisions explicitly optimized for citizens aged 60-70+, and do not drift to youth or generic styles.

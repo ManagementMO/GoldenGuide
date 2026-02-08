@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Mic, MicOff } from 'lucide-react';
 
 export default function VoiceInput({ onTranscript, disabled, language = 'en' }) {
   const [isListening, setIsListening] = useState(false);
@@ -50,27 +51,25 @@ export default function VoiceInput({ onTranscript, disabled, language = 'en' }) 
   if (!isSupported) return null;
 
   return (
-    <button
-      onClick={toggleListening}
-      disabled={disabled}
-      className={`min-w-[48px] h-[48px] rounded-full flex items-center justify-center transition-all ${
-        isListening 
-          ? 'bg-red-500 animate-pulse text-white ring-4 ring-red-200' 
-          : 'bg-accent text-white hover:bg-[#6d360f]'
-      }`}
-      aria-label={isListening ? 'Stop listening' : 'Start voice input'}
-      title={isListening ? 'Stop listening' : 'Start voice input'}
-    >
-      {isListening ? (
-        <span className="text-2xl animate-pulse">🛑</span>
-      ) : (
-        <span className="text-2xl">🎤</span>
-      )}
+    <div className="relative">
+      <button
+        onClick={toggleListening}
+        disabled={disabled}
+        className={`flex min-h-[52px] min-w-[52px] items-center justify-center rounded-2xl border transition-all ${
+          isListening
+            ? 'border-red-400 bg-red-50 text-red-700'
+            : 'border-[#CBD5E1] bg-white text-[#334155] hover:bg-[#F8FAFC]'
+        } ${disabled ? 'cursor-not-allowed opacity-50' : ''}`}
+        aria-label={isListening ? 'Stop listening' : 'Start voice input'}
+        title={isListening ? 'Stop listening' : 'Start voice input'}
+      >
+        {isListening ? <MicOff className="h-5 w-5" strokeWidth={2} aria-hidden="true" /> : <Mic className="h-5 w-5" strokeWidth={2} aria-hidden="true" />}
+      </button>
       {isListening && (
-        <span className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-black/80 text-white text-xs px-2 py-1 rounded whitespace-nowrap">
+        <span className="absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-slate-900 px-2 py-1 text-xs font-semibold text-white">
           Listening...
         </span>
       )}
-    </button>
+    </div>
   );
 }

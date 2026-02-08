@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Download, Mail, MapPin, MessageSquareText, PhoneCall, Printer } from 'lucide-react';
 import SmsCard from './SmsCard';
 
 export default function ActionPlanCard({ plan, onExecuteCall, onExecuteEmail, onExecuteSms }) {
@@ -22,47 +23,47 @@ export default function ActionPlanCard({ plan, onExecuteCall, onExecuteEmail, on
   };
 
   return (
-    <div id="printable-action-plan" className="bg-white border-2 border-golden rounded-xl p-6 shadow-md my-4 w-full">
-      <h3 className="text-2xl font-bold mb-6 text-textbrown font-heading flex items-center gap-2">
-        <span>🎯</span> Your Personalized Action Plan
+    <div id="printable-action-plan" className="my-2 w-full rounded-2xl border border-slate-200 bg-white p-4 text-[#334155] shadow-sm">
+      <h3 className="mb-4 flex items-center gap-2 text-xl font-bold">
+        <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-amber-100 text-amber-700">1</span>
+        Your Personalized Action Plan
       </h3>
 
-      <div className="space-y-8">
+      <div className="space-y-4">
         {plan.steps.map((step, index) => (
-          <div key={index} className="relative pl-4 border-l-2 border-[#F5DEB3] last:border-0 pb-4">
-            <div className="absolute -left-[21px] top-0 w-10 h-10 rounded-full bg-golden text-white flex items-center justify-center font-bold text-lg border-4 border-white">
+          <div key={index} className="relative rounded-2xl border border-slate-200 bg-[#F8FAFC] p-3">
+            <div className="absolute -left-3 top-4 flex h-8 w-8 items-center justify-center rounded-full border-2 border-white bg-[#334155] text-base font-semibold text-white shadow-sm">
               {index + 1}
             </div>
-            
-            <div className="ml-4">
-              <h4 className="text-xl font-bold text-textbrown mb-2 flex items-center gap-2">
-                {step.icon && <span>{step.icon}</span>}
+
+            <div className="ml-3">
+              <h4 className="mb-1.5 flex items-center gap-2 text-lg font-semibold text-[#1e293b]">
                 {step.service_name}
               </h4>
-              
-              <p className="text-lg mb-3 text-textbrown/90">{step.description}</p>
-              
-              <div className="space-y-2 mb-4 text-base">
+
+              <p className="mb-2 text-base text-[#475569]">{step.description}</p>
+
+              <div className="mb-4 space-y-2 text-base">
                 {step.phone && (
-                  <div className="flex items-center gap-2">
-                    <span>📞</span>
-                    <a href={`tel:${step.phone}`} className="font-bold text-accent hover:underline">
+                  <div className="flex items-center gap-2 rounded-xl bg-white px-3 py-2">
+                    <PhoneCall className="h-4 w-4 text-slate-600" strokeWidth={2} aria-hidden="true" />
+                    <a href={`tel:${step.phone}`} className="text-base font-semibold text-[#334155] underline decoration-slate-300 underline-offset-4">
                       {step.phone}
                     </a>
                   </div>
                 )}
                 {step.address && (
-                  <div className="flex items-start gap-2">
-                    <span>📍</span>
-                    <span>{step.address}</span>
+                  <div className="flex items-start gap-2 rounded-xl bg-white px-3 py-2">
+                    <MapPin className="mt-0.5 h-4 w-4 text-slate-600" strokeWidth={2} aria-hidden="true" />
+                    <span className="text-base text-[#334155]">{step.address}</span>
                   </div>
                 )}
                 {step.what_to_bring && (
-                  <div className="flex items-start gap-2 bg-cornsilk p-3 rounded-lg mt-2">
-                    <span>🎒</span>
+                  <div className="mt-2 flex items-start gap-2 rounded-xl border border-amber-200 bg-amber-50 p-3">
+                    <MessageSquareText className="mt-0.5 h-4 w-4 text-amber-700" strokeWidth={2} aria-hidden="true" />
                     <div>
-                      <span className="font-bold block text-sm">What to bring:</span>
-                      <span>{step.what_to_bring}</span>
+                      <span className="block text-sm font-semibold text-amber-800">What to bring:</span>
+                      <span className="text-base text-amber-900">{step.what_to_bring}</span>
                     </div>
                   </div>
                 )}
@@ -77,8 +78,9 @@ export default function ActionPlanCard({ plan, onExecuteCall, onExecuteEmail, on
                       service_name: step.service_name,
                       message_script: `Hello, I am calling about ${step.service_name}. ${step.description}`,
                     })}
-                    className="flex-1 min-w-[140px] min-h-[48px] bg-golden text-white font-bold rounded-lg px-4 py-2 hover:bg-[#A67C00] transition-colors shadow-sm text-sm sm:text-base"
+                    className="flex min-h-[52px] min-w-[140px] flex-1 items-center justify-center gap-2 rounded-xl bg-[#334155] px-3 text-base font-semibold text-white transition-colors hover:bg-[#1e293b]"
                   >
+                    <PhoneCall className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
                     Call for Me
                   </button>
                 )}
@@ -89,43 +91,43 @@ export default function ActionPlanCard({ plan, onExecuteCall, onExecuteEmail, on
                       subject: `Inquiry about ${step.service_name}`,
                       body_html: `<p>${step.description}</p>`,
                     })}
-                    className="flex-1 min-w-[140px] min-h-[48px] bg-white border-2 border-golden text-golden font-bold rounded-lg px-4 py-2 hover:bg-cornsilk transition-colors shadow-sm text-sm sm:text-base"
+                    className="flex min-h-[52px] min-w-[140px] flex-1 items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-3 text-base font-semibold text-[#334155] transition-colors hover:bg-[#F8FAFC]"
                   >
+                    <Mail className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
                     Email for Me
                   </button>
                 )}
               </div>
             </div>
-             
-             {index < plan.steps.length - 1 && (
-               <div className="w-full h-px bg-[#F5DEB3] mt-8 mb-4 opacity-50" />
-             )}
           </div>
         ))}
       </div>
 
-      <div className="mt-8 pt-6 border-t-2 border-[#F5DEB3] flex flex-col gap-4">
-        <div className="flex flex-col sm:flex-row gap-4">
-           <button
-             onClick={() => setShowSms(!showSms)}
-             className="flex-1 min-h-[48px] bg-accent text-white font-bold rounded-lg px-6 py-3 hover:bg-[#6d360f] transition-colors shadow-sm"
-           >
-             📱 Text This Plan to My Phone
-           </button>
-           
-           <button
-             onClick={handleDownload}
-             className="flex-1 min-h-[48px] bg-white border-2 border-accent text-accent font-bold rounded-lg px-6 py-3 hover:bg-gray-50 transition-colors shadow-sm"
-           >
-             ⬇️ Download Plan
-           </button>
+      <div className="mt-4 flex flex-col gap-2 border-t border-slate-200 pt-3">
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <button
+            onClick={() => setShowSms(!showSms)}
+            className="flex min-h-[52px] flex-1 items-center justify-center gap-2 rounded-xl bg-[#334155] px-4 text-base font-semibold text-white transition-colors hover:bg-[#1e293b]"
+          >
+            <MessageSquareText className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
+            Text This Plan
+          </button>
 
-           <button
-             onClick={() => window.print()}
-             className="flex-1 min-h-[48px] bg-white border-2 border-golden text-golden font-bold rounded-lg px-6 py-3 hover:bg-cornsilk transition-colors shadow-sm"
-           >
-             🖨️ Print Plan
-           </button>
+          <button
+            onClick={handleDownload}
+            className="flex min-h-[52px] flex-1 items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-4 text-base font-semibold text-[#334155] transition-colors hover:bg-[#F8FAFC]"
+          >
+            <Download className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
+            Download Plan
+          </button>
+
+          <button
+            onClick={() => window.print()}
+            className="flex min-h-[52px] flex-1 items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-4 text-base font-semibold text-[#334155] transition-colors hover:bg-[#F8FAFC]"
+          >
+            <Printer className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
+            Print Plan
+          </button>
         </div>
 
         {showSms && (

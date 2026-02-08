@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Mic, MicOff, PhoneCall, PhoneOff, Radio } from 'lucide-react';
 
 export default function CallStatus({ recipientName, status, onEnd }) {
   const [duration, setDuration] = useState(0);
@@ -21,22 +22,22 @@ export default function CallStatus({ recipientName, status, onEnd }) {
   };
 
   return (
-    <div className="bg-white border-2 border-green-500 rounded-xl p-6 shadow-md mt-4 animate-fade-in">
+    <div className="mt-2 animate-fade-in rounded-2xl border border-emerald-300 bg-white p-4 shadow-sm">
       <div className="flex flex-col items-center justify-center text-center">
-        <h3 className="text-xl font-bold mb-2">
+        <h3 className="mb-2 text-lg font-semibold text-[#1e293b]">
           {status === 'ended' ? 'Call Ended' : `Calling ${recipientName}...`}
         </h3>
-        
+
         {status !== 'ended' && (
-          <div className="flex items-center gap-2 mb-4">
-             <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
-             <span className="font-bold text-red-500 text-lg uppercase tracking-wider">
+          <div className="mb-4 flex items-center gap-2">
+             <div className="h-3 w-3 animate-pulse rounded-full bg-red-500" />
+             <span className="text-base font-semibold uppercase tracking-[0.08em] text-red-600">
                Live Call in Progress
              </span>
           </div>
         )}
 
-        <div className="text-4xl font-mono font-bold mb-6 text-textbrown">
+        <div className="mb-6 text-4xl font-mono font-semibold text-[#334155]">
           {formatTime(duration)}
         </div>
 
@@ -44,31 +45,37 @@ export default function CallStatus({ recipientName, status, onEnd }) {
           <>
             <button
               onClick={() => setIsMuted(!isMuted)}
-              className={`min-w-[200px] min-h-[56px] font-bold rounded-xl text-xl transition-colors shadow-sm mb-3 ${
-                isMuted ? 'bg-golden text-white' : 'bg-white border-2 border-golden text-golden hover:bg-cornsilk'
+              className={`mb-3 flex min-h-[52px] min-w-[190px] items-center justify-center gap-2 rounded-xl text-base font-semibold transition-colors ${
+                isMuted ? 'bg-[#334155] text-white' : 'border border-slate-300 bg-white text-[#334155] hover:bg-[#F8FAFC]'
               }`}
             >
-              {isMuted ? '🔇 Unmute' : '🔊 Mute'}
+              {isMuted ? <Mic className="h-5 w-5" strokeWidth={2} aria-hidden="true" /> : <MicOff className="h-5 w-5" strokeWidth={2} aria-hidden="true" />}
+              {isMuted ? 'Unmute' : 'Mute'}
             </button>
 
             <button
               onClick={() => alert('Taking over the call — you will be connected directly with the service provider.')}
-              className="min-w-[200px] min-h-[56px] bg-accent text-white font-bold rounded-xl text-xl hover:bg-[#6d360f] transition-colors shadow-sm mb-3"
+              className="mb-3 flex min-h-[52px] min-w-[190px] items-center justify-center gap-2 rounded-xl bg-[#334155] text-base font-semibold text-white transition-colors hover:bg-[#1e293b]"
             >
-              📞 Take Over Call
+              <PhoneCall className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
+              Take Over Call
             </button>
 
-            <div className="w-full bg-cornsilk border border-[#F5DEB3] rounded-xl p-4 mb-4 text-left">
-              <h4 className="font-bold text-sm uppercase text-golden mb-2">Live Transcript</h4>
-              <p className="text-base text-textbrown/70 italic">
+            <div className="mb-4 w-full rounded-xl border border-slate-200 bg-[#F8FAFC] p-4 text-left">
+              <h4 className="mb-2 flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.08em] text-[#64748B]">
+                <Radio className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
+                Live Transcript
+              </h4>
+              <p className="text-base italic text-[#64748B]">
                 Live transcript will appear here when WebSocket support is available...
               </p>
             </div>
 
             <button
               onClick={onEnd}
-              className="min-w-[200px] min-h-[56px] bg-danger text-white font-bold rounded-xl text-xl hover:bg-red-700 transition-colors shadow-lg"
+              className="flex min-h-[52px] min-w-[190px] items-center justify-center gap-2 rounded-xl bg-red-600 text-base font-semibold text-white transition-colors hover:bg-red-700"
             >
+              <PhoneOff className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
               End Call
             </button>
           </>
