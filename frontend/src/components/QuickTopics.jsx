@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default function QuickTopics({ onSelect }) {
-  const topics = [
+export default function QuickTopics({ onSelect, language = 'en' }) {
+  const topicsEn = [
     { emoji: '🚌', label: 'Transit', query: 'How do I take the bus in Kingston? What are senior transit options?' },
     { emoji: '🏠', label: 'Housing', query: 'What housing assistance programs are available for seniors in Kingston?' },
     { emoji: '🏥', label: 'Health', query: 'What health services and dental programs are available for seniors in Kingston?' },
@@ -9,6 +9,17 @@ export default function QuickTopics({ onSelect }) {
     { emoji: '💰', label: 'Financial Help', query: 'What financial assistance programs are available for seniors in Kingston?' },
     { emoji: '♿', label: 'Accessibility', query: 'What accessibility services and disability support are available in Kingston?' },
   ];
+
+  const topicsFr = [
+    { emoji: '🚌', label: 'Transport', query: "Comment prendre l'autobus à Kingston? Quelles sont les options de transport pour les aînés?" },
+    { emoji: '🏠', label: 'Logement', query: "Quels programmes d'aide au logement sont disponibles pour les aînés à Kingston?" },
+    { emoji: '🏥', label: 'Santé', query: 'Quels services de santé et programmes dentaires sont disponibles pour les aînés à Kingston?' },
+    { emoji: '🎨', label: 'Activités', query: 'Quelles activités et programmes de loisirs sont disponibles pour les aînés à Kingston?' },
+    { emoji: '💰', label: 'Aide financière', query: "Quels programmes d'aide financière sont disponibles pour les aînés à Kingston?" },
+    { emoji: '♿', label: 'Accessibilité', query: "Quels services d'accessibilité et de soutien aux personnes handicapées sont disponibles à Kingston?" },
+  ];
+
+  const topics = language === 'fr' ? topicsFr : topicsEn;
 
   return (
     <div className="grid grid-cols-2 gap-4 w-full p-2">

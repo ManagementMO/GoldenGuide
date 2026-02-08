@@ -207,7 +207,7 @@ export default function Home() {
                   : "I can help you find Kingston city services, check what you qualify for, and even make phone calls or send emails on your behalf. Ask me anything, or tap a topic below:"}
               </p>
             </div>
-            <QuickTopics onSelect={sendMessage} />
+            <QuickTopics onSelect={sendMessage} language={language} />
           </div>
         )}
 
