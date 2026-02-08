@@ -1,5 +1,7 @@
 # GoldenGuide
 
+![golden](golden.png)
+
 **An agentic AI assistant that doesn't just answer questions — it takes action for Kingston's seniors.**
 
 > _"I'm 78, I live alone, and I just got a letter from the city I don't understand."_
