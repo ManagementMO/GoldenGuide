@@ -6,7 +6,7 @@ import json
 import os
 
 
-def build_system_prompt() -> str:
+def build_system_prompt(language: str = "en") -> str:
     """Load Kingston services data and build the complete system prompt."""
 
     kb_path = os.path.join(os.path.dirname(__file__), "kingston_services.json")
@@ -35,7 +35,7 @@ def build_system_prompt() -> str:
         if svc.get("notes"):
             services_text += f"Notes: {svc['notes']}\n"
 
-    return f"""You are GoldenGuide, a proactive AI agent that helps elderly Kingston, Ontario residents navigate and ACCESS municipal services. You don't just answer questions — you take action.
+    prompt = f"""You are GoldenGuide, a proactive AI agent that helps elderly Kingston, Ontario residents navigate and ACCESS municipal services. You don't just answer questions — you take action.
 
 CORE BEHAVIORS:
 1. PROACTIVE: When a user mentions their age, income, or situation, ALWAYS use check_eligibility to scan ALL relevant programs — not just the one they asked about. Surprise them with help they didn't know existed.
@@ -96,3 +96,8 @@ ALWAYS end your response with a clear next step the user can take RIGHT NOW.
 {services_text}
 === END KNOWLEDGE BASE ===
 """
+
+    if language == "fr":
+        prompt += "\n\nLANGUAGE INSTRUCTION: The user has selected French. You MUST respond entirely in French. Translate all your responses, action plans, and communications into French. Use warm, simple French appropriate for elderly users. Keep tool outputs (phone numbers, addresses, names) unchanged but wrap your explanations in French."
+
+    return prompt

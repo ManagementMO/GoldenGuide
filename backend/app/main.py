@@ -5,7 +5,7 @@ Serves the chat API endpoint and action execution endpoints.
 
 from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, StreamingResponse
 from dotenv import load_dotenv
 from pydantic import BaseModel
 from typing import Optional
@@ -28,7 +28,7 @@ app.add_middleware(
 )
 
 # Import after env is loaded
-from app.agent import agent_chat
+from app.agent import agent_chat, agent_chat_stream
 from tools.send_email import execute_send_email
 from tools.send_sms import execute_send_sms
 from tools.place_call import execute_place_call
@@ -41,6 +41,7 @@ from tools.create_reminder import generate_ics_file
 class ChatRequest(BaseModel):
     message: str
     history: list = []
+    language: str = "en"
 
 
 class ChatResponse(BaseModel):
@@ -89,13 +90,22 @@ async def chat(request: ChatRequest):
     """
     Main chat endpoint. Sends user message through the Gemini agentic loop.
     """
-    result = await agent_chat(request.message, request.history)
+    result = await agent_chat(request.message, request.history, language=request.language)
     return ChatResponse(
         text=result["text"],
         history=result["history"],
         structured_data=result.get("structured_data", {}),
         tool_calls_made=result.get("tool_calls_made", []),
     )
+
+
+@app.post("/api/chat/stream")
+async def chat_stream(request: ChatRequest):
+    """SSE streaming chat endpoint - sends tool call events in real-time."""
+    async def event_generator():
+        async for event in agent_chat_stream(request.message, request.history, request.language):
+            yield f"event: {event['event']}\ndata: {json.dumps(event['data'])}\n\n"
+    return StreamingResponse(event_generator(), media_type="text/event-stream")
 
 
 @app.post("/api/chat/image")
@@ -165,7 +175,7 @@ async def text_to_speech(text: str = Form(...)):
 
         audio_generator = client.text_to_speech.convert(
             text=text,
-            voice_id="21m00Tcm4TlvDq8ikWAM",
+            voice_id=os.getenv("ELEVENLABS_VOICE_ID", "21m00Tcm4TlvDq8ikWAM"),
             model_id="eleven_multilingual_v2",
             output_format="mp3_44100_128",
         )

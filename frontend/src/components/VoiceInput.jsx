@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-export default function VoiceInput({ onTranscript, disabled }) {
+export default function VoiceInput({ onTranscript, disabled, language = 'en' }) {
   const [isListening, setIsListening] = useState(false);
   const recognitionRef = useRef(null);
   const [isSupported, setIsSupported] = useState(true);
@@ -12,7 +12,7 @@ export default function VoiceInput({ onTranscript, disabled }) {
         recognitionRef.current = new SpeechRecognition();
         recognitionRef.current.continuous = false;
         recognitionRef.current.interimResults = false;
-        recognitionRef.current.lang = 'en-US';
+        recognitionRef.current.lang = language === 'fr' ? 'fr-CA' : 'en-US';
 
         recognitionRef.current.onresult = (event) => {
           const transcript = event.results[0][0].transcript;
@@ -32,7 +32,7 @@ export default function VoiceInput({ onTranscript, disabled }) {
         setIsSupported(false);
       }
     }
-  }, [onTranscript]);
+  }, [onTranscript, language]);
 
   const toggleListening = () => {
     if (isListening) {

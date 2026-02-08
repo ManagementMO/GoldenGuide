@@ -369,7 +369,7 @@ def _sanitize_history_for_genai(history: list) -> list:
 
 
 async def agent_chat(
-    user_message: str, history: list, image_data: str = None, image_mime: str = None
+    user_message: str, history: list, language: str = "en", image_data: str = None, image_mime: str = None
 ) -> dict:
     """
     The core agentic loop.
@@ -381,7 +381,7 @@ async def agent_chat(
     """
     client = genai.Client(api_key=GEMINI_API_KEY)
 
-    system_prompt = build_system_prompt()
+    system_prompt = build_system_prompt(language=language)
 
     tools = types.Tool(function_declarations=tool_declarations)
     config = types.GenerateContentConfig(
@@ -508,3 +508,81 @@ async def agent_chat(
         "structured_data": structured_data,
         "tool_calls_made": tool_calls_made,
     }
+
+
+async def agent_chat_stream(user_message: str, history: list, language: str = "en", image_data: str = None, image_mime: str = None):
+    """Streaming version of agent_chat that yields SSE events."""
+    client = genai.Client(api_key=GEMINI_API_KEY)
+    system_prompt = build_system_prompt(language=language)
+    tools = types.Tool(function_declarations=tool_declarations)
+    config = types.GenerateContentConfig(tools=[tools], system_instruction=system_prompt, temperature=1.0)
+
+    history = _sanitize_history_for_genai(history)
+    user_parts = []
+    if image_data:
+        user_parts.append({"inline_data": {"mime_type": image_mime or "image/jpeg", "data": image_data}})
+    user_parts.append({"text": user_message})
+    history.append({"role": "user", "parts": user_parts})
+
+    structured_data = {}
+    tool_calls_made = []
+    max_iterations = 8
+    text_response = ""
+
+    for iteration in range(max_iterations):
+        yield {"event": "thinking", "data": {"iteration": iteration + 1}}
+
+        try:
+            response = client.models.generate_content(model="gemini-2.0-flash", config=config, contents=history)
+        except Exception as e:
+            yield {"event": "complete", "data": {"text": "I'm having trouble connecting right now. Please try again in a moment.", "history": history, "structured_data": structured_data, "tool_calls_made": tool_calls_made}}
+            return
+
+        tool_calls = []
+        text_response = ""
+        for part in response.candidates[0].content.parts:
+            if hasattr(part, "function_call") and part.function_call:
+                tool_calls.append(part.function_call)
+            if hasattr(part, "text") and part.text:
+                text_response += part.text
+
+        if not tool_calls:
+            history.append({"role": "model", "parts": [{"text": text_response}]})
+            yield {"event": "complete", "data": {"text": text_response, "history": history, "structured_data": structured_data, "tool_calls_made": tool_calls_made}}
+            return
+
+        tool_results = []
+        for call in tool_calls:
+            func_name = call.name
+            func_args = dict(call.args) if call.args else {}
+            tool_calls_made.append(func_name)
+
+            yield {"event": "tool_start", "data": {"tool": func_name}}
+
+            try:
+                result = TOOL_FUNCTIONS[func_name](**func_args)
+            except Exception as e:
+                result = {"error": str(e)}
+
+            yield {"event": "tool_done", "data": {"tool": func_name}}
+
+            tool_results.append({"function_response": {"name": func_name, "response": _normalize_function_response_payload(result)}})
+
+            # Track structured outputs
+            if func_name == "generate_action_plan":
+                structured_data["action_plan"] = result
+            elif func_name == "draft_communication":
+                structured_data["draft"] = result
+            elif func_name == "create_reminder":
+                structured_data["reminder"] = result
+            elif func_name == "check_eligibility":
+                structured_data["eligibility"] = result
+            elif func_name == "explain_document":
+                structured_data["document_explanation"] = result
+            elif func_name in ("place_call", "send_email", "send_sms"):
+                structured_data.setdefault("pending_actions", []).append(result)
+
+        history.append({"role": "model", "parts": [{"function_call": {"name": tc.name, "args": dict(tc.args) if tc.args else {}}} for tc in tool_calls]})
+        history.append({"role": "user", "parts": tool_results})
+
+    yield {"event": "complete", "data": {"text": text_response or "I'm still working on that — let me know if you'd like me to try again.", "history": history, "structured_data": structured_data, "tool_calls_made": tool_calls_made}}

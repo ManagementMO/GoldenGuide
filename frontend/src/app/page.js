@@ -5,7 +5,7 @@ import Header from '../components/Header';
 import ChatWindow from '../components/ChatWindow';
 import ChatInput from '../components/ChatInput';
 import QuickTopics from '../components/QuickTopics';
-import LoadingIndicator from '../components/LoadingIndicator';
+import ToolActivity from '../components/ToolActivity';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
@@ -14,6 +14,9 @@ export default function Home() {
   const [history, setHistory] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [fontSize, setFontSize] = useState('normal');
+  const [language, setLanguage] = useState('en');
+  const [activeTools, setActiveTools] = useState([]);
+  const [completedTools, setCompletedTools] = useState([]);
   const chatEndRef = useRef(null);
 
   useEffect(() => {
@@ -56,23 +59,55 @@ export default function Home() {
     const userMsg = { role: 'user', text: text.trim() };
     setMessages((prev) => [...prev, userMsg]);
     setIsLoading(true);
+    setActiveTools([]);
+    setCompletedTools([]);
 
     try {
-      const res = await fetch(`${API_URL}/api/chat`, {
+      const res = await fetch(`${API_URL}/api/chat/stream`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: text.trim(), history }),
+        body: JSON.stringify({ message: text.trim(), history, language }),
       });
-      const data = await res.json();
 
-      const agentMsg = {
-        role: 'agent',
-        text: data.text,
-        structured_data: data.structured_data || {},
-        tool_calls_made: data.tool_calls_made || [],
-      };
-      setMessages((prev) => [...prev, agentMsg]);
-      setHistory(data.history);
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = '';
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split('\n');
+        buffer = lines.pop() || '';
+
+        let currentEvent = null;
+        for (const line of lines) {
+          if (line.startsWith('event: ')) {
+            currentEvent = line.slice(7);
+          } else if (line.startsWith('data: ') && currentEvent) {
+            try {
+              const data = JSON.parse(line.slice(6));
+              if (currentEvent === 'tool_start') {
+                setActiveTools((prev) => [...prev, data.tool]);
+              } else if (currentEvent === 'tool_done') {
+                setActiveTools((prev) => prev.filter((t) => t !== data.tool));
+                setCompletedTools((prev) => [...prev, data.tool]);
+              } else if (currentEvent === 'complete') {
+                const agentMsg = {
+                  role: 'agent',
+                  text: data.text,
+                  structured_data: data.structured_data || {},
+                  tool_calls_made: data.tool_calls_made || [],
+                };
+                setMessages((prev) => [...prev, agentMsg]);
+                setHistory(data.history);
+              }
+            } catch (e) {}
+            currentEvent = null;
+          }
+        }
+      }
     } catch (err) {
       setMessages((prev) => [
         ...prev,
@@ -80,6 +115,8 @@ export default function Home() {
       ]);
     } finally {
       setIsLoading(false);
+      setActiveTools([]);
+      setCompletedTools([]);
     }
   };
 
@@ -155,19 +192,19 @@ export default function Home() {
 
   return (
     <div className="flex flex-col h-screen max-w-3xl mx-auto">
-      <Header fontSize={fontSize} onFontSizeChange={setFontSize} />
+      <Header fontSize={fontSize} onFontSizeChange={setFontSize} language={language} onLanguageChange={setLanguage} />
 
       <main className="flex-1 overflow-y-auto chat-scroll px-4 pb-4">
         {messages.length === 0 && (
           <div className="mt-8">
             <div className="bg-cornsilk rounded-2xl p-6 mb-6 text-center shadow-sm">
               <h2 className="font-heading text-heading text-golden font-bold mb-2">
-                Welcome! I'm GoldenGuide.
+                {language === 'fr' ? 'Bienvenue! Je suis GoldenGuide.' : "Welcome! I'm GoldenGuide."}
               </h2>
               <p className="text-textbrown">
-                I can help you find Kingston city services, check what you qualify for,
-                and even make phone calls or send emails on your behalf.
-                Ask me anything, or tap a topic below:
+                {language === 'fr'
+                  ? "Je peux vous aider \u00e0 trouver les services municipaux de Kingston, v\u00e9rifier vos admissibilit\u00e9s, et m\u00eame passer des appels ou envoyer des courriels en votre nom. Posez-moi une question ou choisissez un sujet ci-dessous :"
+                  : "I can help you find Kingston city services, check what you qualify for, and even make phone calls or send emails on your behalf. Ask me anything, or tap a topic below:"}
               </p>
             </div>
             <QuickTopics onSelect={sendMessage} />
@@ -182,7 +219,7 @@ export default function Home() {
           apiUrl={API_URL}
         />
 
-        {isLoading && <LoadingIndicator />}
+        {isLoading && <ToolActivity activeTools={activeTools} completedTools={completedTools} />}
         <div ref={chatEndRef} />
       </main>
 
@@ -190,6 +227,7 @@ export default function Home() {
         onSend={sendMessage}
         onSendImage={sendImage}
         disabled={isLoading}
+        language={language}
       />
     </div>
   );

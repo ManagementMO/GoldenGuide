@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Header({ fontSize, onFontSizeChange }) {
+export default function Header({ fontSize, onFontSizeChange, language, onLanguageChange }) {
   return (
     <header className="sticky top-0 z-10 w-full bg-golden text-white p-4 shadow-md flex flex-row items-center justify-between font-heading">
       <div className="flex flex-col">
@@ -31,6 +31,21 @@ export default function Header({ fontSize, onFontSizeChange }) {
           aria-label="Large font size"
         >
           A+
+        </button>
+        <div className="border-l-2 border-white/30 h-8 mx-1"></div>
+        <button
+          onClick={() => onLanguageChange('en')}
+          className={`min-w-[48px] min-h-[48px] rounded-lg border-2 border-white/50 px-3 font-bold text-lg hover:bg-white/10 transition-colors ${language === 'en' ? 'bg-white/20' : 'bg-transparent'}`}
+          aria-label="Switch to English"
+        >
+          EN
+        </button>
+        <button
+          onClick={() => onLanguageChange('fr')}
+          className={`min-w-[48px] min-h-[48px] rounded-lg border-2 border-white/50 px-3 font-bold text-lg hover:bg-white/10 transition-colors ${language === 'fr' ? 'bg-white/20' : 'bg-transparent'}`}
+          aria-label="Passer au français"
+        >
+          FR
         </button>
       </div>
     </header>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import VoiceInput from './VoiceInput';
 import DocumentUpload from './DocumentUpload';
 
-export default function ChatInput({ onSend, onSendImage, disabled }) {
+export default function ChatInput({ onSend, onSendImage, disabled, language }) {
   const [text, setText] = useState('');
 
   const handleSend = () => {
@@ -53,7 +53,7 @@ export default function ChatInput({ onSend, onSendImage, disabled }) {
       </div>
 
       <div className="flex-shrink-0 flex gap-2">
-         <VoiceInput onTranscript={handleTranscript} disabled={disabled} />
+         <VoiceInput onTranscript={handleTranscript} disabled={disabled} language={language} />
 
         <button
           onClick={handleSend}
