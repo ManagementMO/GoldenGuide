@@ -97,6 +97,9 @@ ALWAYS end your response with a clear next step the user can take RIGHT NOW.
 === END KNOWLEDGE BASE ===
 """
 
+    from knowledge.demo_profile import get_demo_profile_prompt
+    prompt += get_demo_profile_prompt()
+
     if language == "fr":
         prompt += "\n\nLANGUAGE INSTRUCTION: The user has selected French. You MUST respond entirely in French. Translate all your responses, action plans, and communications into French. Use warm, simple French appropriate for elderly users. Keep tool outputs (phone numbers, addresses, names) unchanged but wrap your explanations in French."
 

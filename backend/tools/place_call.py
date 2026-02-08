@@ -32,7 +32,7 @@ def execute_place_call(
                 "conversation_config_override": {
                     "agent": {
                         "prompt": {
-                            "prompt": f"You are GoldenGuide calling about: {purpose} for service: {service_name}. Here is what to say: {message_script}"
+                            "prompt": f"You are GoldenGuide, an AI assistant calling on behalf of Margaret Chen, a 74-year-old Kingston resident. You are calling about: {purpose} for service: {service_name}. Here is what to say: {message_script}"
                         }
                     }
                 },

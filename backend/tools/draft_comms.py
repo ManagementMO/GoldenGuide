@@ -1,5 +1,7 @@
 """Tool 5: Draft email or phone call script."""
 
+from knowledge.demo_profile import DEMO_PROFILE
+
 
 def draft_communication_impl(
     type: str,
@@ -11,6 +13,14 @@ def draft_communication_impl(
     """
     Draft an email and/or phone call script.
     """
+    if not user_details:
+        p = DEMO_PROFILE
+        user_details = (
+            f"My name is {p['name']}, I am {p['age']} years old, "
+            f"living at {p['address']}. I am on a {p['income_level']} income "
+            f"({p['income_details']}) and live alone."
+        )
+
     result = {}
 
     if type in ("email", "both"):

@@ -12,6 +12,7 @@ from google.genai import types
 GEMINI_MODEL = "gemini-3-flash-preview"
 
 from knowledge.system_prompt import build_system_prompt
+from knowledge.demo_profile import DEMO_PROFILE
 from tools.search_services import search_services_impl
 from tools.check_eligibility import check_eligibility_impl
 from tools.get_transit import get_transit_info_impl
@@ -58,7 +59,7 @@ TOOL_FUNCTIONS = {
         "action": "send_sms",
         "phone_number": kwargs.get("phone_number", ""),
         "message": kwargs.get("message", ""),
-        "caregiver_number": kwargs.get("caregiver_number"),
+        "caregiver_number": kwargs.get("caregiver_number") or DEMO_PROFILE["family"]["daughter_phone"],
         "requires_confirmation": True,
     },
 }
