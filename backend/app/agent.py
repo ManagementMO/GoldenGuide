@@ -413,11 +413,19 @@ async def agent_chat(
     max_iterations = 8  # Safety limit
 
     for _ in range(max_iterations):
-        response = client.models.generate_content(
-            model="gemini-2.0-flash",
-            config=config,
-            contents=history,
-        )
+        try:
+            response = client.models.generate_content(
+                model="gemini-2.0-flash",
+                config=config,
+                contents=history,
+            )
+        except Exception as e:
+            return {
+                "text": f"I'm having trouble connecting right now. Please try again in a moment.",
+                "history": history,
+                "structured_data": structured_data,
+                "tool_calls_made": tool_calls_made,
+            }
 
         # Parse response parts
         tool_calls = []

@@ -158,21 +158,24 @@ async def create_reminder(request: ReminderRequest):
 @app.post("/api/tts")
 async def text_to_speech(text: str = Form(...)):
     """Generate speech audio from text using ElevenLabs TTS."""
-    from elevenlabs import ElevenLabs
+    try:
+        from elevenlabs import ElevenLabs
 
-    client = ElevenLabs(api_key=os.getenv("ELEVENLABS_API_KEY"))
+        client = ElevenLabs(api_key=os.getenv("ELEVENLABS_API_KEY"))
 
-    audio_generator = client.text_to_speech.convert(
-        text=text,
-        voice_id="21m00Tcm4TlvDq8ikWAM",
-        model_id="eleven_multilingual_v2",
-        output_format="mp3_44100_128",
-    )
+        audio_generator = client.text_to_speech.convert(
+            text=text,
+            voice_id="21m00Tcm4TlvDq8ikWAM",
+            model_id="eleven_multilingual_v2",
+            output_format="mp3_44100_128",
+        )
 
-    audio_bytes = b"".join(audio_generator)
+        audio_bytes = b"".join(audio_generator)
 
-    filepath = "/tmp/goldenguide_tts.mp3"
-    with open(filepath, "wb") as f:
-        f.write(audio_bytes)
+        filepath = "/tmp/goldenguide_tts.mp3"
+        with open(filepath, "wb") as f:
+            f.write(audio_bytes)
 
-    return FileResponse(filepath, media_type="audio/mpeg")
+        return FileResponse(filepath, media_type="audio/mpeg")
+    except Exception as e:
+        return {"status": "error", "message": "Text-to-speech is temporarily unavailable."}
