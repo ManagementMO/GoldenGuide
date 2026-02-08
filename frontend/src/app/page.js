@@ -24,6 +24,32 @@ export default function Home() {
     document.documentElement.classList.toggle('large-text', fontSize === 'large');
   }, [fontSize]);
 
+  // Demo safety net: Ctrl+Shift+D loads a cached response for offline demos
+  useEffect(() => {
+    const handleDemoKey = async (e) => {
+      if (e.ctrlKey && e.shiftKey && e.key === 'D') {
+        e.preventDefault();
+        try {
+          const res = await fetch('/demo_cache.json');
+          const data = await res.json();
+          const userMsg = { role: 'user', text: "I'm 73, I live alone, I can't afford the dentist" };
+          const agentMsg = {
+            role: 'agent',
+            text: data.text,
+            structured_data: data.structured_data || {},
+            tool_calls_made: data.tool_calls_made || [],
+          };
+          setMessages([userMsg, agentMsg]);
+          setHistory(data.history || []);
+        } catch (err) {
+          console.error('Failed to load demo cache:', err);
+        }
+      }
+    };
+    window.addEventListener('keydown', handleDemoKey);
+    return () => window.removeEventListener('keydown', handleDemoKey);
+  }, []);
+
   const sendMessage = async (text) => {
     if (!text.trim() || isLoading) return;
 

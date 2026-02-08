@@ -8,13 +8,14 @@ export default function SmsCard({ onSend, message }) {
 
   const handleSend = async () => {
     if (!phone) return;
-    
+
     setStatus('sending');
     try {
-      const phones = [phone];
-      if (showSecond && secondPhone) phones.push(secondPhone);
-      
-      await onSend({ phones, message });
+      await onSend({
+        to_number: phone,
+        message,
+        caregiver_number: showSecond && secondPhone ? secondPhone : null,
+      });
       setStatus('success');
     } catch (err) {
       console.error(err);

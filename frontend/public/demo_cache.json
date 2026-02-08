@@ -1,0 +1,59 @@
+{
+  "text": "I understand how stressful dental costs can be, especially on a fixed income. The good news is there are **several programs in Kingston** that can help you get affordable dental care.\n\nHere's what I found for you:\n\n**1. Ontario Seniors Dental Care Program (OSDCP)**\nThis is a provincial program specifically for Ontario seniors aged 65+ with an annual income under $22,200 (single) or $37,100 (couple). It covers a wide range of dental services including checkups, cleanings, fillings, extractions, and dentures — all at no cost to you.\n\n**2. Kingston Community Health Centres (KCHC)**\nThe KCHC offers dental services on a sliding scale based on your income. They are very welcoming to seniors and can often see you sooner than other options.\n\n**3. KFL&A Public Health Dental Programs**\nPublic Health also runs dental clinics for low-income residents. You may qualify for free preventive and basic dental care through their programs.\n\nI've put together an action plan below with the steps to get started. The most important first step is calling the Ontario Seniors Dental Care Program — they can often get you enrolled within a couple of weeks.",
+  "structured_data": {
+    "action_plan": {
+      "steps": [
+        {
+          "service_name": "Ontario Seniors Dental Care Program",
+          "description": "Call to check your eligibility and enrol. You will need your Ontario Health Card and proof of income (tax return or pension statement).",
+          "phone": "1-833-509-0444",
+          "address": "Provincial program — enrollment by phone",
+          "what_to_bring": "Ontario Health Card, most recent Notice of Assessment or pension income statement",
+          "icon": "🦷"
+        },
+        {
+          "service_name": "Kingston Community Health Centres",
+          "description": "Book a dental appointment on their sliding-scale fee program. Mention that you are a senior on a fixed income.",
+          "phone": "613-542-2949",
+          "email": "info@kchc.ca",
+          "address": "263 Weller Ave, Kingston, ON K7K 2V4",
+          "what_to_bring": "Photo ID, Ontario Health Card, any current dental records",
+          "icon": "🏥"
+        },
+        {
+          "service_name": "KFL&A Public Health — Dental Programs",
+          "description": "Contact Public Health to see if you qualify for their free dental clinic for low-income adults and seniors.",
+          "phone": "613-549-1232",
+          "email": "info@kflaph.ca",
+          "address": "221 Portsmouth Ave, Kingston, ON K7M 1V5",
+          "what_to_bring": "Proof of income, Ontario Health Card, photo ID",
+          "icon": "🏛️"
+        }
+      ]
+    },
+    "eligibility": {
+      "programs": [
+        {
+          "name": "Ontario Seniors Dental Care Program",
+          "eligible": true,
+          "reason": "You are 73 years old (meets 65+ requirement) and likely qualify based on income"
+        },
+        {
+          "name": "Kingston Community Health Centres Dental",
+          "eligible": true,
+          "reason": "Sliding scale available to all Kingston residents regardless of income"
+        },
+        {
+          "name": "KFL&A Public Health Dental Clinic",
+          "eligible": true,
+          "reason": "Available to low-income residents without dental insurance"
+        }
+      ]
+    }
+  },
+  "history": [
+    {"role": "user", "parts": [{"text": "I'm 73, I live alone, I can't afford the dentist"}]},
+    {"role": "model", "parts": [{"text": "I understand how stressful dental costs can be, especially on a fixed income. Let me look into affordable dental options for you in Kingston."}]}
+  ],
+  "tool_calls_made": ["search_services", "check_eligibility"]
+}

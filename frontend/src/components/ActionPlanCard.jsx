@@ -70,16 +70,25 @@ export default function ActionPlanCard({ plan, onExecuteCall, onExecuteEmail, on
 
               <div className="flex flex-wrap gap-3">
                 {step.phone && onExecuteCall && (
-                  <button 
-                    onClick={() => onExecuteCall(step)}
+                  <button
+                    onClick={() => onExecuteCall({
+                      to_number: step.phone,
+                      purpose: step.description,
+                      service_name: step.service_name,
+                      message_script: `Hello, I am calling about ${step.service_name}. ${step.description}`,
+                    })}
                     className="flex-1 min-w-[140px] min-h-[48px] bg-golden text-white font-bold rounded-lg px-4 py-2 hover:bg-[#A67C00] transition-colors shadow-sm text-sm sm:text-base"
                   >
                     Call for Me
                   </button>
                 )}
                 {step.email && onExecuteEmail && (
-                  <button 
-                    onClick={() => onExecuteEmail(step)}
+                  <button
+                    onClick={() => onExecuteEmail({
+                      to_email: step.email,
+                      subject: `Inquiry about ${step.service_name}`,
+                      body_html: `<p>${step.description}</p>`,
+                    })}
                     className="flex-1 min-w-[140px] min-h-[48px] bg-white border-2 border-golden text-golden font-bold rounded-lg px-4 py-2 hover:bg-cornsilk transition-colors shadow-sm text-sm sm:text-base"
                   >
                     Email for Me
@@ -120,9 +129,9 @@ export default function ActionPlanCard({ plan, onExecuteCall, onExecuteEmail, on
         </div>
 
         {showSms && (
-          <SmsCard 
-            onSend={(data) => onExecuteSms({ ...data, plan })} 
-            message={`Here is your action plan: ${plan.steps.map(s => s.service_name).join(', ')}`}
+          <SmsCard
+            onSend={(data) => onExecuteSms(data)}
+            message={`Your GoldenGuide Action Plan:\n${plan.steps.map((s, i) => `${i + 1}. ${s.service_name} - ${s.description}`).join('\n')}`}
           />
         )}
       </div>
