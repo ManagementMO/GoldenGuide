@@ -1,5 +1,5 @@
-# Kingston Seniors Association
-Source: https://www.seniorskingston.ca/
+# Kingston Seniors Programs
+Source: https://www.seniorskingston.ca/programs
 Scraped: 2026-02-07 21:55
 
 # Kingston Seniors Association (Seniors Association Kingston Region)
