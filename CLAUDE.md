@@ -108,7 +108,7 @@ All tools are pure functions (no classes), load static data at module level, and
 ## Key Patterns to Preserve
 
 - **Relative imports only in frontend** — no `@/` path aliases (no jsconfig.json or tsconfig path mapping). Use `../lib/api`, `./MessageBubble`, etc.
-- **Frontend components are `.jsx`** files using functional components with hooks
+- **Frontend components are `.jsx`** files using functional components with hooks. All use Framer Motion for animations (`motion.div`, `whileHover`, `whileTap`)
 - Tools are self-contained modules in `backend/tools/` — each exports one `_impl` function matching the Gemini tool schema
 - Structured data flows through `structured_data` dict in the agent response, not embedded in message text. Keys: `action_plan`, `draft`, `reminder`, `eligibility`, `document_explanation`, `pending_actions`
 - Action tools return preview objects only — execution happens via separate `/api/call`, `/api/email`, `/api/sms` endpoints after frontend confirmation
@@ -116,14 +116,19 @@ All tools are pure functions (no classes), load static data at module level, and
 - GTFS CSV files require `encoding="utf-8-sig"` to handle BOM
 - French support is runtime-dynamic: system prompt is rewritten when `language="fr"`
 
-### Design System
+### Design System — Glassmorphic Dark Theme
 
-Tailwind with custom theme in `tailwind.config.js`:
-- Colors: golden `#B8860B`, floral `#FFFAF0` (bg), cornsilk `#FFF8DC` (cards), textbrown `#2C1810`
-- Font: Atkinson Hyperlegible (body), Georgia/Merriweather (headings)
+**Aesthetic**: Warm-dark glassmorphic UI with frosted glass panels over ambient golden light orbs.
+
+- **Background**: Dark warm gradient (`#0f0a04` → `#1a1008` → `#2c1810`) with 3 slow-drifting golden radial gradient orbs
+- **Glass cards**: `backdrop-blur(16px)`, `bg-white/7%`, `border-white/10%`, inset top-edge highlight (glossy reflection)
+- **Colors**: golden `#D4A532` (primary), warm-50 `#FFF8E7` (text), success `#4ADE80`, danger `#F87171`
+- **Fonts**: Atkinson Hyperlegible (body/accessibility), Playfair Display (headings/elegance)
+- **Mascot**: "Goldie" the golden retriever (`GoldieMascot.jsx`) — SVG with expression variants (`happy`, `excited`, `thinking`, `concerned`)
+- **Animations**: Framer Motion (`framer-motion`) for spring physics on messages, cards, buttons. CSS keyframes for orb float, mic pulse, golden burst
+- **CSS utility classes**: `.glass`, `.glass-strong`, `.glass-input`, `.btn-golden`, `.btn-glass`, `.btn-success`, `.btn-danger`, `.golden-stripe` — all in `globals.css`
 - Large-text mode: toggles base font 18px → 22px via `html.large-text` class
-- `animate-fade-in` keyframe defined in `globals.css`
-- Print styles target `#printable-action-plan` only
+- Print styles target `#printable-action-plan` only, override dark theme to white for printing
 
 ## No Test Suite or Linting
 

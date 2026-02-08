@@ -38,17 +38,27 @@ TOOL_FUNCTIONS = {
     # Actual execution happens via separate /api/call, /api/email, /api/sms endpoints.
     "place_call": lambda **kwargs: {
         "action": "place_call",
-        "preview": kwargs,
+        "recipient_name": kwargs.get("recipient_name", ""),
+        "phone_number": kwargs.get("target_number", ""),
+        "script": kwargs.get("message_script", ""),
+        "purpose": kwargs.get("user_context", kwargs.get("recipient_name", "")),
+        "service_name": kwargs.get("recipient_name", ""),
         "requires_confirmation": True,
     },
     "send_email": lambda **kwargs: {
         "action": "send_email",
-        "preview": kwargs,
+        "to_email": kwargs.get("to_email", ""),
+        "subject": kwargs.get("subject", ""),
+        "body": kwargs.get("body", ""),
+        "body_html": kwargs.get("body", ""),
+        "recipient_name": kwargs.get("recipient_name", ""),
         "requires_confirmation": True,
     },
     "send_sms": lambda **kwargs: {
         "action": "send_sms",
-        "preview": kwargs,
+        "phone_number": kwargs.get("phone_number", ""),
+        "message": kwargs.get("message", ""),
+        "caregiver_number": kwargs.get("caregiver_number"),
         "requires_confirmation": True,
     },
 }
