@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import styles from './Mascot.module.css';
 
 export default function CallStatus({ recipientName, status, onEnd }) {
   const [duration, setDuration] = useState(0);
@@ -20,8 +21,15 @@ export default function CallStatus({ recipientName, status, onEnd }) {
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
+  const secondaryButtonClass =
+    'min-h-[60px] min-w-[200px] rounded-[0.8rem] border border-[#c4b299] bg-white px-4 py-3 text-lg font-bold text-[#5b4a35] transition-all duration-150 hover:-translate-y-px hover:bg-[#fff8ed] active:translate-y-0';
+  const primaryButtonClass =
+    'min-h-[60px] min-w-[200px] rounded-[0.8rem] bg-[#293646] px-4 py-3 text-lg font-bold text-white shadow-[0_8px_16px_rgba(43,56,72,0.22)] transition-all duration-150 hover:-translate-y-px hover:bg-[#1f2a37] active:translate-y-0';
+  const dangerButtonClass =
+    'min-h-[60px] min-w-[200px] rounded-[0.8rem] bg-[#a63a35] px-4 py-3 text-lg font-bold text-white transition-all duration-150 hover:-translate-y-px hover:bg-red-700 active:translate-y-0';
+
   return (
-    <div className="bg-white border-2 border-green-500 rounded-xl p-6 shadow-md mt-4 animate-fade-in">
+    <div className={`mt-4 rounded-[1.1rem] border border-[#77a083] bg-white p-6 shadow-[0_6px_18px_rgba(73,54,31,0.08)] ${styles.fadeIn}`}>
       <div className="flex flex-col items-center justify-center text-center">
         <h3 className="text-xl font-bold mb-2">
           {status === 'ended' ? 'Call Ended' : `Calling ${recipientName}...`}
@@ -30,7 +38,7 @@ export default function CallStatus({ recipientName, status, onEnd }) {
         {status !== 'ended' && (
           <div className="flex items-center gap-2 mb-4">
              <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
-             <span className="font-bold text-red-500 text-lg uppercase tracking-wider">
+             <span className="font-bold text-red-500 text-base uppercase tracking-wider">
                Live Call in Progress
              </span>
           </div>
@@ -44,22 +52,20 @@ export default function CallStatus({ recipientName, status, onEnd }) {
           <>
             <button
               onClick={() => setIsMuted(!isMuted)}
-              className={`min-w-[200px] min-h-[56px] font-bold rounded-xl text-xl transition-colors shadow-sm mb-3 ${
-                isMuted ? 'bg-golden text-white' : 'bg-white border-2 border-golden text-golden hover:bg-cornsilk'
-              }`}
+              className={`${isMuted ? primaryButtonClass : secondaryButtonClass} mb-3`}
             >
-              {isMuted ? '🔇 Unmute' : '🔊 Mute'}
+              {isMuted ? 'Unmute' : 'Mute'}
             </button>
 
             <button
               onClick={() => alert('Taking over the call — you will be connected directly with the service provider.')}
-              className="min-w-[200px] min-h-[56px] bg-accent text-white font-bold rounded-xl text-xl hover:bg-[#6d360f] transition-colors shadow-sm mb-3"
+              className={`${primaryButtonClass} mb-3`}
             >
-              📞 Take Over Call
+              Take Over Call
             </button>
 
-            <div className="w-full bg-cornsilk border border-[#F5DEB3] rounded-xl p-4 mb-4 text-left">
-              <h4 className="font-bold text-sm uppercase text-golden mb-2">Live Transcript</h4>
+            <div className="w-full bg-[#fbf7ee] border border-[#e3d5c0] rounded-xl p-4 mb-4 text-left">
+              <h4 className="font-bold text-sm uppercase text-textbrown/70 mb-2">Live Transcript</h4>
               <p className="text-base text-textbrown/70 italic">
                 Live transcript will appear here when WebSocket support is available...
               </p>
@@ -67,7 +73,7 @@ export default function CallStatus({ recipientName, status, onEnd }) {
 
             <button
               onClick={onEnd}
-              className="min-w-[200px] min-h-[56px] bg-danger text-white font-bold rounded-xl text-xl hover:bg-red-700 transition-colors shadow-lg"
+              className={dangerButtonClass}
             >
               End Call
             </button>

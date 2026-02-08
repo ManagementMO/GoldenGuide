@@ -1,0 +1,313 @@
+.orbIcon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  color: #1f3346;
+  border: 1px solid rgba(100, 116, 139, 0.34);
+  box-shadow:
+    inset -10px -12px 18px rgba(31, 51, 70, 0.08),
+    inset 10px 12px 16px rgba(255, 255, 255, 0.62),
+    0 8px 18px rgba(46, 72, 98, 0.16);
+}
+
+.orbIcon::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: 999px;
+  border: 1px solid rgba(248, 250, 252, 0.66);
+}
+
+.orbIcon::before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: 15%;
+  width: 56%;
+  height: 34%;
+  border-radius: 999px;
+  transform: rotate(-15deg);
+  background: radial-gradient(circle at 32% 32%, rgba(248, 250, 252, 0.95) 0, rgba(248, 250, 252, 0.35) 62%, transparent 72%);
+}
+
+.orbGlyph {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orbCircle {
+  border-radius: 999px;
+}
+
+.orbPill {
+  border-radius: 1.05rem;
+  width: 2.6rem;
+  height: 3.05rem;
+}
+
+.orbPill::after {
+  border-radius: 0.95rem;
+}
+
+.orbBrand {
+  background: linear-gradient(152deg, #f8fafc 0%, #dbe7f3 42%, #8ea5bc 100%);
+}
+
+.orbCool {
+  background: linear-gradient(152deg, #f8fafc 0%, #d7e6f7 40%, #90a8c1 100%);
+}
+
+.orbSage {
+  background: linear-gradient(152deg, #f8fafc 0%, #dbe5ef 41%, #93a7bc 100%);
+}
+
+.orbBlush {
+  background: linear-gradient(152deg, #f8fafc 0%, #dfe2f4 44%, #99a3c6 100%);
+}
+
+.mascot {
+  position: relative;
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  margin-inline: auto;
+}
+
+.orbField {
+  position: relative;
+  width: 232px;
+  height: 232px;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+}
+
+.orbAura {
+  position: absolute;
+  inset: -18%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 52% 49%, color-mix(in oklab, var(--sunset-lavender) 72%, transparent) 0, color-mix(in oklab, var(--sunset-lavender) 24%, transparent) 34%, color-mix(in oklab, var(--sunset-lavender) 7%, transparent) 58%, transparent 74%),
+    radial-gradient(circle at 48% 54%, color-mix(in oklab, var(--sunset-slate) calc(40% + (var(--warmth-strength) * 24%)), color-mix(in oklab, var(--sunset-gold) 34%, var(--sunset-amber) 66%)) 0, color-mix(in oklab, var(--sunset-slate) 10%, transparent) 57%, transparent 76%);
+  filter: blur(12px);
+}
+
+.ring {
+  position: absolute;
+  width: 196px;
+  height: 196px;
+  border-radius: 50%;
+  border: 1.3px solid color-mix(in oklab, var(--sunset-gold) calc(36% + (var(--ring-visibility) * 28%)), var(--sunset-sky));
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--sunset-lavender) 44%, transparent) inset;
+  pointer-events: none;
+}
+
+.orbBody {
+  position: relative;
+  width: 196px;
+  height: 196px;
+  border: 1px solid rgba(111, 129, 151, 0.42);
+  border-radius: 46% 54% 52% 48% / 48% 45% 55% 52%;
+  overflow: hidden;
+  background: color-mix(in oklab, var(--sunset-lavender) 22%, transparent);
+  box-shadow:
+    inset -22px -24px 36px color-mix(in oklab, var(--sunset-slate) 30%, transparent),
+    inset 18px 18px 24px color-mix(in oklab, #fdfbf7 62%, transparent),
+    0 30px 50px rgba(53, 78, 105, 0.27);
+  backdrop-filter: blur(2.4px);
+  filter: saturate(1.08);
+}
+
+.liquidLayer {
+  position: absolute;
+  inset: -12%;
+  border-radius: inherit;
+  mix-blend-mode: screen;
+  filter: blur(8px);
+}
+
+.layerOne {
+  background:
+    conic-gradient(from 35deg at 50% 50%,
+      color-mix(in oklab, var(--sunset-slate) 84%, transparent),
+      color-mix(in oklab, var(--sunset-sky) 72%, #fdfbf7),
+      color-mix(in oklab, var(--sunset-gold) calc(15% + (var(--warmth-strength) * 45%)), #fdfbf7),
+      color-mix(in oklab, var(--sunset-lavender) 68%, transparent),
+      color-mix(in oklab, var(--sunset-slate) 84%, transparent));
+}
+
+.layerTwo {
+  background:
+    radial-gradient(circle at 28% 26%, color-mix(in oklab, #fdfbf7 90%, transparent) 0, color-mix(in oklab, #fdfbf7 56%, transparent) 22%, transparent 42%),
+    conic-gradient(from 200deg at 50% 50%,
+      color-mix(in oklab, var(--sunset-slate) 70%, transparent),
+      color-mix(in oklab, var(--sunset-lavender) 70%, transparent),
+      color-mix(in oklab, var(--sunset-amber) calc(16% + (var(--warmth-strength) * 52%)), #fdfbf7),
+      color-mix(in oklab, var(--sunset-slate) 70%, transparent));
+  opacity: 0.84;
+}
+
+.layerThree {
+  background:
+    radial-gradient(circle at 72% 74%, color-mix(in oklab, var(--sunset-slate) 48%, transparent) 0, color-mix(in oklab, var(--sunset-slate) 10%, transparent) 42%, transparent 63%),
+    conic-gradient(from 110deg at 50% 50%,
+      color-mix(in oklab, var(--sunset-lavender) 62%, transparent),
+      color-mix(in oklab, var(--sunset-slate) 54%, transparent),
+      color-mix(in oklab, var(--sunset-gold) calc(12% + (var(--warmth-strength) * 44%)), #fdfbf7),
+      color-mix(in oklab, var(--sunset-lavender) 62%, transparent));
+  opacity: 0.66;
+}
+
+.innerBloom {
+  position: absolute;
+  inset: 16%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 31%, color-mix(in oklab, #fdfbf7 78%, transparent) 0, color-mix(in oklab, #fdfbf7 30%, transparent) 35%, transparent 64%),
+    radial-gradient(circle at 68% 70%, color-mix(in oklab, var(--sunset-slate) 30%, transparent) 0, color-mix(in oklab, var(--sunset-slate) 7%, transparent) 48%, transparent 68%);
+  filter: blur(0.6px);
+}
+
+.specular {
+  position: absolute;
+  top: 13%;
+  left: 15%;
+  width: 44%;
+  height: 22%;
+  border-radius: 999px;
+  transform: rotate(-16deg);
+  background: radial-gradient(circle at 34% 34%, rgba(253, 251, 247, 0.92) 0, rgba(253, 251, 247, 0.33) 60%, rgba(253, 251, 247, 0) 74%);
+}
+
+.depthShade {
+  position: absolute;
+  right: 16%;
+  bottom: 17%;
+  width: 34%;
+  height: 25%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, color-mix(in oklab, var(--sunset-slate) 31%, transparent) 0, color-mix(in oklab, var(--sunset-slate) 8%, transparent) 58%, transparent 76%);
+  filter: blur(1px);
+}
+
+.orbShadow {
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  width: 154px;
+  height: 21px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: radial-gradient(circle at 50% 50%, rgba(31, 51, 70, 0.33) 0, rgba(31, 51, 70, 0) 74%);
+  filter: blur(2px);
+}
+
+.stateBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  padding: 0.34rem 0.68rem;
+  border-radius: 999px;
+  border: 1px solid rgba(100, 116, 139, 0.34);
+  background: rgba(248, 250, 252, 0.9);
+  box-shadow: 0 7px 15px rgba(44, 69, 94, 0.12);
+}
+
+.stateDot {
+  width: 0.56rem;
+  height: 0.56rem;
+  border-radius: 999px;
+  background: var(--state-dot-color);
+}
+
+.modeListening .stateBadge {
+  border-color: color-mix(in oklab, var(--sunset-gold) 56%, var(--sunset-amber));
+  background: color-mix(in oklab, #fdfbf7 84%, var(--sunset-gold));
+}
+
+.stateText {
+  font-size: 0.78rem;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #33495f;
+}
+
+.fadeIn {
+  animation: fadeIn 0.34s ease-out forwards;
+}
+
+.loadingDot {
+  animation: pulseDot 1.4s ease-in-out infinite;
+}
+
+.loadingDot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.loadingDot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes pulseDot {
+  0%,
+  80%,
+  100% {
+    opacity: 0.34;
+    transform: scale(0.85);
+  }
+
+  40% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fadeIn,
+  .loadingDot {
+    animation: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .mascot {
+    width: 220px;
+    gap: 0.65rem;
+  }
+
+  .orbField {
+    width: 196px;
+    height: 196px;
+  }
+
+  .orbBody {
+    width: 166px;
+    height: 166px;
+  }
+
+  .ring {
+    width: 166px;
+    height: 166px;
+  }
+}

@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import OrbIcon from './OrbIcon';
 
 export default function DocumentUpload({ onUpload }) {
   const fileInputRef = useRef(null);
@@ -17,8 +18,8 @@ export default function DocumentUpload({ onUpload }) {
         };
         reader.readAsDataURL(file);
       } else {
-        // For PDFs/docs, just show a generic icon or name
-        setPreview('📄'); 
+        // For PDFs/docs, show a themed document icon.
+        setPreview('document');
         setTimeout(() => setPreview(null), 3000);
       }
       
@@ -46,17 +47,19 @@ export default function DocumentUpload({ onUpload }) {
       />
       <button
         onClick={handleClick}
-        className="min-w-[48px] h-[48px] rounded-xl bg-gray-100 border-2 border-[#F5DEB3] text-gray-600 hover:bg-[#F5DEB3] transition-colors flex items-center justify-center relative overflow-hidden"
+        className="min-w-[48px] h-[48px] rounded-xl bg-white border border-[#d8ccb8] text-textbrown hover:bg-[#f7ecdb] transition-colors flex items-center justify-center relative overflow-hidden shadow-[0_4px_10px_rgba(60,45,28,0.12)]"
         aria-label="Upload document or image"
       >
         {preview ? (
           typeof preview === 'string' && preview.startsWith('data:') ? (
             <img src={preview} alt="Upload preview" className="w-full h-full object-cover" />
+          ) : preview === 'document' ? (
+            <OrbIcon name="document" tone="cool" size="md" />
           ) : (
-            <span className="text-xl">{preview}</span>
+            <OrbIcon name="upload" tone="cool" size="md" />
           )
         ) : (
-          <span className="text-2xl">📷</span>
+          <OrbIcon name="upload" tone="cool" size="md" />
         )}
       </button>
     </div>

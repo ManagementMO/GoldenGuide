@@ -6,6 +6,8 @@ import CallPreview from './CallPreview';
 import SmsCard from './SmsCard';
 import ServiceCard from './ServiceCard';
 import DocumentExplainerCard from './DocumentExplainerCard';
+import OrbIcon from './OrbIcon';
+import styles from './Mascot.module.css';
 
 export default function MessageBubble({ message, onExecuteEmail, onExecuteSms, onExecuteCall, apiUrl }) {
   const isUser = message.role === 'user';
@@ -104,51 +106,44 @@ export default function MessageBubble({ message, onExecuteEmail, onExecuteSms, o
   };
 
   return (
-    <div className={`flex w-full ${isUser ? 'justify-end' : 'justify-start'} animate-fade-in`}>
-      <div className={`flex flex-col max-w-[85%] ${isUser ? 'items-end' : 'items-start'}`}>
-        
-        {/* Agent Avatar */}
+    <div className={`flex w-full ${isUser ? 'justify-end' : 'justify-start'} ${styles.fadeIn}`}>
+      <div className={`flex flex-col max-w-[90%] md:max-w-[82%] ${isUser ? 'items-end' : 'items-start'}`}>
+
         {!isUser && (
-          <div className="flex items-center gap-2 mb-1 pl-1">
-             <div className="w-8 h-8 rounded-full bg-golden flex items-center justify-center text-white shadow-sm">
-               <span role="img" aria-label="GoldenGuide Avatar">✨</span>
-             </div>
-             <span className="text-sm font-bold text-textbrown opacity-75">GoldenGuide</span>
+          <div className="flex items-center gap-2 mb-2 pl-1">
+             <OrbIcon name="brand" tone="brand" size="sm" />
+             <span className="text-sm font-bold text-textbrown/80">GoldenGuide</span>
           </div>
         )}
 
-        <div className={`
-          relative p-4 rounded-2xl shadow-sm text-lg
-          ${isUser 
-            ? 'bg-accent text-white rounded-br-sm' 
-            : 'bg-cornsilk text-textbrown rounded-bl-sm border border-[#F5DEB3]'
-          }
-        `}>
-          {/* Text Content */}
-          <div className="whitespace-pre-wrap font-body leading-relaxed">
-            {displayText.split('\n').map((line, i) => (
+        <div
+          className={`relative p-5 md:p-5 rounded-[1.15rem] text-[1.05rem] md:text-lg ${
+            isUser
+              ? 'bg-[#2b3848] text-white rounded-br-md shadow-[0_10px_22px_rgba(43,56,72,0.25)]'
+              : 'bg-[#fffdf9] text-textbrown rounded-bl-md border border-[#d9ccb8] shadow-[0_8px_20px_rgba(63,44,25,0.12)]'
+          }`}
+        >
+          <div className="whitespace-pre-wrap font-body leading-[1.75]">
+            {displayText.split('\n').map((line, i, arr) => (
               <React.Fragment key={i}>
                 {line}
-                {i < displayText.split('\n').length - 1 && <br />}
+                {i < arr.length - 1 && <br />}
               </React.Fragment>
             ))}
           </div>
 
-          {/* TTS Button for Agent */}
           {!isUser && displayText && (
-             <div className="mt-2 pt-2 border-t border-golden/20 flex justify-end">
+             <div className="mt-3 pt-3 border-t border-[#e6dac9] flex justify-end">
                 <VoicePlayback text={displayText} apiUrl={apiUrl} />
              </div>
           )}
         </div>
 
-        {/* Render Cards */}
         {allCards.length > 0 && (
-          <div className="w-full mt-2 space-y-4">
+          <div className="w-full mt-3 space-y-4">
             {allCards.map((card, idx) => renderCard(card, idx))}
           </div>
         )}
-        
       </div>
     </div>
   );

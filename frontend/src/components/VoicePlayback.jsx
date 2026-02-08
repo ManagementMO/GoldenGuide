@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import OrbIcon from './OrbIcon';
 
 export default function VoicePlayback({ text, apiUrl }) {
   const [status, setStatus] = useState('idle'); // idle, loading, playing
@@ -64,18 +65,24 @@ export default function VoicePlayback({ text, apiUrl }) {
   return (
     <button
       onClick={handlePlay}
-      className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-golden/20 hover:bg-golden/30 text-textbrown transition-colors ml-2"
+      className="inline-flex items-center justify-center min-w-[78px] h-[40px] rounded-full border border-[#cdbca4] bg-white hover:bg-[#f6ede1] text-textbrown transition-colors px-2 gap-1.5"
       aria-label={status === 'playing' ? 'Stop reading' : 'Read aloud'}
       disabled={status === 'loading'}
     >
       {status === 'loading' && (
-        <span className="animate-spin">⏳</span>
+        <span className="animate-spin text-base">◌</span>
       )}
       {status === 'playing' && (
-        <span>⏹️</span>
+        <>
+          <span className="h-2.5 w-2.5 rounded-sm bg-[#2b3848]" />
+          <span className="text-xs font-bold">Stop</span>
+        </>
       )}
       {status === 'idle' && (
-        <span>🔊</span>
+        <>
+          <OrbIcon name="voice" tone="cool" size="sm" />
+          <span className="text-xs font-bold">Read</span>
+        </>
       )}
     </button>
   );
