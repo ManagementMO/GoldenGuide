@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-GoldenGuide is an agentic AI assistant that helps elderly Kingston, Ontario residents navigate municipal services. It pairs a **Python FastAPI backend** (Google Gemini 2.0 Flash with function-calling) and a **Next.js 16 React frontend** designed for accessibility. Built for QHacks 2026.
+GoldenGuide is an agentic AI assistant that helps elderly Kingston, Ontario residents navigate municipal services. It pairs a **Python FastAPI backend** (Google Gemini 3 Flash with function-calling) and a **Next.js 16 React frontend** designed for accessibility. Built for QHacks 2026.
 
 ## Development Commands
 

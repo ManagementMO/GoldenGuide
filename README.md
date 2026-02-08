@@ -15,7 +15,7 @@ Over 20% of Kingston, Ontario's population is 65 or older. These residents face 
 
 ## The Solution
 
-GoldenGuide is not a chatbot. It's an **agentic AI** that acts on behalf of the user. Powered by Google Gemini 2.0 Flash with 11 tool declarations in an 8-iteration agentic loop, GoldenGuide chains multiple tools together autonomously — searching services, checking eligibility, generating action plans, and executing real-world actions like phone calls, emails, and SMS — all from a single natural-language request.
+GoldenGuide is not a chatbot. It's an **agentic AI** that acts on behalf of the user. Powered by Google Gemini 3 Flash with 11 tool declarations in an 8-iteration agentic loop, GoldenGuide chains multiple tools together autonomously — searching services, checking eligibility, generating action plans, and executing real-world actions like phone calls, emails, and SMS — all from a single natural-language request.
 
 ## Live Demo Flow
 
@@ -98,7 +98,7 @@ All rendered as interactive cards with Print / Download / SMS options.
                         |                                                  |
                         |   +------------------------------------------+   |
                         |   |        Agentic Loop (max 8 iterations)   |   |
-                        |   |     Google Gemini 2.0 Flash + Tools      |   |
+                        |   |     Google Gemini 3 Flash + Tools         |   |
                         |   |                                          |   |
                         |   |   User Msg -> Gemini -> Tool Calls -+    |   |
                         |   |       ^                             |    |   |
@@ -161,7 +161,7 @@ The model frequently chains 3-7 tools in a single conversation turn — searchin
 
 | Layer | Technology |
 |-------|------------|
-| **AI Model** | Google Gemini 2.0 Flash (function calling) |
+| **AI Model** | Google Gemini 3 Flash (function calling) |
 | **Backend** | Python 3.12, FastAPI, Uvicorn |
 | **Frontend** | Next.js 16, React 18, Tailwind CSS 3.4 |
 | **Voice Input** | Browser Web Speech API (SpeechRecognition) |
@@ -287,7 +287,7 @@ GoldenGuide/
 
 ## Built With
 
-`Google Gemini` `FastAPI` `Next.js` `React` `Tailwind CSS` `Twilio` `SendGrid` `ElevenLabs` `Tavily` `Docker` `Kingston Transit GTFS`
+`Google Gemini 3` `FastAPI` `Next.js` `React` `Tailwind CSS` `Twilio` `SendGrid` `ElevenLabs` `Tavily` `Docker` `Kingston Transit GTFS`
 
 ---
 

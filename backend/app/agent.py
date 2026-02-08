@@ -1,6 +1,6 @@
 """
 GoldenGuide Agentic Loop.
-Gemini function calling with 11 tools.
+Gemini 3 Flash function calling with 11 tools.
 """
 
 import os
@@ -8,6 +8,8 @@ import json
 from typing import Any
 from google import genai
 from google.genai import types
+
+GEMINI_MODEL = "gemini-3-flash-preview"
 
 from knowledge.system_prompt import build_system_prompt
 from tools.search_services import search_services_impl
@@ -368,6 +370,44 @@ def _sanitize_history_for_genai(history: list) -> list:
     return normalized_history
 
 
+def _serialize_history(history: list) -> list:
+    """
+    Convert history entries to JSON-serializable dicts for frontend transport.
+    Gemini 3 Content objects (with thought signatures) must be converted back
+    to plain dicts. Thought signatures are only needed within a single agentic
+    loop execution — they're regenerated on the next request.
+    """
+    serialized = []
+    for entry in history:
+        if isinstance(entry, dict):
+            serialized.append(entry)
+            continue
+        # Handle google-genai Content objects from Gemini 3 responses
+        if hasattr(entry, "role") and hasattr(entry, "parts"):
+            parts = []
+            for part in entry.parts:
+                part_dict = {}
+                if hasattr(part, "text") and part.text:
+                    part_dict["text"] = part.text
+                if hasattr(part, "function_call") and part.function_call:
+                    part_dict["function_call"] = {
+                        "name": part.function_call.name,
+                        "args": dict(part.function_call.args) if part.function_call.args else {},
+                    }
+                if hasattr(part, "function_response") and part.function_response:
+                    resp = part.function_response.response
+                    part_dict["function_response"] = {
+                        "name": part.function_response.name,
+                        "response": resp if isinstance(resp, dict) else {"output": resp},
+                    }
+                if part_dict:
+                    parts.append(part_dict)
+            serialized.append({"role": entry.role, "parts": parts})
+        else:
+            serialized.append(entry)
+    return serialized
+
+
 async def agent_chat(
     user_message: str, history: list, language: str = "en", image_data: str = None, image_mime: str = None
 ) -> dict:
@@ -415,14 +455,14 @@ async def agent_chat(
     for _ in range(max_iterations):
         try:
             response = client.models.generate_content(
-                model="gemini-2.0-flash",
+                model=GEMINI_MODEL,
                 config=config,
                 contents=history,
             )
         except Exception as e:
             return {
-                "text": f"I'm having trouble connecting right now. Please try again in a moment.",
-                "history": history,
+                "text": "I'm having trouble connecting right now. Please try again in a moment.",
+                "history": _serialize_history(history),
                 "structured_data": structured_data,
                 "tool_calls_made": tool_calls_made,
             }
@@ -439,10 +479,11 @@ async def agent_chat(
 
         # If no tool calls, we have the final response
         if not tool_calls:
-            history.append({"role": "model", "parts": [{"text": text_response}]})
+            # Preserve original Content object (includes Gemini 3 thought signatures)
+            history.append(response.candidates[0].content)
             return {
                 "text": text_response,
-                "history": history,
+                "history": _serialize_history(history),
                 "structured_data": structured_data,
                 "tool_calls_made": tool_calls_made,
             }
@@ -483,28 +524,16 @@ async def agent_chat(
             elif func_name in ("place_call", "send_email", "send_sms"):
                 structured_data.setdefault("pending_actions", []).append(result)
 
-        # Add tool calls + results to history, then loop
-        history.append(
-            {
-                "role": "model",
-                "parts": [
-                    {
-                        "function_call": {
-                            "name": tc.name,
-                            "args": dict(tc.args) if tc.args else {},
-                        }
-                    }
-                    for tc in tool_calls
-                ],
-            }
-        )
+        # Preserve original model Content (includes Gemini 3 thought signatures
+        # needed for multi-turn function calling within this agentic loop)
+        history.append(response.candidates[0].content)
         history.append({"role": "user", "parts": tool_results})
 
     # If we hit max iterations, return whatever we have
     return {
         "text": text_response
         or "I'm still working on that — let me know if you'd like me to try again.",
-        "history": history,
+        "history": _serialize_history(history),
         "structured_data": structured_data,
         "tool_calls_made": tool_calls_made,
     }
@@ -533,9 +562,9 @@ async def agent_chat_stream(user_message: str, history: list, language: str = "e
         yield {"event": "thinking", "data": {"iteration": iteration + 1}}
 
         try:
-            response = client.models.generate_content(model="gemini-2.0-flash", config=config, contents=history)
+            response = client.models.generate_content(model=GEMINI_MODEL, config=config, contents=history)
         except Exception as e:
-            yield {"event": "complete", "data": {"text": "I'm having trouble connecting right now. Please try again in a moment.", "history": history, "structured_data": structured_data, "tool_calls_made": tool_calls_made}}
+            yield {"event": "complete", "data": {"text": "I'm having trouble connecting right now. Please try again in a moment.", "history": _serialize_history(history), "structured_data": structured_data, "tool_calls_made": tool_calls_made}}
             return
 
         tool_calls = []
@@ -547,8 +576,8 @@ async def agent_chat_stream(user_message: str, history: list, language: str = "e
                 text_response += part.text
 
         if not tool_calls:
-            history.append({"role": "model", "parts": [{"text": text_response}]})
-            yield {"event": "complete", "data": {"text": text_response, "history": history, "structured_data": structured_data, "tool_calls_made": tool_calls_made}}
+            history.append(response.candidates[0].content)
+            yield {"event": "complete", "data": {"text": text_response, "history": _serialize_history(history), "structured_data": structured_data, "tool_calls_made": tool_calls_made}}
             return
 
         tool_results = []
@@ -582,7 +611,7 @@ async def agent_chat_stream(user_message: str, history: list, language: str = "e
             elif func_name in ("place_call", "send_email", "send_sms"):
                 structured_data.setdefault("pending_actions", []).append(result)
 
-        history.append({"role": "model", "parts": [{"function_call": {"name": tc.name, "args": dict(tc.args) if tc.args else {}}} for tc in tool_calls]})
+        history.append(response.candidates[0].content)
         history.append({"role": "user", "parts": tool_results})
 
-    yield {"event": "complete", "data": {"text": text_response or "I'm still working on that — let me know if you'd like me to try again.", "history": history, "structured_data": structured_data, "tool_calls_made": tool_calls_made}}
+    yield {"event": "complete", "data": {"text": text_response or "I'm still working on that — let me know if you'd like me to try again.", "history": _serialize_history(history), "structured_data": structured_data, "tool_calls_made": tool_calls_made}}
