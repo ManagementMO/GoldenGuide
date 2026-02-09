@@ -1,12 +1,13 @@
 import React, { useEffect, useRef } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import MessageBubble from './MessageBubble';
 
-export default function ChatWindow({ 
-  messages, 
-  onExecuteEmail, 
-  onExecuteSms, 
-  onExecuteCall, 
-  apiUrl 
+export default function ChatWindow({
+  messages,
+  onExecuteEmail,
+  onExecuteSms,
+  onExecuteCall,
+  apiUrl,
 }) {
   const bottomRef = useRef(null);
 
@@ -15,17 +16,25 @@ export default function ChatWindow({
   }, [messages]);
 
   return (
-    <div className="min-h-0 flex-grow space-y-2 overflow-y-auto bg-white px-0.5 py-1">
-      {messages.map((msg, index) => (
-        <MessageBubble
-          key={msg.id || index}
-          message={msg}
-          onExecuteEmail={onExecuteEmail}
-          onExecuteSms={onExecuteSms}
-          onExecuteCall={onExecuteCall}
-          apiUrl={apiUrl}
-        />
-      ))}
+    <div className="space-y-3 px-1 py-2">
+      <AnimatePresence initial={false}>
+        {messages.map((msg, index) => (
+          <motion.div
+            key={msg.id || index}
+            initial={{ opacity: 0, y: 20, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          >
+            <MessageBubble
+              message={msg}
+              onExecuteEmail={onExecuteEmail}
+              onExecuteSms={onExecuteSms}
+              onExecuteCall={onExecuteCall}
+              apiUrl={apiUrl}
+            />
+          </motion.div>
+        ))}
+      </AnimatePresence>
       <div ref={bottomRef} />
     </div>
   );

@@ -1,25 +1,26 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import OrbIcon from './OrbIcon';
 
 export default function LoadingIndicator() {
   return (
     <div className="flex w-full justify-start mb-4 animate-fade-in">
       <div className="flex flex-row max-w-[85%] items-end">
         <div className="flex-shrink-0 mr-2 mb-1">
-          <div className="w-8 h-8 rounded-full bg-golden flex items-center justify-center text-white">
-            <span role="img" aria-label="GoldenGuide Avatar">✨</span>
-          </div>
+          <OrbIcon mode="thinking" animated size={32} />
         </div>
-        
-        <div className="relative p-4 rounded-2xl rounded-bl-sm bg-cornsilk text-textbrown shadow-sm">
-          <div className="flex items-center gap-2">
-            <p className="font-bold text-sm text-accent mb-1">GoldenGuide is thinking...</p>
+        <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
+          className="relative glass glass-highlight rounded-2xl rounded-bl-sm p-4">
+          <p className="mb-1.5 text-xs font-bold uppercase tracking-[0.08em] text-warm-100/40">Goldie is thinking...</p>
+          <div className="flex gap-1.5 mt-1">
+            <motion.div animate={{ y: [0, -6, 0] }} transition={{ repeat: Infinity, duration: 0.6, delay: 0 }}
+              className="w-2 h-2 rounded-full bg-golden" />
+            <motion.div animate={{ y: [0, -6, 0] }} transition={{ repeat: Infinity, duration: 0.6, delay: 0.12 }}
+              className="w-2 h-2 rounded-full bg-golden" />
+            <motion.div animate={{ y: [0, -6, 0] }} transition={{ repeat: Infinity, duration: 0.6, delay: 0.24 }}
+              className="w-2 h-2 rounded-full bg-golden" />
           </div>
-          <div className="flex gap-1 mt-1">
-             <div className="w-2 h-2 rounded-full bg-golden animate-bounce" style={{ animationDelay: '0s' }}></div>
-             <div className="w-2 h-2 rounded-full bg-golden animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-             <div className="w-2 h-2 rounded-full bg-golden animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-          </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

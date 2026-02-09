@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { SendHorizontal } from 'lucide-react';
 import VoiceInput from './VoiceInput';
 import DocumentUpload from './DocumentUpload';
@@ -21,13 +22,10 @@ export default function ChatInput({ onSend, onSendImage, disabled, language }) {
   };
 
   const handleTranscript = (transcript) => {
-    // If we have existing text, append to it, otherwise set it
     setText((prev) => (prev ? `${prev} ${transcript}` : transcript));
   };
 
   const handleFileUpload = (file) => {
-    // When a file is selected, we send it immediately with the current text (or empty text)
-    // As per spec: calls onSendImage(text, file)
     if (!disabled) {
       onSendImage(text, file);
       setText('');
@@ -35,41 +33,49 @@ export default function ChatInput({ onSend, onSendImage, disabled, language }) {
   };
 
   return (
-    <div className="sticky bottom-0 z-20 w-full border-t border-slate-200 bg-white/95 px-4 py-3 backdrop-blur">
-      <div className="flex flex-row items-center gap-3">
-        <div className="flex-shrink-0">
-          <DocumentUpload onUpload={handleFileUpload} />
-        </div>
+    <motion.div
+      initial={{ y: 20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+      className="sticky bottom-0 z-20 w-full px-4 py-3"
+    >
+      <div className="glass-strong glass-highlight rounded-2xl px-4 py-3"
+        style={{ boxShadow: '0 -8px 32px rgba(0,0,0,0.15), 0 0 60px rgba(212,165,50,0.03)' }}
+      >
+        <div className="flex items-center gap-3">
+          <div className="flex-shrink-0">
+            <DocumentUpload onUpload={handleFileUpload} />
+          </div>
 
-        <div className="relative flex-grow">
-          <textarea
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            onKeyDown={handleKeyPress}
-            disabled={disabled}
-            placeholder={language === 'fr' ? 'Posez votre question municipale...' : 'Ask your municipal question...'}
-            className="w-full min-h-[52px] max-h-[120px] resize-none rounded-2xl border border-slate-300 bg-white px-3 py-2.5 text-base text-[#334155] focus:outline-none focus:ring-2 focus:ring-[#475569]"
-            rows={1}
-            style={{ lineHeight: '1.6' }}
-          />
-        </div>
+          <div className="relative flex-grow">
+            <textarea
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              onKeyDown={handleKeyPress}
+              disabled={disabled}
+              placeholder={language === 'fr' ? 'Posez votre question...' : 'Ask your question...'}
+              className="w-full min-h-[48px] max-h-[120px] resize-none rounded-xl glass-input px-4 py-2.5 text-base"
+              rows={1}
+              style={{ lineHeight: '1.6' }}
+            />
+          </div>
 
-        <div className="flex flex-shrink-0 gap-2">
-          <VoiceInput onTranscript={handleTranscript} disabled={disabled} language={language} />
+          <div className="flex flex-shrink-0 gap-2">
+            <VoiceInput onTranscript={handleTranscript} disabled={disabled} language={language} />
 
-          <button
-            onClick={handleSend}
-            disabled={disabled || !text.trim()}
-            className="flex min-h-[52px] min-w-[64px] items-center justify-center rounded-2xl border border-[#CBD5E1] bg-[#334155] px-3 text-base font-semibold text-white transition-colors hover:bg-[#1e293b] disabled:cursor-not-allowed disabled:opacity-50"
-            aria-label="Send message"
-          >
-            <span className="flex items-center gap-2">
-              <SendHorizontal className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
-              <span>{language === 'fr' ? 'Envoyer' : 'Send'}</span>
-            </span>
-          </button>
+            <motion.button
+              whileHover={{ scale: 1.06 }}
+              whileTap={{ scale: 0.94 }}
+              onClick={handleSend}
+              disabled={disabled || !text.trim()}
+              className="flex min-h-[48px] min-w-[48px] items-center justify-center rounded-xl btn-golden px-3"
+              aria-label="Send message"
+            >
+              <SendHorizontal className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
+            </motion.button>
+          </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

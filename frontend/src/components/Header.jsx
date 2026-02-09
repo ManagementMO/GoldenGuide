@@ -1,55 +1,58 @@
 import React from 'react';
-import { Building2 } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function Header({ fontSize, onFontSizeChange, language, onLanguageChange }) {
-  const controlClass =
-    'min-w-[60px] min-h-[60px] rounded-2xl border border-[#CBD5E1] bg-white px-3 font-semibold text-base text-[#334155] transition-colors hover:bg-[#F1F5F9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#475569]';
-
   return (
-    <header className="z-10 flex w-full flex-row items-center justify-between border-b border-slate-200 bg-white p-4 text-[#334155] shadow-sm">
+    <header className="z-10 flex w-full items-center justify-between glass-strong glass-highlight rounded-b-2xl px-5 py-3">
       <div className="flex flex-col">
-        <h1 className="flex items-center gap-2 text-xl font-semibold tracking-tight md:text-2xl">
-          <Building2 className="h-5 w-5 text-[#334155]" strokeWidth={2} aria-hidden="true" />
+        <h1 className="flex items-center gap-2 text-xl font-bold tracking-tight text-warm-50 font-heading md:text-2xl">
           GoldenGuide
         </h1>
-        <p className="text-sm text-[#64748B] md:text-base">
-          Your Kingston Services Assistant
-        </p>
+        <p className="text-sm text-warm-100/50">Your Kingston Services Assistant</p>
       </div>
 
-      <div className="ml-auto flex flex-wrap items-center justify-end gap-2">
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => onFontSizeChange('normal')}
-            className={`${controlClass} ${fontSize === 'normal' ? 'border-[#475569] bg-[#E2E8F0]' : ''}`}
-            aria-label="Normal font size"
-          >
-            A-
-          </button>
-          <button
-            onClick={() => onFontSizeChange('large')}
-            className={`${controlClass} ${fontSize === 'large' ? 'border-[#475569] bg-[#E2E8F0]' : ''}`}
-            aria-label="Large font size"
-          >
-            A+
-          </button>
+      <div className="ml-auto flex items-center gap-2">
+        <div className="flex items-center gap-1.5">
+          {['normal', 'large'].map((sz) => (
+            <motion.button
+              key={sz}
+              whileHover={{ scale: 1.06 }}
+              whileTap={{ scale: 0.94 }}
+              onClick={() => onFontSizeChange(sz)}
+              className={`min-w-[48px] min-h-[48px] rounded-xl px-3 font-bold text-base transition-all ${
+                fontSize === sz
+                  ? 'btn-golden'
+                  : 'btn-glass'
+              }`}
+              aria-label={sz === 'normal' ? 'Normal font size' : 'Large font size'}
+            >
+              {sz === 'normal' ? 'A-' : 'A+'}
+            </motion.button>
+          ))}
         </div>
-        <div className="h-8 w-px bg-slate-300" aria-hidden="true" />
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => onLanguageChange('en')}
-            className={`${controlClass} ${language === 'en' ? 'border-[#475569] bg-[#E2E8F0]' : ''}`}
-            aria-label="Switch to English"
-          >
-            EN
-          </button>
-          <button
-            onClick={() => onLanguageChange('fr')}
-            className={`${controlClass} ${language === 'fr' ? 'border-[#475569] bg-[#E2E8F0]' : ''}`}
-            aria-label="Passer au français"
-          >
-            FR
-          </button>
+
+        <div className="h-7 w-px bg-white/10" aria-hidden="true" />
+
+        <div className="flex items-center gap-1.5">
+          {[
+            { code: 'en', label: 'EN', ariaLabel: 'Switch to English' },
+            { code: 'fr', label: 'FR', ariaLabel: 'Passer au français' },
+          ].map((lang) => (
+            <motion.button
+              key={lang.code}
+              whileHover={{ scale: 1.06 }}
+              whileTap={{ scale: 0.94 }}
+              onClick={() => onLanguageChange(lang.code)}
+              className={`min-w-[48px] min-h-[48px] rounded-xl px-3 font-bold text-base transition-all ${
+                language === lang.code
+                  ? 'btn-golden'
+                  : 'btn-glass'
+              }`}
+              aria-label={lang.ariaLabel}
+            >
+              {lang.label}
+            </motion.button>
+          ))}
         </div>
       </div>
     </header>

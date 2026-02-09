@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Loader2, Square, Volume2 } from 'lucide-react';
 
 export default function VoicePlayback({ text, apiUrl }) {
@@ -24,7 +25,7 @@ export default function VoicePlayback({ text, apiUrl }) {
 
     try {
       setStatus('loading');
-      
+
       const formBody = new URLSearchParams();
       formBody.append('text', text);
 
@@ -40,15 +41,15 @@ export default function VoicePlayback({ text, apiUrl }) {
 
       const blob = await response.blob();
       const url = URL.createObjectURL(blob);
-      
+
       const audio = new Audio(url);
       audioRef.current = audio;
-      
+
       audio.onended = () => {
         setStatus('idle');
         URL.revokeObjectURL(url);
       };
-      
+
       audio.onerror = () => {
         setStatus('idle');
         console.error('Audio playback error');
@@ -63,15 +64,17 @@ export default function VoicePlayback({ text, apiUrl }) {
   };
 
   return (
-    <button
+    <motion.button
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
       onClick={handlePlay}
-      className="ml-2 inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-300 bg-white text-[#334155] transition-colors hover:bg-[#F8FAFC]"
+      className="ml-2 inline-flex h-8 w-8 items-center justify-center rounded-full glass-subtle text-warm-100/50 transition-colors hover:text-golden hover:bg-white/[0.06]"
       aria-label={status === 'playing' ? 'Stop reading' : 'Read aloud'}
       disabled={status === 'loading'}
     >
-      {status === 'loading' && <Loader2 className="h-4 w-4 animate-spin" strokeWidth={2} aria-hidden="true" />}
-      {status === 'playing' && <Square className="h-4 w-4" strokeWidth={2} aria-hidden="true" />}
+      {status === 'loading' && <Loader2 className="h-4 w-4 animate-spin text-golden" strokeWidth={2} aria-hidden="true" />}
+      {status === 'playing' && <Square className="h-4 w-4 text-golden" strokeWidth={2} aria-hidden="true" />}
       {status === 'idle' && <Volume2 className="h-4 w-4" strokeWidth={2} aria-hidden="true" />}
-    </button>
+    </motion.button>
   );
 }

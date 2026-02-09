@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Mic, MicOff, PhoneCall, PhoneOff, Radio } from 'lucide-react';
 
 export default function CallStatus({ recipientName, status, onEnd }) {
@@ -8,9 +9,7 @@ export default function CallStatus({ recipientName, status, onEnd }) {
   useEffect(() => {
     let interval;
     if (status === 'connected' || status === 'in-progress') {
-      interval = setInterval(() => {
-        setDuration(prev => prev + 1);
-      }, 1000);
+      interval = setInterval(() => setDuration(prev => prev + 1), 1000);
     }
     return () => clearInterval(interval);
   }, [status]);
@@ -22,65 +21,54 @@ export default function CallStatus({ recipientName, status, onEnd }) {
   };
 
   return (
-    <div className="mt-2 animate-fade-in rounded-2xl border border-emerald-300 bg-white p-4 shadow-sm">
+    <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
+      className="mt-2 glass-strong rounded-2xl p-5 glass-highlight border border-success/20">
       <div className="flex flex-col items-center justify-center text-center">
-        <h3 className="mb-2 text-lg font-semibold text-[#1e293b]">
+        <h3 className="mb-2 text-lg font-bold text-warm-50 font-heading">
           {status === 'ended' ? 'Call Ended' : `Calling ${recipientName}...`}
         </h3>
 
         {status !== 'ended' && (
           <div className="mb-4 flex items-center gap-2">
-             <div className="h-3 w-3 animate-pulse rounded-full bg-red-500" />
-             <span className="text-base font-semibold uppercase tracking-[0.08em] text-red-600">
-               Live Call in Progress
-             </span>
+            <div className="h-3 w-3 animate-pulse rounded-full bg-danger" />
+            <span className="text-base font-bold uppercase tracking-[0.08em] text-danger">Live Call</span>
           </div>
         )}
 
-        <div className="mb-6 text-4xl font-mono font-semibold text-[#334155]">
-          {formatTime(duration)}
-        </div>
+        <div className="mb-6 text-4xl font-mono font-bold text-golden">{formatTime(duration)}</div>
 
         {status !== 'ended' && (
           <>
-            <button
+            <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}
               onClick={() => setIsMuted(!isMuted)}
-              className={`mb-3 flex min-h-[52px] min-w-[190px] items-center justify-center gap-2 rounded-xl text-base font-semibold transition-colors ${
-                isMuted ? 'bg-[#334155] text-white' : 'border border-slate-300 bg-white text-[#334155] hover:bg-[#F8FAFC]'
-              }`}
-            >
-              {isMuted ? <Mic className="h-5 w-5" strokeWidth={2} aria-hidden="true" /> : <MicOff className="h-5 w-5" strokeWidth={2} aria-hidden="true" />}
+              className={`mb-3 flex min-h-[48px] min-w-[180px] items-center justify-center gap-2 rounded-xl text-base font-bold transition-all ${
+                isMuted ? 'btn-golden' : 'btn-glass'
+              }`}>
+              {isMuted ? <Mic className="h-5 w-5" /> : <MicOff className="h-5 w-5" />}
               {isMuted ? 'Unmute' : 'Mute'}
-            </button>
+            </motion.button>
 
-            <button
+            <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}
               onClick={() => alert('Taking over the call — you will be connected directly with the service provider.')}
-              className="mb-3 flex min-h-[52px] min-w-[190px] items-center justify-center gap-2 rounded-xl bg-[#334155] text-base font-semibold text-white transition-colors hover:bg-[#1e293b]"
-            >
-              <PhoneCall className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
-              Take Over Call
-            </button>
+              className="mb-3 flex min-h-[48px] min-w-[180px] items-center justify-center gap-2 btn-golden text-base">
+              <PhoneCall className="h-5 w-5" /> Take Over Call
+            </motion.button>
 
-            <div className="mb-4 w-full rounded-xl border border-slate-200 bg-[#F8FAFC] p-4 text-left">
-              <h4 className="mb-2 flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.08em] text-[#64748B]">
-                <Radio className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
-                Live Transcript
+            <div className="mb-4 w-full glass rounded-xl p-4 text-left">
+              <h4 className="mb-2 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.08em] text-warm-100/40">
+                <Radio className="h-4 w-4" /> Live Transcript
               </h4>
-              <p className="text-base italic text-[#64748B]">
-                Live transcript will appear here when WebSocket support is available...
-              </p>
+              <p className="text-base italic text-warm-100/40">Live transcript will appear here when WebSocket support is available...</p>
             </div>
 
-            <button
+            <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}
               onClick={onEnd}
-              className="flex min-h-[52px] min-w-[190px] items-center justify-center gap-2 rounded-xl bg-red-600 text-base font-semibold text-white transition-colors hover:bg-red-700"
-            >
-              <PhoneOff className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
-              End Call
-            </button>
+              className="flex min-h-[48px] min-w-[180px] items-center justify-center gap-2 btn-danger text-base font-bold">
+              <PhoneOff className="h-5 w-5" /> End Call
+            </motion.button>
           </>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }

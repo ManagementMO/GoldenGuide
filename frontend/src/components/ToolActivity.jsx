@@ -1,6 +1,6 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import {
-  Building2,
   CalendarDays,
   CheckCircle2,
   FileText,
@@ -13,6 +13,7 @@ import {
   Search,
   Settings,
 } from 'lucide-react';
+import OrbIcon from './OrbIcon';
 
 const TOOL_DISPLAY = {
   search_services: { label: 'Searching services', icon: Search },
@@ -35,19 +36,21 @@ export default function ToolActivity({ activeTools = [], completedTools = [] }) 
     return (
       <div className="mb-3 flex w-full justify-start animate-fade-in">
         <div className="flex max-w-[82%] flex-row items-end">
-          <div className="mb-1 mr-1.5 flex-shrink-0">
-            <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#334155] text-white shadow-sm">
-              <Building2 className="h-3.5 w-3.5" strokeWidth={2} aria-hidden="true" />
-            </div>
+          <div className="mb-1 mr-2 flex-shrink-0">
+            <OrbIcon mode="thinking" animated size={32} />
           </div>
-          <div className="relative rounded-xl rounded-bl-sm border border-slate-200 bg-[#F8FAFC] p-2.5 text-[#334155] shadow-sm">
-            <p className="mb-1 text-xs font-semibold uppercase tracking-[0.08em] text-[#64748B]">GoldenGuide is thinking</p>
-            <div className="mt-1 flex gap-1">
-              <div className="h-2 w-2 animate-bounce rounded-full bg-slate-500" style={{ animationDelay: '0s' }} />
-              <div className="h-2 w-2 animate-bounce rounded-full bg-slate-500" style={{ animationDelay: '0.1s' }} />
-              <div className="h-2 w-2 animate-bounce rounded-full bg-slate-500" style={{ animationDelay: '0.2s' }} />
+          <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
+            className="relative glass glass-highlight rounded-2xl rounded-bl-sm p-3">
+            <p className="mb-1.5 text-xs font-bold uppercase tracking-[0.08em] text-warm-100/40">Goldie is thinking</p>
+            <div className="mt-1 flex gap-1.5">
+              <motion.div animate={{ y: [0, -6, 0] }} transition={{ repeat: Infinity, duration: 0.6, delay: 0 }}
+                className="h-2 w-2 rounded-full bg-golden" />
+              <motion.div animate={{ y: [0, -6, 0] }} transition={{ repeat: Infinity, duration: 0.6, delay: 0.12 }}
+                className="h-2 w-2 rounded-full bg-golden" />
+              <motion.div animate={{ y: [0, -6, 0] }} transition={{ repeat: Infinity, duration: 0.6, delay: 0.24 }}
+                className="h-2 w-2 rounded-full bg-golden" />
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     );
@@ -56,33 +59,36 @@ export default function ToolActivity({ activeTools = [], completedTools = [] }) 
   return (
     <div className="mb-3 flex w-full justify-start animate-fade-in">
       <div className="flex max-w-[82%] flex-row items-end">
-        <div className="mb-1 mr-1.5 flex-shrink-0">
-          <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#334155] text-white shadow-sm">
-            <Building2 className="h-3.5 w-3.5" strokeWidth={2} aria-hidden="true" />
-          </div>
+        <div className="mb-1 mr-2 flex-shrink-0">
+          <OrbIcon mode="thinking" animated size={32} />
         </div>
-        <div className="relative min-w-[190px] rounded-xl rounded-bl-sm border border-slate-200 bg-[#F8FAFC] p-2.5 text-[#334155] shadow-sm">
-          <p className="mb-1.5 text-xs font-semibold uppercase tracking-[0.08em] text-[#64748B]">GoldenGuide is working</p>
-          <div className="space-y-1.5">
-            {allTools.map((tool) => {
+        <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
+          className="relative min-w-[200px] glass glass-highlight rounded-2xl rounded-bl-sm p-3">
+          <p className="mb-2 text-xs font-bold uppercase tracking-[0.08em] text-warm-100/40">Goldie is working</p>
+          <div className="space-y-2">
+            {allTools.map((tool, index) => {
               const info = TOOL_DISPLAY[tool] || { label: tool, icon: Settings };
               const Icon = info.icon;
               const isActive = activeTools.includes(tool);
               const isDone = completedTools.includes(tool);
               return (
-                <div key={tool} className="flex animate-fade-in items-center gap-1.5 text-xs">
-                  <span className={`inline-flex h-5 w-5 items-center justify-center rounded-full ${isDone ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-200 text-slate-700'}`}>
+                <motion.div key={tool}
+                  initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.06 }}
+                  className="flex items-center gap-2 text-sm">
+                  <span className={`inline-flex h-6 w-6 items-center justify-center rounded-lg ${isDone ? 'bg-success/20 text-success' : 'glass-subtle text-warm-100/50'}`}>
                     {isDone ? <CheckCircle2 className="h-3.5 w-3.5" strokeWidth={2} aria-hidden="true" /> : <Icon className="h-3.5 w-3.5" strokeWidth={2} aria-hidden="true" />}
                   </span>
-                  <span className={isDone ? 'font-semibold text-emerald-700' : 'text-[#334155]'}>{info.label}</span>
+                  <span className={isDone ? 'font-bold text-success' : 'text-warm-50/70'}>{info.label}</span>
                   {isActive && !isDone && (
-                    <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-slate-600" />
+                    <motion.span animate={{ opacity: [0.3, 1, 0.3] }} transition={{ repeat: Infinity, duration: 1.2 }}
+                      className="inline-block h-1.5 w-1.5 rounded-full bg-golden" />
                   )}
-                </div>
+                </motion.div>
               );
             })}
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

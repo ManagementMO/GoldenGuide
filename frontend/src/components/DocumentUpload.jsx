@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 import { FileUp, Image as ImageIcon } from 'lucide-react';
 
 export default function DocumentUpload({ onUpload }) {
@@ -8,24 +9,20 @@ export default function DocumentUpload({ onUpload }) {
   const handleFileSelect = (e) => {
     const file = e.target.files[0];
     if (file) {
-      // Create preview
       if (file.type.startsWith('image/')) {
         const reader = new FileReader();
         reader.onloadend = () => {
           setPreview(reader.result);
-          // Auto-clear preview after a short delay or just keep it until next upload
-          setTimeout(() => setPreview(null), 3000); 
+          setTimeout(() => setPreview(null), 3000);
         };
         reader.readAsDataURL(file);
       } else {
-        // For PDFs/docs, just show a generic icon or name
         setPreview('DOC');
         setTimeout(() => setPreview(null), 3000);
       }
-      
+
       onUpload(file);
-      
-      // Reset input so same file can be selected again if needed
+
       if (fileInputRef.current) {
         fileInputRef.current.value = '';
       }
@@ -45,16 +42,18 @@ export default function DocumentUpload({ onUpload }) {
         className="hidden"
         accept="image/jpeg,image/png,application/pdf"
       />
-      <button
+      <motion.button
+        whileHover={{ scale: 1.06 }}
+        whileTap={{ scale: 0.94 }}
         onClick={handleClick}
-        className="relative flex min-h-[52px] min-w-[52px] items-center justify-center overflow-hidden rounded-2xl border border-[#CBD5E1] bg-white text-[#334155] transition-colors hover:bg-[#F8FAFC]"
+        className="relative flex min-h-[52px] min-w-[52px] items-center justify-center overflow-hidden rounded-2xl glass-subtle text-warm-100/50 transition-colors hover:text-golden hover:bg-white/[0.06]"
         aria-label="Upload document or image"
       >
         {preview ? (
           typeof preview === 'string' && preview.startsWith('data:') ? (
-            <img src={preview} alt="Upload preview" className="w-full h-full object-cover" />
+            <img src={preview} alt="Upload preview" className="w-full h-full object-cover rounded-2xl" />
           ) : (
-            <span className="text-base font-semibold">{preview}</span>
+            <span className="text-base font-bold text-golden">{preview}</span>
           )
         ) : (
           <span className="flex items-center gap-1">
@@ -62,7 +61,7 @@ export default function DocumentUpload({ onUpload }) {
             <ImageIcon className="h-3.5 w-3.5" strokeWidth={2} aria-hidden="true" />
           </span>
         )}
-      </button>
+      </motion.button>
     </div>
   );
 }

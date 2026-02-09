@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 import { Mic, MicOff } from 'lucide-react';
 
 export default function VoiceInput({ onTranscript, disabled, language = 'en' }) {
@@ -52,23 +53,26 @@ export default function VoiceInput({ onTranscript, disabled, language = 'en' }) 
 
   return (
     <div className="relative">
-      <button
+      <motion.button
+        whileHover={{ scale: 1.06 }}
+        whileTap={{ scale: 0.94 }}
         onClick={toggleListening}
         disabled={disabled}
-        className={`flex min-h-[52px] min-w-[52px] items-center justify-center rounded-2xl border transition-all ${
+        className={`flex min-h-[52px] min-w-[52px] items-center justify-center rounded-2xl transition-all ${
           isListening
-            ? 'border-red-400 bg-red-50 text-red-700'
-            : 'border-[#CBD5E1] bg-white text-[#334155] hover:bg-[#F8FAFC]'
+            ? 'bg-danger/20 border border-danger/40 text-danger shadow-[0_0_16px_rgba(239,68,68,0.2)]'
+            : 'glass-subtle text-warm-100/50 hover:text-golden hover:bg-white/[0.06]'
         } ${disabled ? 'cursor-not-allowed opacity-50' : ''}`}
         aria-label={isListening ? 'Stop listening' : 'Start voice input'}
         title={isListening ? 'Stop listening' : 'Start voice input'}
       >
         {isListening ? <MicOff className="h-5 w-5" strokeWidth={2} aria-hidden="true" /> : <Mic className="h-5 w-5" strokeWidth={2} aria-hidden="true" />}
-      </button>
+      </motion.button>
       {isListening && (
-        <span className="absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-slate-900 px-2 py-1 text-xs font-semibold text-white">
+        <motion.span initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }}
+          className="absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-lg glass-strong px-2.5 py-1 text-xs font-bold text-danger">
           Listening...
-        </span>
+        </motion.span>
       )}
     </div>
   );
